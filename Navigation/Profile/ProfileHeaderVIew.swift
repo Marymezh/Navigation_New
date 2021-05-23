@@ -50,6 +50,7 @@ class ProfileHeaderView: UIView {
             statusTextField.layer.borderWidth = 1.0
             statusTextField.layer.borderColor = UIColor.black.cgColor
             statusTextField.layer.cornerRadius = 12
+            statusTextField.clipsToBounds = true
             statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         }
     
