@@ -17,12 +17,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNa-sg-JeV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNa-sg-JeV" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="220"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mysterious-cat" translatesAutoresizingMaskIntoConstraints="NO" id="pdh-Nn-eX3">
+                                        <rect key="frame" x="16" y="16" width="110" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="BpV-bO-kKU"/>
+                                            <constraint firstAttribute="height" constant="110" id="J5l-eD-EbP"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fullNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nch-Ea-SIa">
+                                        <rect key="frame" x="156" y="27" width="242" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="mtL-k5-mgu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phD-eh-y5g">
+                                        <rect key="frame" x="16" y="156" width="382" height="50"/>
+                                        <color key="backgroundColor" red="0.24312704801559448" green="0.42574277520179749" blue="0.91290587186813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="DO4-Tb-13u"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="setStatusButton">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NIh-D1-rPe">
+                                        <rect key="frame" x="156" y="100" width="242" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="xK4-cY-gHM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="statusLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yai-QX-hAP">
+                                        <rect key="frame" x="156" y="70" width="242" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="sBo-y0-VXq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="pdh-Nn-eX3" firstAttribute="leading" secondItem="UNa-sg-JeV" secondAttribute="leading" constant="16" id="6UA-EO-u3z"/>
+                                    <constraint firstItem="phD-eh-y5g" firstAttribute="top" secondItem="NIh-D1-rPe" secondAttribute="bottom" constant="16" id="7Vd-vy-aLv"/>
+                                    <constraint firstItem="Yai-QX-hAP" firstAttribute="leading" secondItem="pdh-Nn-eX3" secondAttribute="trailing" constant="30" id="9H8-Vt-Mca"/>
+                                    <constraint firstItem="nch-Ea-SIa" firstAttribute="leading" secondItem="pdh-Nn-eX3" secondAttribute="trailing" constant="30" id="F5G-lj-mmc"/>
+                                    <constraint firstItem="phD-eh-y5g" firstAttribute="leading" secondItem="UNa-sg-JeV" secondAttribute="leading" constant="16" id="LZs-1B-XEm"/>
+                                    <constraint firstItem="phD-eh-y5g" firstAttribute="top" secondItem="pdh-Nn-eX3" secondAttribute="bottom" constant="30" id="P3B-eP-DDC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yai-QX-hAP" secondAttribute="trailing" constant="16" id="TRx-y4-50R"/>
+                                    <constraint firstAttribute="trailing" secondItem="NIh-D1-rPe" secondAttribute="trailing" constant="16" id="WNb-7c-bnp"/>
+                                    <constraint firstItem="NIh-D1-rPe" firstAttribute="top" secondItem="Yai-QX-hAP" secondAttribute="bottom" constant="10" id="acE-Kf-cPo"/>
                                     <constraint firstAttribute="height" constant="220" id="bdv-dG-OGE"/>
+                                    <constraint firstItem="nch-Ea-SIa" firstAttribute="top" secondItem="UNa-sg-JeV" secondAttribute="top" constant="27" id="gpQ-jM-KxG"/>
+                                    <constraint firstItem="pdh-Nn-eX3" firstAttribute="top" secondItem="UNa-sg-JeV" secondAttribute="top" constant="16" id="hRw-Pt-gSA"/>
+                                    <constraint firstAttribute="trailing" secondItem="nch-Ea-SIa" secondAttribute="trailing" constant="16" id="iit-Qv-L2Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="phD-eh-y5g" secondAttribute="trailing" constant="16" id="mSF-um-H85"/>
+                                    <constraint firstItem="NIh-D1-rPe" firstAttribute="leading" secondItem="pdh-Nn-eX3" secondAttribute="trailing" constant="30" id="ncf-ln-vZ5"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="pdh-Nn-eX3" id="n6P-Q4-hfE"/>
+                                    <outlet property="fullNameLabel" destination="nch-Ea-SIa" id="vvy-W9-KDX"/>
+                                    <outlet property="setStatusButton" destination="phD-eh-y5g" id="FmQ-4t-s0h"/>
+                                    <outlet property="statusLabel" destination="Yai-QX-hAP" id="Dh5-s1-YhS"/>
+                                    <outlet property="statusTextField" destination="NIh-D1-rPe" id="jnk-xr-J1W"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FCL-IZ-fe8"/>
@@ -175,6 +242,7 @@
     </scenes>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="mysterious-cat" width="880" height="584"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

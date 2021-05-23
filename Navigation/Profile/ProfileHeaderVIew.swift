@@ -9,80 +9,56 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-   
-   private let userPicture = UIImageView(image: UIImage(named: "mysterious-cat.jpg"))
-   private let userName = UILabel()
-   private let userStatus = UILabel()
-   private let statusButton = UIButton()
-   private let setStatus = UITextField()
-   private var statusText = String()
-
-   override init(frame: CGRect) {
-       super.init(frame: frame)
-       setupUI()
-   }
-   
-   required init?(coder: NSCoder) {
-       super.init(coder: coder)
-   }
-   
-   override func layoutSubviews() {
-       configureFrames()
-   }
-   
-   func setupUI () {
-       addSubview(userPicture)
-       addSubview(userName)
-       addSubview(userStatus)
-       addSubview(statusButton)
-       addSubview(setStatus)
-   }
-   
-   func configureFrames() {
-       userPicture.frame = CGRect(x: self.safeAreaInsets.left + 16, y: self.safeAreaInsets.top + 16, width: 110, height: 110)
-       userPicture.layer.borderWidth = 3.0
-       userPicture.layer.borderColor = UIColor.white.cgColor
-       userPicture.layer.cornerRadius = userPicture.frame.size.width/2
-       userPicture.clipsToBounds = true
-       
-       userName.frame = CGRect(x: self.safeAreaInsets.left + 150, y: self.safeAreaInsets.top + 27, width: 300, height: 18)
-       userName.text = "Mysterious Cat"
-       userName.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-       userName.textColor = .black
-       
-       userStatus.frame = CGRect(x: self.safeAreaInsets.left + 150, y: statusButton.frame.minY - userStatus.bounds.height - 60, width: 300, height: 14)
-       userStatus.text = "Learning how to code..."
-       userStatus.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-       userStatus.textColor = .gray
-       
-       statusButton.frame = CGRect(x: self.safeAreaInsets.left + 16, y: userPicture.frame.maxY + 32 , width: self.bounds.width - self.safeAreaInsets.left - self.safeAreaInsets.right - 16 * 2, height: 50)
-       statusButton.setTitle("Set status", for: .normal)
-       statusButton.setTitleColor(.white, for: .normal)
-       statusButton.layer.backgroundColor = UIColor.blue.cgColor
-       statusButton.layer.cornerRadius = 14
-       statusButton.layer.shadowColor = UIColor.black.cgColor
-       statusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-       statusButton.layer.shadowOpacity = 0.7
-       statusButton.addTarget(self, action: #selector(buttonIsPressed), for: .touchUpInside)
-       
-       setStatus.frame = CGRect(x: self.safeAreaInsets.left + 150, y: statusButton.frame.minY - setStatus.bounds.height - 10, width: self.bounds.width - self.safeAreaInsets.left - self.safeAreaInsets.right - 166, height: 40)
-       setStatus.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: setStatus.frame.height))
-       setStatus.leftViewMode = .always
-       setStatus.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-       setStatus.textColor = .black
-       setStatus.backgroundColor = .white
-       setStatus.layer.borderWidth = 1.0
-       setStatus.layer.borderColor = UIColor.black.cgColor
-       setStatus.layer.cornerRadius = 12
-       setStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-       
-   }
-   
-   @objc func statusTextChanged(_ textField: UITextField)  {
-       statusText = setStatus.text ?? "No status"
-   }
-   
-   @objc func buttonIsPressed() {
-       userStatus.text = statusText
-   }
+    
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusTextField: UITextField!
+    @IBOutlet weak var setStatusButton: UIButton!
+    
+    private var statusText = String()
+    
+        override func awakeFromNib() {
+            avatarImageView.layer.borderWidth = 3.0
+            avatarImageView.layer.borderColor = UIColor.white.cgColor
+            avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width/2
+            avatarImageView.clipsToBounds = true
+    
+            fullNameLabel.text = "Mysterious Cat"
+            fullNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            fullNameLabel.textColor = .black
+    
+            statusLabel.text = "Learning how to code..."
+            statusLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            statusLabel.textColor = .gray
+    
+            setStatusButton.setTitle("Set status", for: .normal)
+            setStatusButton.setTitleColor(.white, for: .normal)
+            setStatusButton.layer.backgroundColor = UIColor.blue.cgColor
+            setStatusButton.layer.cornerRadius = 14
+            setStatusButton.layer.shadowColor = UIColor.black.cgColor
+            setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+            setStatusButton.layer.shadowOpacity = 0.7
+            setStatusButton.addTarget(self, action: #selector(buttonIsPressed), for: .touchUpInside)
+    
+    
+            statusTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: setStatusButton.frame.height))
+            statusTextField.leftViewMode = .always
+            statusTextField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            statusTextField.textColor = .black
+            statusTextField.backgroundColor = .white
+            statusTextField.layer.borderWidth = 1.0
+            statusTextField.layer.borderColor = UIColor.black.cgColor
+            statusTextField.layer.cornerRadius = 12
+            statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        }
+    
+        @objc func statusTextChanged(_ textField: UITextField)  {
+            statusText = statusTextField.text ?? "No status"
+        }
+    
+        @objc func buttonIsPressed() {
+            statusLabel.text = statusText
+        }
 }
+
