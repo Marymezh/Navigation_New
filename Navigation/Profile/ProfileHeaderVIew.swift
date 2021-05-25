@@ -17,6 +17,7 @@ class ProfileHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubviews()
         setupUI()
     }
     
@@ -28,23 +29,26 @@ class ProfileHeaderView: UIView {
         configureFrames()
     }
     
-    func setupUI () {
+    func addSubviews() {
         addSubview(userPicture)
+        addSubview(userName)
+        addSubview(userStatus)
+        addSubview(statusButton)
+    }
+    
+    func setupUI() {
         userPicture.layer.borderWidth = 3.0
         userPicture.layer.borderColor = UIColor.white.cgColor
         userPicture.clipsToBounds = true
         
-        addSubview(userName)
         userName.text = "Mysterious Cat"
         userName.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         userName.textColor = .black
         
-        addSubview(userStatus)
         userStatus.text = "Learning how to code..."
         userStatus.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         userStatus.textColor = .gray
         
-        addSubview(statusButton)
         statusButton.setTitle("Show status", for: .normal)
         statusButton.setTitleColor(.white, for: .normal)
         statusButton.layer.backgroundColor = UIColor.blue.cgColor
