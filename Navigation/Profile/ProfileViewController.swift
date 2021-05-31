@@ -20,22 +20,25 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .lightGray
+        configureButton()
+    }
         
+    private func configureButton() {
         self.view.addSubview(newButton)
             newButton.setTitle("NEW BUTTON", for: .normal)
             newButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
             newButton.setTitleColor(.white, for: .normal)
             newButton.layer.backgroundColor = UIColor.blue.cgColor
             newButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([newButton.heightAnchor.constraint(equalToConstant: 50),
-                                 newButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-                                 newButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-                                 newButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0)])
+        
+        let newbuttonConstraints = [
+            newButton.heightAnchor.constraint(equalToConstant: 50),
+            newButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            newButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            newButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)]
+        
+        NSLayoutConstraint.activate(newbuttonConstraints)
+        
+        }
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
 
-    }
-
-}
