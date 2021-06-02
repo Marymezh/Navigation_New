@@ -41,7 +41,6 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowOpacity = 0.7
         setStatusButton.addTarget(self, action: #selector(buttonIsPressed), for: .touchUpInside)
         
-        
         statusTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: setStatusButton.frame.height))
         statusTextField.leftViewMode = .always
         statusTextField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
