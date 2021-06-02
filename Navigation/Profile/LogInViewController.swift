@@ -10,6 +10,16 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    private let scrollView = UIScrollView()
+    
+    private let logInView: UIView = {
+        let logInView = UIView()
+        logInView.backgroundColor = .white
+        logInView.toAutoLayout()
+        return logInView
+    }()
+    
+    
     private let logoVKImageView: UIImageView = {
         let imageView = UIImageView(image:#imageLiteral(resourceName: "logo"))
         imageView.contentMode = .scaleAspectFill
@@ -30,7 +40,7 @@ class LogInViewController: UIViewController {
     }()
     
     private let emailTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textColor = .black
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField .frame.height))
@@ -75,7 +85,7 @@ class LogInViewController: UIViewController {
         } else {
             button.alpha = 1
         }
-    
+        
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         //button.addTarget(self, action: #selector(tapLogInButton), for: .touchUpInside)
@@ -91,20 +101,37 @@ class LogInViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubview(logoVKImageView)
-        view.addSubview(autorizationView)
+        
+        scrollView.toAutoLayout()
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(logInView)
+        
+        logInView.addSubviews(logoVKImageView, autorizationView, logInButton)
+        
         autorizationView.addSubview(emailTextField)
         autorizationView.addSubview(passwordTextField)
-        view.addSubview(logInButton)
+        
         let constraints = [
-            logoVKImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
-            logoVKImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            logInView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            logInView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            logInView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            logInView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            logInView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            logoVKImageView.topAnchor.constraint(equalTo: logInView.topAnchor, constant: 120),
+            logoVKImageView.centerXAnchor.constraint(equalTo: logInView.centerXAnchor),
             logoVKImageView.widthAnchor.constraint(equalToConstant: 100),
             logoVKImageView.heightAnchor.constraint(equalToConstant: 100),
             
             autorizationView.topAnchor.constraint(equalTo: logoVKImageView.bottomAnchor, constant: 120),
-            autorizationView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            autorizationView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            autorizationView.leadingAnchor.constraint(equalTo: logInView.leadingAnchor, constant: 16),
+            autorizationView.trailingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: -16),
             autorizationView.heightAnchor.constraint(equalToConstant: 100),
             
             emailTextField.topAnchor.constraint(equalTo: autorizationView.topAnchor),
@@ -118,19 +145,25 @@ class LogInViewController: UIViewController {
             passwordTextField.heightAnchor.constraint(equalToConstant: 49.7),
             
             logInButton.topAnchor.constraint(equalTo: autorizationView.bottomAnchor, constant: 16),
-            logInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            logInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            logInButton.leadingAnchor.constraint(equalTo: logInView.leadingAnchor, constant: 16),
+            logInButton.trailingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: -16),
+            logInButton.bottomAnchor.constraint(equalTo: logInView.bottomAnchor),
             logInButton.heightAnchor.constraint(equalToConstant: 50)
         ]
         
         NSLayoutConstraint.activate(constraints)
         
-  }
-}
-    
-    extension UIView {
-        func toAutoLayout() {
-            self.translatesAutoresizingMaskIntoConstraints = false
-        }
+    }
 }
 
+extension UIView {
+    func toAutoLayout() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+extension UIView {
+    func addSubviews(_ subviews: UIView...) {
+        subviews.forEach { addSubview($0) }
+    }
+}
