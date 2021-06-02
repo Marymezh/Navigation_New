@@ -88,10 +88,15 @@ class LogInViewController: UIViewController {
         
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-        //button.addTarget(self, action: #selector(tapLogInButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapLogInButton), for: .touchUpInside)
         button.toAutoLayout()
         return button
     }()
+    
+    @objc private func tapLogInButton() {
+        let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC")
+        navigationController?.pushViewController(profileVC!, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,7 +186,6 @@ class LogInViewController: UIViewController {
         scrollView.contentInset.bottom = .zero
         scrollView.verticalScrollIndicatorInsets = .zero
     }
-    
 }
 
 extension UIView {
