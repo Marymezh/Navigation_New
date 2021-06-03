@@ -9,6 +9,54 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    private let tableView = UITableView(frame: .zero, style: .plain)
+    private let cellId = "cellId"
+  //  private let postArray = [PostVK]()
+    
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.isHidden = true
+        setUpTableView()
+    }
+    
+    private func setUpTableView() {
+        view.addSubview(tableView)
+        tableView.toAutoLayout()
+        tableView.dataSource = self
+   //     tableView.delegate = self
+        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: cellId)
+        
+        let constraints = [
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
 }
+// MARK: UITableViewDataSource
 
+extension ProfileViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return PostStorage.postArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileTableViewCell
+        
+        cell.post = PostStorage.postArray[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
