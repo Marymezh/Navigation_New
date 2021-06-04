@@ -10,15 +10,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private let tableView = UITableView(frame: .zero, style: .plain)
+    private let tableView = UITableView(frame: .zero, style: .grouped)
     private let cellId = "cellId"
-  //  private let postArray = [PostVK]()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.isHidden = true
         setUpTableView()
     }
     
@@ -26,9 +23,10 @@ class ProfileViewController: UIViewController {
         view.addSubview(tableView)
         tableView.toAutoLayout()
         tableView.dataSource = self
-   //     tableView.delegate = self
+        tableView.delegate = self
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: cellId)
-        
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.reuseID)
+       
         let constraints = [
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -55,8 +53,17 @@ extension ProfileViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+}
+
+// MARK: UITableViewDelegate
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView =  ProfileHeaderView()
+        return headerView
     }
+    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 200
+//    }
 }

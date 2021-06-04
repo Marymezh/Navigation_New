@@ -1,5 +1,5 @@
 //
-//  ProfileHeaderVIew.swift
+//  ProfileTableHeaderVIew.swift
 //  Navigation
 //
 //  Created by Maria Mezhova on 23.05.2021.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
+    
+    static let reuseID = String(describing: ProfileHeaderView.self)
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
@@ -18,6 +20,14 @@ class ProfileHeaderView: UIView {
     
     private var statusText = String()
     
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     override func awakeFromNib() {
         avatarImageView.layer.borderWidth = 3.0
         avatarImageView.layer.borderColor = UIColor.white.cgColor
@@ -49,6 +59,7 @@ class ProfileHeaderView: UIView {
         statusTextField.layer.borderWidth = 1.0
         statusTextField.layer.borderColor = UIColor.black.cgColor
         statusTextField.layer.cornerRadius = 12
+        statusTextField.placeholder = "Set your status here"
         statusTextField.clipsToBounds = true
         statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
     }

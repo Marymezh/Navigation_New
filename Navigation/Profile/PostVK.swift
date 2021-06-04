@@ -10,7 +10,7 @@ import UIKit
 struct PostVK {
     let author: String
     let description: String
-    let image: UIImage
-    let likes: String
-    let views: String
+    let image: String
+    let likes: Int
+    let views: Int
 }
