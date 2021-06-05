@@ -19,6 +19,10 @@ class ProfileViewController: UIViewController {
         setUpTableView()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
     private func setUpTableView() {
         view.addSubview(tableView)
         tableView.toAutoLayout()
@@ -63,7 +67,7 @@ extension ProfileViewController: UITableViewDelegate {
         return headerView
     }
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 200
-//    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 230
+    }
 }

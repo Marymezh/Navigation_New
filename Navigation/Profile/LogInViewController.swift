@@ -116,11 +116,9 @@ class LogInViewController: UIViewController {
         
         view.addSubview(scrollView)
         scrollView.addSubview(logInView)
-        
         logInView.addSubviews(logoVKImageView, autorizationView, logInButton)
-        
-        autorizationView.addSubview(emailTextField)
-        autorizationView.addSubview(passwordTextField)
+        autorizationView.addSubviews(emailTextField, passwordTextField)
+      
         
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
