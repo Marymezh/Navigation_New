@@ -50,6 +50,7 @@ class LogInViewController: UIViewController {
         textField.backgroundColor = .systemGray6
         textField.clipsToBounds = true
         textField.placeholder = "Email or Phone"
+        textField.returnKeyType = UIReturnKeyType.done
         textField.toAutoLayout()
         return textField
     }()
@@ -66,6 +67,7 @@ class LogInViewController: UIViewController {
         textField.clipsToBounds = true
         textField.placeholder = "Password"
         textField.isSecureTextEntry = true
+        textField.returnKeyType = UIReturnKeyType.done
         textField.toAutoLayout()
         return textField
     }()
@@ -102,6 +104,8 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         setupViews()
     }
     
@@ -197,5 +201,12 @@ extension UIView {
 extension UIView {
     func addSubviews(_ subviews: UIView...) {
         subviews.forEach { addSubview($0) }
+    }
+}
+
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
