@@ -10,8 +10,6 @@ import UIKit
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
     
-    static let reuseID = String(describing: ProfileHeaderView.self)
-    
     private let userPicture: UIImageView =  {
         var image = UIImageView(image: #imageLiteral(resourceName: "mysterious-cat"))
         image.layer.borderWidth = 3.0
@@ -122,9 +120,4 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         userStatus.text = statusText
     }
 }
-//extension ProfileHeaderView: UITableViewDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//}
+

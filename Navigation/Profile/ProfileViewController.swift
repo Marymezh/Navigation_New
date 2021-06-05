@@ -29,7 +29,6 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: cellId)
-        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.reuseID)
        
         let constraints = [
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -63,7 +62,7 @@ extension ProfileViewController: UITableViewDataSource {
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.reuseID) as! ProfileHeaderView
+        let headerView = ProfileHeaderView()
         return headerView
     }
     
