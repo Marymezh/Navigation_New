@@ -81,8 +81,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         let constraints = [
             userPicture.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             userPicture.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            userPicture.widthAnchor.constraint(equalToConstant: 110),
-            userPicture.heightAnchor.constraint(equalTo: userPicture.widthAnchor),
+            userPicture.heightAnchor.constraint(equalToConstant: 110),
+            userPicture.widthAnchor.constraint(equalTo: userPicture.heightAnchor),
+            
             
             userName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
             userName.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: 16),
@@ -111,6 +112,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+//    override func layoutSubviews() {
+//        userPicture.layer.cornerRadius = userPicture.frame.size.height/2
+//    }
     
     @objc func statusTextChanged(_ textField: UITextField)  {
         statusText = setStatus.text ?? "No status"

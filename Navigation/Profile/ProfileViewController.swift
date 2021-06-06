@@ -67,6 +67,6 @@ extension ProfileViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 230
+        return UITableView.automaticDimension
     }
 }
