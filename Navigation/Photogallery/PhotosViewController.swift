@@ -17,9 +17,9 @@ class PhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.navigationBar.isHidden = false
         setupCollectionView()
-        
+        photoCollectionView.backgroundColor = .white
     }
     
     private func setupCollectionView(){
@@ -27,7 +27,7 @@ class PhotosViewController: UIViewController {
         photoCollectionView.toAutoLayout()
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
-        photoCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "collectionCellID")
+        photoCollectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: "collectionCellID")
         
         let constraints = [
             photoCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -41,22 +41,23 @@ class PhotosViewController: UIViewController {
     }
 
 }
-
+// считаем кол-во картинок - берем его из массива фотографий
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-        // уточнить - посчитать количество фотографий в коллекции - тут будет массив из картинок и count
+        return PhotoStorage.photoArray.count
     }
-    
+// пишем, какую именно ячейку мы будем вставлять в нашу коллекцию, а также пишем, что эта ячейка будет переиспользована
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellID", for: indexPath)
+        let cell: PhotosCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellID", for: indexPath) as! PhotosCollectionViewCell
+        
+        cell.photo = PhotoStorage.photoArray[indexPath.item]
         return cell
     }
 }
-
+// выставляем кол-во картинок в ряду и отступы
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (photoCollectionView.frame.width - baseInset * 4) / 3, height: photoCollectionView.frame.width)
+        return CGSize(width: (photoCollectionView.frame.width - baseInset * 4) / 3, height: (photoCollectionView.frame.width - baseInset * 4) / 3)
     }
     
     
@@ -67,7 +68,7 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return .zero
     }
-    
+    // отступы для секции (сверху, снизу и по бокам)
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: baseInset, left: baseInset, bottom: .zero, right: baseInset)
     }

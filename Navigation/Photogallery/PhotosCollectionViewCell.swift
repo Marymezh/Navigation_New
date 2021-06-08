@@ -10,4 +10,42 @@ import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
     
+    var photo: ImageVK? {
+        didSet {
+            collectionImageView.image = photo?.image
+        }
+    }
+    
+    private let collectionImageView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.backgroundColor = .white
+        image.clipsToBounds = true
+        image.toAutoLayout()
+        return image
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
+        contentView.addSubview(collectionImageView)
+        
+        let constraints = [
+            collectionImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            collectionImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            collectionImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collectionImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
 }

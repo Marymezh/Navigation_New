@@ -34,6 +34,7 @@ class ProfileTableViewCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.backgroundColor = .black
+        image.clipsToBounds = true
         image.toAutoLayout()
         return image
     }()
