@@ -21,7 +21,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     return image
     }()
     
-    
     private let userName: UILabel = {
         let label = UILabel()
         label.text = "Mysterious Cat"
@@ -31,7 +30,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     return label
     }()
     
-    
     private let userStatus: UILabel = {
         let label = UILabel()
         label.text = "Learning how to code..."
@@ -40,7 +38,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         label.toAutoLayout()
         return label
     }()
-    
     
     private let statusButton: UIButton = {
         let button = UIButton()
@@ -84,7 +81,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             userPicture.heightAnchor.constraint(equalToConstant: 110),
             userPicture.widthAnchor.constraint(equalTo: userPicture.heightAnchor),
             
-            
             userName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
             userName.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: 16),
             userName.heightAnchor.constraint(equalToConstant: 18),
@@ -113,9 +109,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override func layoutSubviews() {
-//        userPicture.layer.cornerRadius = userPicture.frame.size.height/2
-//    }
     
     @objc func statusTextChanged(_ textField: UITextField)  {
         statusText = setStatus.text ?? "No status"
