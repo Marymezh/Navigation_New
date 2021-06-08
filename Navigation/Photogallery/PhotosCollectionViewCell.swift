@@ -1,5 +1,5 @@
 //
-//  PhotosTableViewCell.swift
+//  PhotosCollectionViewCell.swift
 //  Navigation
 //
 //  Created by Maria Mezhova on 08.06.2021.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class PhotosTableViewCell: UITableViewCell {
+class PhotosCollectionViewCell: UICollectionViewCell {
     
 }

@@ -19,10 +19,6 @@ class ProfileViewController: UIViewController {
         setUpTableView()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
-    
     private func setUpTableView() {
         view.addSubview(tableView)
         tableView.toAutoLayout()
