@@ -10,17 +10,6 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
     
-    var photoCell: PhotoCell? {
-        didSet {
-            photosLabel.text = photoCell?.nameForCell
-            arrowImage.image = photoCell?.arrow
-            photosImageView1.image = photoCell?.image1
-            photosImageView2.image = photoCell?.image2
-            photosImageView3.image = photoCell?.image3
-            photosImageView4.image = photoCell?.image4
-        }
-    }
-    
     private let photosLabel: UILabel = {
         let label = UILabel()
         label.text = "Photos"
@@ -89,7 +78,8 @@ class PhotosTableViewCell: UITableViewCell {
     
     private func setupViews() {
         contentView.addSubviews(photosLabel, arrowImage, photosImageView1, photosImageView2, photosImageView3, photosImageView4)
-        
+        contentView.backgroundColor = .white
+
         let constraints = [
             photosLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: sideInset),
             photosLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: sideInset),
@@ -119,7 +109,7 @@ class PhotosTableViewCell: UITableViewCell {
             photosImageView4.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
             photosImageView4.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -sideInset),
             photosImageView4.widthAnchor.constraint(equalTo: photosImageView1.widthAnchor),
-            photosImageView4.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor),
+            photosImageView4.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -127,3 +117,5 @@ class PhotosTableViewCell: UITableViewCell {
     private var baseInset: CGFloat { return 8 }
     private var sideInset: CGFloat { return 12 }
 }
+
+

@@ -27,7 +27,6 @@
 		CE61D6C5266F1E46001C600D /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6C4266F1E46001C600D /* PhotosCollectionViewCell.swift */; };
 		CE61D6C9266F4A94001C600D /* ImageVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6C8266F4A94001C600D /* ImageVK.swift */; };
 		CE61D6CC266F4B61001C600D /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6CB266F4B61001C600D /* PhotoStorage.swift */; };
-		CE61D6D2266F6DF6001C600D /* PhotosCellForProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6D1266F6DF6001C600D /* PhotosCellForProfileVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +52,6 @@
 		CE61D6C4266F1E46001C600D /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE61D6C8266F4A94001C600D /* ImageVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVK.swift; sourceTree = "<group>"; };
 		CE61D6CB266F4B61001C600D /* PhotoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStorage.swift; sourceTree = "<group>"; };
-		CE61D6D1266F6DF6001C600D /* PhotosCellForProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCellForProfileVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				CE61D6C8266F4A94001C600D /* ImageVK.swift */,
-				CE61D6D1266F6DF6001C600D /* PhotosCellForProfileVC.swift */,
 				CE61D67D26687C22001C600D /* PostVK.swift */,
 			);
 			path = Models;
@@ -226,7 +223,6 @@
 				CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,
 				CE61D6CC266F4B61001C600D /* PhotoStorage.swift in Sources */,
-				CE61D6D2266F6DF6001C600D /* PhotosCellForProfileVC.swift in Sources */,
 				CE61D6BF266F14CA001C600D /* PhotosTableViewCell.swift in Sources */,
 				CE61D688266898F4001C600D /* ProfileTableViewCell.swift in Sources */,
 				CE61D6C5266F1E46001C600D /* PhotosCollectionViewCell.swift in Sources */,
