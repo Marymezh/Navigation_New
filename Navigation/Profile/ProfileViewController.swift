@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = true
         setUpTableView()
     }
     
@@ -73,6 +74,7 @@ extension ProfileViewController: UITableViewDataSource {
         return UITableView.automaticDimension
     }
 }
+
 // MARK: UITableViewDelegate
 
 extension ProfileViewController: UITableViewDelegate {
@@ -96,8 +98,16 @@ extension ProfileViewController: UITableViewDelegate {
             return 1
         }
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+        let destination = PhotosViewController()
+        navigationController?.pushViewController(destination, animated: true)
+        } else {
+        return tableView.deselectRow(at: indexPath, animated: true)
         
     }
+}
+
 }
