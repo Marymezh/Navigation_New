@@ -11,7 +11,7 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
-    private let cellId = "cellId"
+ //   private let cellId = "cellId"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,9 @@ class ProfileViewController: UIViewController {
         tableView.toAutoLayout()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: String(describing:ProfileTableViewCell.self))
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
+        
        
         let constraints = [
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -46,14 +48,19 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileTableViewCell
-        
-        cell.post = PostStorage.postArray[indexPath.row]
-        
-        return cell
+        switch indexPath.row {
+        case 0: let cell: PhotosTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PhotosTableViewCell.self), for: indexPath) as! PhotosTableViewCell
+            
+            return cell
+            
+        default: let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileTableViewCell.self), for: indexPath) as! ProfileTableViewCell
+            
+            cell.post = PostStorage.postArray[indexPath.row]
+            
+            return cell
+        }
     }
 }
-
 // MARK: UITableViewDelegate
 
 extension ProfileViewController: UITableViewDelegate {
@@ -64,5 +71,10 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
 }

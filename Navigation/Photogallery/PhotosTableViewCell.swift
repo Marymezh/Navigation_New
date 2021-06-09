@@ -10,4 +10,120 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
     
+    var photoCell: PhotoCell? {
+        didSet {
+            photosLabel.text = photoCell?.nameForCell
+            arrowImage.image = photoCell?.arrow
+            photosImageView1.image = photoCell?.image1
+            photosImageView2.image = photoCell?.image2
+            photosImageView3.image = photoCell?.image3
+            photosImageView4.image = photoCell?.image4
+        }
+    }
+    
+    private let photosLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Photos"
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.textColor = .black
+        label.textAlignment = .left
+        label.toAutoLayout()
+        return label
+    }()
+    
+    private let arrowImage: UIImageView = {
+        let image = UIImageView(image: UIImage (systemName: "arrow.forward"))
+        image.tintColor = .black
+        image.contentMode = .scaleAspectFit
+        image.clipsToBounds = true
+        image.toAutoLayout()
+        return image
+    }()
+    
+    
+    private let photosImageView1: UIImageView = {
+        let image = UIImageView(image: #imageLiteral(resourceName: "mKoEtc5uwBA"))
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 6
+        image.clipsToBounds = true
+        image.toAutoLayout()
+        return image
+    }()
+    
+    private let photosImageView2: UIImageView = {
+        let image = UIImageView(image: #imageLiteral(resourceName: "fMTsqrhT8XY"))
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 6
+        image.clipsToBounds = true
+        image.toAutoLayout()
+        return image
+    }()
+    
+    private let photosImageView3: UIImageView = {
+        let image = UIImageView(image: #imageLiteral(resourceName: "VUhd1KPmOkc"))
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 6
+        image.clipsToBounds = true
+        image.toAutoLayout()
+        return image
+    }()
+    
+    private let photosImageView4: UIImageView = {
+        let image = UIImageView(image: #imageLiteral(resourceName: "uhCajd7X6mU"))
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 6
+        image.clipsToBounds = true
+        image.toAutoLayout()
+        return image
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews() {
+        contentView.addSubviews(photosLabel, arrowImage, photosImageView1, photosImageView2, photosImageView3, photosImageView4)
+        
+        let constraints = [
+            photosLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: sideInset),
+            photosLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: sideInset),
+            
+            arrowImage.centerYAnchor.constraint(equalTo: photosLabel.centerYAnchor),
+            arrowImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -sideInset),
+            arrowImage.widthAnchor.constraint(equalToConstant: 30),
+            arrowImage.heightAnchor.constraint(equalTo: arrowImage.widthAnchor),
+            
+            photosImageView1.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: sideInset),
+            photosImageView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: sideInset),
+            photosImageView1.widthAnchor.constraint(equalToConstant: (contentView.frame.width - baseInset * 3 - sideInset * 2)/4 ),
+            photosImageView1.heightAnchor.constraint(equalTo: photosImageView1.widthAnchor),
+            photosImageView1.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -sideInset),
+            
+            photosImageView2.leadingAnchor.constraint(equalTo: photosImageView1.trailingAnchor, constant: baseInset),
+            photosImageView2.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
+            photosImageView2.widthAnchor.constraint(equalTo: photosImageView1.widthAnchor),
+            photosImageView2.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor),
+            
+            photosImageView3.leadingAnchor.constraint(equalTo: photosImageView2.trailingAnchor, constant: baseInset),
+            photosImageView3.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
+            photosImageView3.widthAnchor.constraint(equalTo: photosImageView1.widthAnchor),
+            photosImageView3.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor),
+            
+            photosImageView4.leadingAnchor.constraint(equalTo: photosImageView3.trailingAnchor, constant: baseInset),
+            photosImageView4.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
+            photosImageView4.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -sideInset),
+            photosImageView4.widthAnchor.constraint(equalTo: photosImageView1.widthAnchor),
+            photosImageView4.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor),
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    private var baseInset: CGFloat { return 8 }
+    private var sideInset: CGFloat { return 12 }
 }

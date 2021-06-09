@@ -1,5 +1,5 @@
 //
-//  Photo.swift
+//  ImageVK.swift
 //  Navigation
 //
 //  Created by Maria Mezhova on 08.06.2021.
