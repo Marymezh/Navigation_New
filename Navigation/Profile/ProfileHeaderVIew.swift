@@ -1,5 +1,5 @@
 //
-//  ProfileTableHeaderVIew.swift
+//  ProfileHeaderVIew.swift
 //  Navigation
 //
 //  Created by Maria Mezhova on 23.05.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileHeaderView: UITableViewHeaderFooterView {
+class ProfileHeaderView: UIView {
     
     private let userPicture: UIImageView =  {
         var image = UIImageView(image: #imageLiteral(resourceName: "mysterious-cat"))
@@ -70,33 +70,39 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }()
         
     private var statusText = String()
+    
+   @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-        contentView.addSubviews(userPicture, userName, userStatus, setStatus, statusButton)
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        self.addSubviews(userPicture, userName, userStatus, setStatus, statusButton)
+
         let constraints = [
-            userPicture.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            userPicture.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            userPicture.topAnchor.constraint(equalTo: self.topAnchor, constant: baseInset),
+            userPicture.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: baseInset),
             userPicture.heightAnchor.constraint(equalToConstant: 110),
             userPicture.widthAnchor.constraint(equalTo: userPicture.heightAnchor),
             
-            userName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
-            userName.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: 16),
+            userName.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
+            userName.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: baseInset),
             userName.heightAnchor.constraint(equalToConstant: 18),
             
             statusButton.topAnchor.constraint(equalTo: userPicture.bottomAnchor, constant: 32),
-            statusButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            statusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: baseInset),
+            statusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -baseInset),
             statusButton.heightAnchor.constraint(equalToConstant: 50),
-            statusButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            statusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -baseInset),
             
-            setStatus.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: 16),
-            setStatus.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            setStatus.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: baseInset),
+            setStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -baseInset),
             setStatus.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -10),
             setStatus.heightAnchor.constraint(equalToConstant: 40),
             
-            userStatus.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: 16),
+            userStatus.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: baseInset),
             userStatus.bottomAnchor.constraint(equalTo: setStatus.topAnchor, constant: -10),
             userStatus.heightAnchor.constraint(equalToConstant: 14)
         
@@ -105,10 +111,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         NSLayoutConstraint.activate(constraints)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    private var baseInset: CGFloat { return 16 }
     
     @objc func statusTextChanged(_ textField: UITextField)  {
         statusText = setStatus.text ?? "No status"

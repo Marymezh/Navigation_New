@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let cellId = "cellId"
+    private let arrayOfPosts = PostStorage.postArray
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +20,12 @@ class ProfileViewController: UIViewController {
         setUpTableView()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
-    
     private func setUpTableView() {
         view.addSubview(tableView)
         tableView.toAutoLayout()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: cellId)
        
         let constraints = [
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -44,15 +41,19 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PostStorage.postArray.count
+        return arrayOfPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileTableViewCell
+        let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PostTableViewCell
         
-        cell.post = PostStorage.postArray[indexPath.row]
+        cell.post = arrayOfPosts[indexPath.row]
         
         return cell
     }
@@ -62,8 +63,14 @@ extension ProfileViewController: UITableViewDataSource {
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = ProfileHeaderView()
-        return headerView
+        
+        switch section {
+        case 0: let headerView = ProfileTableHeaderView()
+            return headerView
+        default:
+            return nil
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

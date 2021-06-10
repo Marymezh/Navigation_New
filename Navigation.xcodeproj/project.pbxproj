@@ -17,11 +17,12 @@
 		060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C7250CEE5D00A87020 /* PostViewController.swift */; };
 		060782CA250CEE7200A87020 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C9250CEE7200A87020 /* Post.swift */; };
 		CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D63E2659E198001C600D /* ProfileViewController.swift */; };
-		CE61D6432659E1A8001C600D /* ProfileTableHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6422659E1A8001C600D /* ProfileTableHeaderVIew.swift */; };
+		CE61D6432659E1A8001C600D /* ProfileHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */; };
 		CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D66D266628F2001C600D /* LogInViewController.swift */; };
 		CE61D67E26687C22001C600D /* PostVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D67D26687C22001C600D /* PostVK.swift */; };
 		CE61D68426687C92001C600D /* PostStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D68326687C92001C600D /* PostStorage.swift */; };
-		CE61D688266898F4001C600D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D687266898F4001C600D /* ProfileTableViewCell.swift */; };
+		CE61D688266898F4001C600D /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D687266898F4001C600D /* PostTableViewCell.swift */; };
+		CE61D6E52671E035001C600D /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6E42671E035001C600D /* ProfileTableHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +38,12 @@
 		060782C7250CEE5D00A87020 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		060782C9250CEE7200A87020 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CE61D63E2659E198001C600D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		CE61D6422659E1A8001C600D /* ProfileTableHeaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderVIew.swift; sourceTree = "<group>"; };
+		CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderVIew.swift; sourceTree = "<group>"; };
 		CE61D66D266628F2001C600D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CE61D67D26687C22001C600D /* PostVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVK.swift; sourceTree = "<group>"; };
 		CE61D68326687C92001C600D /* PostStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStorage.swift; sourceTree = "<group>"; };
-		CE61D687266898F4001C600D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		CE61D687266898F4001C600D /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		CE61D6E42671E035001C600D /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,11 +95,12 @@
 			isa = PBXGroup;
 			children = (
 				CE61D63E2659E198001C600D /* ProfileViewController.swift */,
-				CE61D6422659E1A8001C600D /* ProfileTableHeaderVIew.swift */,
+				CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */,
+				CE61D6E42671E035001C600D /* ProfileTableHeaderView.swift */,
 				CE61D66D266628F2001C600D /* LogInViewController.swift */,
 				CE61D68326687C92001C600D /* PostStorage.swift */,
 				CE61D67D26687C22001C600D /* PostVK.swift */,
-				CE61D687266898F4001C600D /* ProfileTableViewCell.swift */,
+				CE61D687266898F4001C600D /* PostTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
+				CE61D6E52671E035001C600D /* ProfileTableHeaderView.swift in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				CE61D68426687C92001C600D /* PostStorage.swift in Sources */,
 				CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */,
@@ -182,9 +186,9 @@
 				060782CA250CEE7200A87020 /* Post.swift in Sources */,
 				CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,
-				CE61D688266898F4001C600D /* ProfileTableViewCell.swift in Sources */,
+				CE61D688266898F4001C600D /* PostTableViewCell.swift in Sources */,
 				060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */,
-				CE61D6432659E1A8001C600D /* ProfileTableHeaderVIew.swift in Sources */,
+				CE61D6432659E1A8001C600D /* ProfileHeaderVIew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
