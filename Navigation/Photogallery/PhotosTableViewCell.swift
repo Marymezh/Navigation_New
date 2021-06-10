@@ -66,17 +66,14 @@ class PhotosTableViewCell: UITableViewCell {
         return image
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupViews()
-    }
-    
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupViews() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+ 
         contentView.addSubviews(photosLabel, arrowImage, photosImageView1, photosImageView2, photosImageView3, photosImageView4)
         contentView.backgroundColor = .white
 

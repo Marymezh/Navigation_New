@@ -11,6 +11,7 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
+    private let arrayOfPosts = PostStorage.postArray
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class ProfileViewController: UIViewController {
         tableView.toAutoLayout()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: String(describing:ProfileTableViewCell.self))
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
         
        
@@ -51,7 +52,7 @@ extension ProfileViewController: UITableViewDataSource {
         case 0:
             return 1
         default:
-            return PostStorage.postArray.count
+            return arrayOfPosts.count
         }
     }
     
@@ -62,9 +63,9 @@ extension ProfileViewController: UITableViewDataSource {
             
             return cell
             
-        default: let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileTableViewCell.self), for: indexPath) as! ProfileTableViewCell
+        default: let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
             
-            cell.post = PostStorage.postArray[indexPath.row]
+            cell.post = arrayOfPosts[indexPath.row]
             
             return cell
         }
@@ -82,7 +83,7 @@ extension ProfileViewController: UITableViewDelegate {
         
         switch section {
         case 0:
-            let headerView = ProfileHeaderView()
+            let headerView = ProfileTableHeaderVIew()
             return headerView
         default:
             return nil

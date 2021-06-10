@@ -1,5 +1,5 @@
 //
-//  ProfileTableViewCell.swift
+//  PostTableViewCell.swift
 //  Navigation
 //
 //  Created by Maria Mezhova on 03.06.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell {
     
     var post: PostVK? {
         didSet {
@@ -64,43 +64,42 @@ class ProfileTableViewCell: UITableViewCell {
         return label
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupViews()
-    }
-    
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupViews() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+     
         contentView.addSubviews(authorLabel, postImageView, descriptionLabel, likesLabel, viewsLabel)
         
         let constraints = [
-            authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: baseInset),
+            authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: baseInset),
+            authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -baseInset),
             
-            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
+            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: baseInset),
             postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             postImageView.widthAnchor.constraint(equalTo: postImageView.heightAnchor),
             
-            descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: baseInset),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: baseInset),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -baseInset),
             
-            likesLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            likesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            likesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            likesLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: baseInset),
+            likesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: baseInset),
+            likesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -baseInset),
         
-            viewsLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            viewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            viewsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            viewsLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: baseInset),
+            viewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -baseInset),
+            viewsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -baseInset)
         ]
         
         NSLayoutConstraint.activate(constraints)
     }
+    
+    private var baseInset: CGFloat { return 16 }
     
 }
