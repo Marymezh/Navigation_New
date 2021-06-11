@@ -29,7 +29,6 @@ class PhotosTableViewCell: UITableViewCell {
         return image
     }()
     
-    
     private let photosImageView1: UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "mKoEtc5uwBA"))
         image.contentMode = .scaleAspectFill
@@ -66,6 +65,7 @@ class PhotosTableViewCell: UITableViewCell {
         return image
     }()
     
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -88,7 +88,7 @@ class PhotosTableViewCell: UITableViewCell {
             
             photosImageView1.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: sideInset),
             photosImageView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: sideInset),
-            photosImageView1.widthAnchor.constraint(equalToConstant: (contentView.frame.width - baseInset * 3 - sideInset * 2)/4 ),
+            photosImageView1.widthAnchor.constraint(equalToConstant: imageWidth),
             photosImageView1.heightAnchor.constraint(equalTo: photosImageView1.widthAnchor),
             photosImageView1.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -sideInset),
             
@@ -113,6 +113,6 @@ class PhotosTableViewCell: UITableViewCell {
     }
     private var baseInset: CGFloat { return 8 }
     private var sideInset: CGFloat { return 12 }
+    private var imageWidth: CGFloat { return (contentView.frame.width - baseInset * 3 - sideInset * 2)/4 }
 }
-
 

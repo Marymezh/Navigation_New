@@ -110,6 +110,7 @@ class LogInViewController: UIViewController {
         passwordTextField.delegate = self
     }
     
+
     private func setupViews() {
         
         scrollView.toAutoLayout()

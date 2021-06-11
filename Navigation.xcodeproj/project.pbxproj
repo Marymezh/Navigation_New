@@ -111,6 +111,7 @@
 				CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */,
 				CE61D6EB26720FA2001C600D /* ProfileTableHeaderVIew.swift */,
 				CE61D66D266628F2001C600D /* LogInViewController.swift */,
+				CE61D6BE266F14CA001C600D /* PhotosTableViewCell.swift */,
 				CE61D687266898F4001C600D /* PostTableViewCell.swift */,
 			);
 			path = Profile;
@@ -120,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				CE61D6C1266F1971001C600D /* PhotosViewController.swift */,
-				CE61D6BE266F14CA001C600D /* PhotosTableViewCell.swift */,
 				CE61D6C4266F1E46001C600D /* PhotosCollectionViewCell.swift */,
 			);
 			path = Photogallery;
