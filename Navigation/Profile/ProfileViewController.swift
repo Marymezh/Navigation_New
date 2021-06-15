@@ -12,12 +12,22 @@ class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let arrayOfPosts = PostStorage.postArray
+    var profileView = ProfileHeaderView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
         setUpTableView()
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(tap))
+        
+        profileView.userPicture.isUserInteractionEnabled = true
+        profileView.userPicture.addGestureRecognizer(imageTap)
+    }
+
+    @objc func tap() {
+        profileView.userPicture.layer.borderColor = UIColor.red.cgColor
     }
     
     private func setUpTableView() {
@@ -63,7 +73,8 @@ extension ProfileViewController: UITableViewDataSource {
             
             return cell
             
-        default: let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
+        default:
+            let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
             
             cell.post = arrayOfPosts[indexPath.row]
             
@@ -83,7 +94,7 @@ extension ProfileViewController: UITableViewDelegate {
         
         switch section {
         case 0:
-            let headerView = ProfileTableHeaderVIew()
+            let headerView = profileView
             return headerView
         default:
             return nil

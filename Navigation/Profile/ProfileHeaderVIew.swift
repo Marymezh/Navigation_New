@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    private let userPicture: UIImageView =  {
+    let userPicture: UIImageView =  {
         var image = UIImageView(image: #imageLiteral(resourceName: "mysterious-cat"))
         image.layer.borderWidth = 3.0
         image.layer.borderColor = UIColor.white.cgColor
@@ -18,7 +18,7 @@ class ProfileHeaderView: UIView {
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         image.toAutoLayout()
-    return image
+        return image
     }()
     
     private let userName: UILabel = {
@@ -27,7 +27,7 @@ class ProfileHeaderView: UIView {
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
         label.toAutoLayout()
-    return label
+        return label
     }()
     
     private let userStatus: UILabel = {
@@ -50,7 +50,7 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         button.toAutoLayout()
         button.addTarget(self, action: #selector(buttonIsPressed), for: .touchUpInside)
-    return button
+        return button
     }()
     
     private let setStatus: UITextField = {

@@ -88,24 +88,23 @@ class PhotosTableViewCell: UITableViewCell {
             
             photosImageView1.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: sideInset),
             photosImageView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: sideInset),
-            photosImageView1.widthAnchor.constraint(equalToConstant: imageWidth),
-            photosImageView1.heightAnchor.constraint(equalTo: photosImageView1.widthAnchor),
+            photosImageView1.widthAnchor.constraint(equalTo: photosImageView1.heightAnchor),
             photosImageView1.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -sideInset),
             
             photosImageView2.leadingAnchor.constraint(equalTo: photosImageView1.trailingAnchor, constant: baseInset),
-            photosImageView2.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
-            photosImageView2.widthAnchor.constraint(equalTo: photosImageView1.widthAnchor),
+            photosImageView2.topAnchor.constraint(equalTo: photosImageView1.topAnchor),
+            photosImageView2.widthAnchor.constraint(equalTo: photosImageView1.heightAnchor),
             photosImageView2.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor),
             
             photosImageView3.leadingAnchor.constraint(equalTo: photosImageView2.trailingAnchor, constant: baseInset),
-            photosImageView3.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
-            photosImageView3.widthAnchor.constraint(equalTo: photosImageView1.widthAnchor),
+            photosImageView3.topAnchor.constraint(equalTo: photosImageView1.topAnchor),
+            photosImageView3.widthAnchor.constraint(equalTo: photosImageView1.heightAnchor),
             photosImageView3.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor),
             
             photosImageView4.leadingAnchor.constraint(equalTo: photosImageView3.trailingAnchor, constant: baseInset),
-            photosImageView4.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
+            photosImageView4.topAnchor.constraint(equalTo: photosImageView1.topAnchor),
             photosImageView4.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -sideInset),
-            photosImageView4.widthAnchor.constraint(equalTo: photosImageView1.widthAnchor),
+            photosImageView4.widthAnchor.constraint(equalTo: photosImageView1.heightAnchor),
             photosImageView4.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor)
         ]
         
@@ -113,6 +112,5 @@ class PhotosTableViewCell: UITableViewCell {
     }
     private var baseInset: CGFloat { return 8 }
     private var sideInset: CGFloat { return 12 }
-    private var imageWidth: CGFloat { return (contentView.frame.width - baseInset * 3 - sideInset * 2)/4 }
 }
 
