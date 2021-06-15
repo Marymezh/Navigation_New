@@ -12,7 +12,9 @@ class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let arrayOfPosts = PostStorage.postArray
-
+    let profileHeaderView = ProfileHeaderView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,7 +65,9 @@ extension ProfileViewController: UITableViewDataSource {
             
             return cell
             
-        default: let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
+        default:
+            
+            let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
             
             cell.post = arrayOfPosts[indexPath.row]
             
@@ -83,7 +87,7 @@ extension ProfileViewController: UITableViewDelegate {
         
         switch section {
         case 0:
-            let headerView = ProfileTableHeaderVIew()
+            let headerView = profileHeaderView
             return headerView
         default:
             return nil
