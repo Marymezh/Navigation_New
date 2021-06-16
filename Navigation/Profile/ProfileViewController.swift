@@ -12,22 +12,68 @@ class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let arrayOfPosts = PostStorage.postArray
-    var profileView = ProfileHeaderView()
+    var profileHeaderView = ProfileHeaderView()
+    var animationView = UIView()
+    var crossButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
         setUpTableView()
+        setUpAnimationViews()
+        profileHeaderView.userPicture.layer.zPosition = 1
+ 
+        profileHeaderView.bringSubviewToFront(profileHeaderView.userPicture)
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(tap))
         
-        profileView.userPicture.isUserInteractionEnabled = true
-        profileView.userPicture.addGestureRecognizer(imageTap)
+        profileHeaderView.userPicture.isUserInteractionEnabled = true
+        profileHeaderView.userPicture.addGestureRecognizer(imageTap)
     }
 
     @objc func tap() {
-        profileView.userPicture.layer.borderColor = UIColor.red.cgColor
+        animation()
+    }
+    
+    func animation() {
+        UIView.animate(withDuration: 3, animations: {
+            self.profileHeaderView.userPicture.center = self.view.center
+            self.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 3.5, y: 3.5)
+            self.profileHeaderView.userPicture.layer.cornerRadius = 0
+            self.crossButton.alpha = 1
+            self.animationView.alpha = 0.7
+            self.profileHeaderView.profileAnimationView.alpha = 0.7
+            
+        })
+    }
+    
+    private func setUpAnimationViews() {
+        
+        view.addSubview(crossButton)
+        tableView.addSubview(animationView)
+        animationView.toAutoLayout()
+        animationView.backgroundColor = .white
+        animationView.alpha = 0
+        
+        crossButton.toAutoLayout()
+        crossButton.setBackgroundImage(UIImage (systemName: "clear"), for: .normal)
+        crossButton.backgroundColor = .white
+        crossButton.alpha = 0
+
+        let constraints = [
+            animationView.topAnchor.constraint(equalTo: view.topAnchor),
+            animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            crossButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
+            crossButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            crossButton.widthAnchor.constraint(equalToConstant: 30),
+            crossButton.heightAnchor.constraint(equalTo: crossButton.widthAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
     }
     
     private func setUpTableView() {
@@ -94,7 +140,7 @@ extension ProfileViewController: UITableViewDelegate {
         
         switch section {
         case 0:
-            let headerView = profileView
+            let headerView = profileHeaderView
             return headerView
         default:
             return nil
