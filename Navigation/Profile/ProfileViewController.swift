@@ -55,7 +55,9 @@ class ProfileViewController: UIViewController {
       
         UIView.animate(withDuration: 0.5, animations: {
             self.profileHeaderView.userPicture.center = self.view.center
-            self.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 3.5, y: 3.5)
+            self.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 0.99 , y: 0.99 )
+            self.profileHeaderView.userPicture.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.width)
+
             self.profileHeaderView.userPicture.layer.cornerRadius = 0
             self.animationView.alpha = 0.7
             self.profileHeaderView.profileAnimationView.alpha = 0.7
@@ -100,7 +102,7 @@ class ProfileViewController: UIViewController {
             animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            clearButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
+            clearButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 45),
             clearButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             clearButton.widthAnchor.constraint(equalToConstant: 30),
             clearButton.heightAnchor.constraint(equalTo: clearButton.widthAnchor)
