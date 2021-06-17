@@ -12,19 +12,33 @@ class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let arrayOfPosts = PostStorage.postArray
-    var profileHeaderView = ProfileHeaderView()
-    var animationView = UIView()
-    var crossButton = UIButton()
-
+    private let profileHeaderView = ProfileHeaderView()
+    
+    
+    private let animationView: UIView = {
+        let view = UIView()
+        view.toAutoLayout()
+        view.backgroundColor = .white
+        view.alpha = 0
+        return view
+    }()
+    
+    private let clearButton: UIButton = {
+        let button = UIButton()
+        button.toAutoLayout()
+        button.setBackgroundImage(UIImage (systemName: "clear"), for: .normal)
+        button.backgroundColor = .white
+        button.alpha = 0
+        button.addTarget(self, action: #selector(tapClearButton), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
         setUpTableView()
         setUpAnimationViews()
-        profileHeaderView.userPicture.layer.zPosition = 1
- 
-        profileHeaderView.bringSubviewToFront(profileHeaderView.userPicture)
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(tap))
         
@@ -35,31 +49,50 @@ class ProfileViewController: UIViewController {
     @objc func tap() {
         animation()
     }
-    
+
     func animation() {
-        UIView.animate(withDuration: 3, animations: {
+        
+      
+        UIView.animate(withDuration: 0.5, animations: {
             self.profileHeaderView.userPicture.center = self.view.center
             self.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 3.5, y: 3.5)
             self.profileHeaderView.userPicture.layer.cornerRadius = 0
-            self.crossButton.alpha = 1
             self.animationView.alpha = 0.7
             self.profileHeaderView.profileAnimationView.alpha = 0.7
             
+        }, completion: {_ in
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.clearButton.alpha = 1
+            })
+        })
+    }
+    
+    @objc private func tapClearButton() {
+     reversedAnimation()
+        
+    }
+    
+    func reversedAnimation() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.clearButton.alpha = 0
+            
+        }, completion: {_ in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.profileHeaderView.userPicture.frame = CGRect(x: 16, y: 16, width: 110, height: 110)
+                self.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                self.profileHeaderView.userPicture.layer.cornerRadius = 55
+                self.animationView.alpha = 0
+                self.profileHeaderView.profileAnimationView.alpha = 0
+                
+            })
         })
     }
     
     private func setUpAnimationViews() {
         
-        view.addSubview(crossButton)
+        view.addSubview(clearButton)
         tableView.addSubview(animationView)
-        animationView.toAutoLayout()
-        animationView.backgroundColor = .white
-        animationView.alpha = 0
-        
-        crossButton.toAutoLayout()
-        crossButton.setBackgroundImage(UIImage (systemName: "clear"), for: .normal)
-        crossButton.backgroundColor = .white
-        crossButton.alpha = 0
 
         let constraints = [
             animationView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -67,10 +100,10 @@ class ProfileViewController: UIViewController {
             animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            crossButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
-            crossButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            crossButton.widthAnchor.constraint(equalToConstant: 30),
-            crossButton.heightAnchor.constraint(equalTo: crossButton.widthAnchor)
+            clearButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
+            clearButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            clearButton.widthAnchor.constraint(equalToConstant: 30),
+            clearButton.heightAnchor.constraint(equalTo: clearButton.widthAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)
