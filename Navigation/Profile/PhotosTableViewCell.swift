@@ -65,6 +65,16 @@ class PhotosTableViewCell: UITableViewCell {
         return image
     }()
     
+    let photosStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.alignment = .center
+        stackView.toAutoLayout()
+        return stackView
+    }()
+    
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -74,7 +84,13 @@ class PhotosTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
  
-        contentView.addSubviews(photosLabel, arrowImage, photosImageView1, photosImageView2, photosImageView3, photosImageView4)
+        contentView.addSubviews(photosLabel, arrowImage, photosStack)
+        
+        photosStack.addArrangedSubview(photosImageView1)
+        photosStack.addArrangedSubview(photosImageView2)
+        photosStack.addArrangedSubview(photosImageView3)
+        photosStack.addArrangedSubview(photosImageView4)
+       
         contentView.backgroundColor = .white
 
         let constraints = [
@@ -86,26 +102,11 @@ class PhotosTableViewCell: UITableViewCell {
             arrowImage.widthAnchor.constraint(equalToConstant: 30),
             arrowImage.heightAnchor.constraint(equalTo: arrowImage.widthAnchor),
             
-            photosImageView1.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: sideInset),
-            photosImageView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: sideInset),
-            photosImageView1.widthAnchor.constraint(equalTo: photosImageView1.heightAnchor),
-            photosImageView1.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -sideInset),
-            
-            photosImageView2.leadingAnchor.constraint(equalTo: photosImageView1.trailingAnchor, constant: baseInset),
-            photosImageView2.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
-            photosImageView2.widthAnchor.constraint(equalTo: photosImageView1.heightAnchor),
-            photosImageView2.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor),
-            
-            photosImageView3.leadingAnchor.constraint(equalTo: photosImageView2.trailingAnchor, constant: baseInset),
-            photosImageView3.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
-            photosImageView3.widthAnchor.constraint(equalTo: photosImageView1.heightAnchor),
-            photosImageView3.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor),
-            
-            photosImageView4.leadingAnchor.constraint(equalTo: photosImageView3.trailingAnchor, constant: baseInset),
-            photosImageView4.centerYAnchor.constraint(equalTo: photosImageView1.centerYAnchor),
-            photosImageView4.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -sideInset),
-            photosImageView4.widthAnchor.constraint(equalTo: photosImageView1.heightAnchor),
-            photosImageView4.heightAnchor.constraint(equalTo: photosImageView1.heightAnchor)
+            photosStack.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: sideInset),
+            photosStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: sideInset),
+            photosStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -sideInset),
+            photosStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -sideInset),
+            photosStack.heightAnchor.constraint(equalToConstant: (contentView.frame.size.width - sideInset * 2 - baseInset * 3) / 4)
         ]
         
         NSLayoutConstraint.activate(constraints)

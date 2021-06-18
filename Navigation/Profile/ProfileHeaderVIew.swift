@@ -18,7 +18,7 @@ class ProfileHeaderView: UIView {
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         image.toAutoLayout()
-    return image
+        return image
     }()
     
     private let userName: UILabel = {
@@ -27,7 +27,7 @@ class ProfileHeaderView: UIView {
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
         label.toAutoLayout()
-    return label
+        return label
     }()
     
     private let userStatus: UILabel = {
@@ -50,7 +50,7 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         button.toAutoLayout()
         button.addTarget(self, action: #selector(buttonIsPressed), for: .touchUpInside)
-    return button
+        return button
     }()
     
     private let setStatus: UITextField = {
@@ -68,16 +68,16 @@ class ProfileHeaderView: UIView {
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return textField
     }()
-        
+    
     private var statusText = String()
-
+    
     @available(*, unavailable)
-     required init?(coder: NSCoder) {
-         fatalError("init(coder:) has not been implemented")
-     }
-
-     override init(frame: CGRect) {
-         super.init(frame: frame)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         self.addSubviews(userPicture, userName, userStatus, setStatus, statusButton)
         
@@ -105,7 +105,7 @@ class ProfileHeaderView: UIView {
             userStatus.leadingAnchor.constraint(equalTo: userPicture.trailingAnchor, constant: baseInset),
             userStatus.bottomAnchor.constraint(equalTo: setStatus.topAnchor, constant: -10),
             userStatus.heightAnchor.constraint(equalToConstant: 14)
-        
+            
         ]
         
         NSLayoutConstraint.activate(constraints)
