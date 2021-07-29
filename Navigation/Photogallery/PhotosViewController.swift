@@ -15,7 +15,7 @@ class PhotosViewController: UIViewController {
     private let collectionCellID = "collectionCellID"
     private let arrayOfPhotos = PhotoStorage.photoArray
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

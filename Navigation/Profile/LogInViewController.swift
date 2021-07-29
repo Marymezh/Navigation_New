@@ -97,8 +97,8 @@ class LogInViewController: UIViewController {
     }()
     
     @objc private func tapLogInButton() {
-        let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC")
-        navigationController?.pushViewController(profileVC!, animated: true)
+        let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController
+        navigationController?.pushViewController(profileVC, animated: true)
     }
     
     override func viewDidLoad() {
@@ -119,7 +119,6 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(logInView)
         logInView.addSubviews(logoVKImageView, autorizationView, logInButton)
         autorizationView.addSubviews(emailTextField, passwordTextField)
-      
         
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
