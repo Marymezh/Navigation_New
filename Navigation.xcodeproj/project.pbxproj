@@ -25,7 +25,6 @@
 		CE61D6BF266F14CA001C600D /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6BE266F14CA001C600D /* PhotosTableViewCell.swift */; };
 		CE61D6C2266F1971001C600D /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6C1266F1971001C600D /* PhotosViewController.swift */; };
 		CE61D6C5266F1E46001C600D /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6C4266F1E46001C600D /* PhotosCollectionViewCell.swift */; };
-		CE61D6C9266F4A94001C600D /* ImageVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6C8266F4A94001C600D /* ImageVK.swift */; };
 		CE61D6CC266F4B61001C600D /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6CB266F4B61001C600D /* PhotoStorage.swift */; };
 		CE61D6EC26720FA2001C600D /* ProfileTableHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6EB26720FA2001C600D /* ProfileTableHeaderVIew.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +50,6 @@
 		CE61D6BE266F14CA001C600D /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		CE61D6C1266F1971001C600D /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		CE61D6C4266F1E46001C600D /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
-		CE61D6C8266F4A94001C600D /* ImageVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVK.swift; sourceTree = "<group>"; };
 		CE61D6CB266F4B61001C600D /* PhotoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStorage.swift; sourceTree = "<group>"; };
 		CE61D6EB26720FA2001C600D /* ProfileTableHeaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderVIew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +127,6 @@
 		CE61D6CF266F6D6A001C600D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE61D6C8266F4A94001C600D /* ImageVK.swift */,
 				CE61D67D26687C22001C600D /* PostVK.swift */,
 			);
 			path = Models;
@@ -171,7 +168,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Artem Novichkov";
 				TargetAttributes = {
 					060782AD250CE27700A87020 = {
@@ -215,7 +212,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE61D6C9266F4A94001C600D /* ImageVK.swift in Sources */,
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				CE61D68426687C92001C600D /* PostStorage.swift in Sources */,
@@ -284,6 +280,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -308,7 +305,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -344,6 +341,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -362,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

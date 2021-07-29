@@ -15,7 +15,7 @@ class PhotosViewController: UIViewController {
     private let collectionCellID = "collectionCellID"
     private let arrayOfPhotos = PhotoStorage.photoArray
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,7 +49,7 @@ class PhotosViewController: UIViewController {
     }
 
 }
-// считаем кол-во картинок - берем его из массива фотографий
+// указываем кол-во картинок - берем его из массива фотографий
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfPhotos.count
