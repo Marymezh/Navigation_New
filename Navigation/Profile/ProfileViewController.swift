@@ -113,6 +113,11 @@ class ProfileViewController: UIViewController {
     
     private func setUpTableView() {
         view.addSubview(tableView)
+        
+        #if DEBUG
+        tableView.backgroundColor = .green
+        #endif
+        
         tableView.toAutoLayout()
         tableView.dataSource = self
         tableView.delegate = self
