@@ -116,6 +116,8 @@ class ProfileViewController: UIViewController {
         
         #if DEBUG
         tableView.backgroundColor = .green
+        #else
+        tableView.backgroundColor = .systemGray6
         #endif
         
         tableView.toAutoLayout()
