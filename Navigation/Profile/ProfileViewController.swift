@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController {
     private let arrayOfPosts = PostStorage.postArray
     private let profileHeaderView = ProfileHeaderView()
     
-    
     private let animationView: UIView = {
         let view = UIView()
         view.toAutoLayout()
@@ -165,7 +164,7 @@ extension ProfileViewController: UITableViewDataSource {
             let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
             
             cell.post = arrayOfPosts[indexPath.row]
-            
+        
             return cell
         }
     }

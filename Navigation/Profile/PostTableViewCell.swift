@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
+private let processor = ImageProcessor()
     
     var post: PostVK? {
         didSet {
@@ -17,6 +19,12 @@ class PostTableViewCell: UITableViewCell {
             descriptionLabel.text = post?.description
             likesLabel.text = "Likes: \(post?.likes ?? 0)"
             viewsLabel.text = "Views: \(post?.views ?? 0)"
+            if let image =  UIImage(named: post?.image ?? "No Image") {
+                processor.processImage(sourceImage: image, filter: post?.filter ?? .chrome) {
+                    (image) in
+                    postImageView.image = image
+                }
+            }
         }
     }
     
@@ -71,7 +79,7 @@ class PostTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-     
+        
         contentView.addSubviews(authorLabel, postImageView, descriptionLabel, likesLabel, viewsLabel)
         
         let constraints = [
