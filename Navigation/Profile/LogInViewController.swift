@@ -9,6 +9,9 @@
 import UIKit
 
 class LogInViewController: UIViewController {
+
+    //создаем экземпляр CurrentUserService. чтобы вызвать у него метод returnUser
+    let someUserService = CurrentUserService()
     
     private let scrollView = UIScrollView()
     
@@ -39,7 +42,7 @@ class LogInViewController: UIViewController {
         return autorizationView
     }()
     
-    private let emailTextField: UITextField = {
+    private let usernameTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textColor = .black
@@ -49,7 +52,7 @@ class LogInViewController: UIViewController {
         textField.autocapitalizationType = .none
         textField.backgroundColor = .systemGray6
         textField.clipsToBounds = true
-        textField.placeholder = "Email or Phone"
+        textField.placeholder = "User Name"
         textField.returnKeyType = UIReturnKeyType.done
         textField.toAutoLayout()
         return textField
@@ -97,16 +100,28 @@ class LogInViewController: UIViewController {
     }()
     
     @objc private func tapLogInButton() {
-        let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController
-        navigationController?.pushViewController(profileVC, animated: true)
+        
+        // изменяем способ показа экрана ProfileVC, теперь чтобы туда попасть надо ввести имя пользователя, который хранится в someUserService
+        // если имя введено неверно, появляется ошибка 
+        if let username = usernameTextField.text,
+           let _ = someUserService.returnUser(userName: username) {
+            let profileVC = ProfileViewController(userService: someUserService, userName: username)
+            navigationController?.pushViewController(profileVC, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "ERROR", message: "User name is invalid", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Chancel", style: .default) { _ in
+                }
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+            print("invalid name")
+        }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
         setupViews()
-        emailTextField.delegate = self
+        usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
     
@@ -118,7 +133,7 @@ class LogInViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(logInView)
         logInView.addSubviews(logoVKImageView, autorizationView, logInButton)
-        autorizationView.addSubviews(emailTextField, passwordTextField)
+        autorizationView.addSubviews(usernameTextField, passwordTextField)
         
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -142,10 +157,10 @@ class LogInViewController: UIViewController {
             autorizationView.trailingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: -16),
             autorizationView.heightAnchor.constraint(equalToConstant: 100),
             
-            emailTextField.topAnchor.constraint(equalTo: autorizationView.topAnchor),
-            emailTextField.leadingAnchor.constraint(equalTo: autorizationView.leadingAnchor),
-            emailTextField.trailingAnchor.constraint(equalTo: autorizationView.trailingAnchor),
-            emailTextField.heightAnchor.constraint(equalToConstant: 49.7),
+            usernameTextField.topAnchor.constraint(equalTo: autorizationView.topAnchor),
+            usernameTextField.leadingAnchor.constraint(equalTo: autorizationView.leadingAnchor),
+            usernameTextField.trailingAnchor.constraint(equalTo: autorizationView.trailingAnchor),
+            usernameTextField.heightAnchor.constraint(equalToConstant: 49.7),
             
             passwordTextField.bottomAnchor.constraint(equalTo: autorizationView.bottomAnchor),
             passwordTextField.leadingAnchor.constraint(equalTo: autorizationView.leadingAnchor),

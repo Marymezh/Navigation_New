@@ -12,7 +12,19 @@ class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let arrayOfPosts = PostStorage.postArray
-    private let profileHeaderView = ProfileHeaderView()
+    let profileHeaderView = ProfileHeaderView()
+    let userService: UserService
+    let userName: String
+    
+    init(userService: UserService, userName: String) {
+        self.userService = userService
+        self.userName = userName
+        super .init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let animationView: UIView = {
         let view = UIView()
@@ -38,6 +50,7 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         setUpTableView()
         setUpAnimationViews()
+        showUserData()
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(tap))
         
@@ -108,6 +121,14 @@ class ProfileViewController: UIViewController {
         ]
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func showUserData() {
+        if let user = self.userService.returnUser(userName: self.userName) {
+            profileHeaderView.userName.text = user.userName
+            profileHeaderView.userPicture.image = user.userPicture
+            profileHeaderView.userStatus.text = user.userStatus
+        }
     }
     
     private func setUpTableView() {

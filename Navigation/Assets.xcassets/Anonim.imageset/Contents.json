@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "vkontakte-predlagaet-segodnya-ostavit-komu-nibud-anonimnoe-poslanie-vy-mozhete-oskorbit-svoego-opponenta-i-ostatsya-anonimom-do-kontsa-aktsii-vsego-neskolko-chasov.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -32,6 +32,9 @@
 		CE6C3C5D26B2DC10006904C6 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE6C3C5526B2DC10006904C6 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE6C3C6326B2DC68006904C6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C9250CEE7200A87020 /* Post.swift */; };
 		CE6C3C7726B8D967006904C6 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = CE6C3C7626B8D967006904C6 /* iOSIntPackage */; };
+		CE6C3C8026BF81D6006904C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C7F26BF81D5006904C6 /* User.swift */; };
+		CE6C3C8326BF8430006904C6 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8226BF8430006904C6 /* UserService.swift */; };
+		CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8526BF862E006904C6 /* CurrentUserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		CE6C3C5526B2DC10006904C6 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6C3C5726B2DC10006904C6 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		CE6C3C5826B2DC10006904C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE6C3C7F26BF81D5006904C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE6C3C8226BF8430006904C6 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		CE6C3C8526BF862E006904C6 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,7 @@
 		060782B0250CE27700A87020 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CE6C3C7E26BF81BA006904C6 /* UserData */,
 				CE61D6D0266F6DB0001C600D /* Storage */,
 				CE61D63D2659E186001C600D /* Profile */,
 				CE61D6BD266F1485001C600D /* Photogallery */,
@@ -206,6 +213,16 @@
 				060782C9250CEE7200A87020 /* Post.swift */,
 			);
 			path = StorageService;
+			sourceTree = "<group>";
+		};
+		CE6C3C7E26BF81BA006904C6 /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C3C7F26BF81D5006904C6 /* User.swift */,
+				CE6C3C8226BF8430006904C6 /* UserService.swift */,
+				CE6C3C8526BF862E006904C6 /* CurrentUserService.swift */,
+			);
+			path = UserData;
 			sourceTree = "<group>";
 		};
 		F59097AF81477DB4F2FC6ECC /* Frameworks */ = {
@@ -381,11 +398,14 @@
 			files = (
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
+				CE6C3C8326BF8430006904C6 /* UserService.swift in Sources */,
 				CE61D68426687C92001C600D /* PostStorage.swift in Sources */,
+				CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */,
 				CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				CE61D67E26687C22001C600D /* PostVK.swift in Sources */,
 				CE61D6EC26720FA2001C600D /* ProfileTableHeaderVIew.swift in Sources */,
+				CE6C3C8026BF81D6006904C6 /* User.swift in Sources */,
 				CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,
 				CE61D6CC266F4B61001C600D /* PhotoStorage.swift in Sources */,

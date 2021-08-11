@@ -11,7 +11,7 @@ import SnapKit
 
 class ProfileHeaderView: UIView {
     
-    let userPicture: UIImageView =  {
+    var userPicture: UIImageView =  {
         var image = UIImageView(image: #imageLiteral(resourceName: "mysterious-cat"))
         image.layer.borderWidth = 3.0
         image.layer.borderColor = UIColor.white.cgColor
@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
         return image
     }()
     
-    private let userName: UILabel = {
+     var userName: UILabel = {
         let label = UILabel()
         label.text = "Mysterious Cat"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -31,7 +31,7 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
-    private let userStatus: UILabel = {
+     var userStatus: UILabel = {
         let label = UILabel()
         label.text = "Learning how to code..."
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
