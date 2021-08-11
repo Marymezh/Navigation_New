@@ -9,9 +9,11 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-
+    
     //создаем экземпляр CurrentUserService. чтобы вызвать у него метод returnUser
     let someUserService = CurrentUserService()
+    //создаем еще один экземпляр для Дебаг схемы
+    let testUserService = TestUserService()
     
     private let scrollView = UIScrollView()
     
@@ -21,7 +23,6 @@ class LogInViewController: UIViewController {
         logInView.toAutoLayout()
         return logInView
     }()
-    
     
     private let logoVKImageView: UIImageView = {
         let imageView = UIImageView(image:#imageLiteral(resourceName: "logo"))
@@ -75,7 +76,6 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    
     private lazy var logInButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Log in", for: .normal)
@@ -99,23 +99,40 @@ class LogInViewController: UIViewController {
         return button
     }()
     
+    private func showAlert() {
+        let alertController = UIAlertController(title: "ERROR", message: "User name is invalid", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Chancel", style: .default) { _ in
+        }
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+        print("invalid name")
+    }
+    
     @objc private func tapLogInButton() {
         
         // изменяем способ показа экрана ProfileVC, теперь чтобы туда попасть надо ввести имя пользователя, который хранится в someUserService
-        // если имя введено неверно, появляется ошибка 
+        // если имя введено неверно, появляется ошибка
+        // разные юзеры для Дебаг и Релиз схем
+        
+        #if DEBUG
+        if let username = usernameTextField.text,
+           let _ = testUserService.returnUser(userName: username) {
+            let profileVC = ProfileViewController(userService: testUserService, userName: username)
+            navigationController?.pushViewController(profileVC, animated: true)
+        } else {
+            showAlert()
+        }
+        #else
         if let username = usernameTextField.text,
            let _ = someUserService.returnUser(userName: username) {
             let profileVC = ProfileViewController(userService: someUserService, userName: username)
             navigationController?.pushViewController(profileVC, animated: true)
         } else {
-            let alertController = UIAlertController(title: "ERROR", message: "User name is invalid", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Chancel", style: .default) { _ in
-                }
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
-            print("invalid name")
+            showAlert()
         }
+        #endif
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -125,7 +142,6 @@ class LogInViewController: UIViewController {
         passwordTextField.delegate = self
     }
     
-
     private func setupViews() {
         
         scrollView.toAutoLayout()

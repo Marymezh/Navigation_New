@@ -57,19 +57,18 @@ class ProfileViewController: UIViewController {
         profileHeaderView.userPicture.isUserInteractionEnabled = true
         profileHeaderView.userPicture.addGestureRecognizer(imageTap)
     }
-
+    
     @objc func tap() {
         animation()
     }
-
+    
     func animation() {
         
-      
         UIView.animate(withDuration: 0.5, animations: {
             self.profileHeaderView.userPicture.center = self.view.center
             self.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 0.99 , y: 0.99 )
             self.profileHeaderView.userPicture.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.width)
-
+            
             self.profileHeaderView.userPicture.layer.cornerRadius = 0
             self.animationView.alpha = 0.7
             self.profileHeaderView.profileAnimationView.alpha = 0.7
@@ -83,7 +82,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func tapClearButton() {
-     reversedAnimation()
+        reversedAnimation()
         
     }
     
@@ -107,7 +106,7 @@ class ProfileViewController: UIViewController {
         
         view.addSubview(clearButton)
         tableView.addSubview(animationView)
-
+        
         let constraints = [
             animationView.topAnchor.constraint(equalTo: view.topAnchor),
             animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -135,7 +134,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(tableView)
         
         #if DEBUG
-        tableView.backgroundColor = .green
+        tableView.backgroundColor = .systemYellow
         #else
         tableView.backgroundColor = .systemGray6
         #endif
@@ -146,7 +145,6 @@ class ProfileViewController: UIViewController {
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
         
-       
         let constraints = [
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -185,7 +183,7 @@ extension ProfileViewController: UITableViewDataSource {
             let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
             
             cell.post = arrayOfPosts[indexPath.row]
-        
+            
             return cell
         }
     }
@@ -222,12 +220,12 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            let photosVC = storyboard?.instantiateViewController(identifier: "PhotosVC") as! PhotosViewController
+            let photosVC = PhotosViewController()
             navigationController?.pushViewController(photosVC, animated: true)
         } else {
-        return tableView.deselectRow(at: indexPath, animated: true)
-        
+            return tableView.deselectRow(at: indexPath, animated: true)
+            
+        }
     }
-}
-
+    
 }

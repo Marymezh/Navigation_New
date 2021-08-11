@@ -10,9 +10,9 @@ import UIKit
 
 struct PhotoStorage {
     static let photoArray = [
-        #imageLiteral(resourceName: "MrTizFg5DmY"),
-        #imageLiteral(resourceName: "fMTsqrhT8XY"),
-        #imageLiteral(resourceName: "VUhd1KPmOkc"),
+        #imageLiteral(resourceName: "ysOH2n2uL8U"),
+        #imageLiteral(resourceName: "uuVMSl7DKcs"),
+        #imageLiteral(resourceName: "CgN-E2MJJcI"),
         #imageLiteral(resourceName: "uhCajd7X6mU"),
         #imageLiteral(resourceName: "uxo7bI4NtZQ"),
         #imageLiteral(resourceName: "PullUpsLedder"),

@@ -35,6 +35,7 @@
 		CE6C3C8026BF81D6006904C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C7F26BF81D5006904C6 /* User.swift */; };
 		CE6C3C8326BF8430006904C6 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8226BF8430006904C6 /* UserService.swift */; };
 		CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8526BF862E006904C6 /* CurrentUserService.swift */; };
+		CE6C3C8A26C4014D006904C6 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8926C4014C006904C6 /* TestUserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		CE6C3C7F26BF81D5006904C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE6C3C8226BF8430006904C6 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		CE6C3C8526BF862E006904C6 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
+		CE6C3C8926C4014C006904C6 /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				CE6C3C7F26BF81D5006904C6 /* User.swift */,
 				CE6C3C8226BF8430006904C6 /* UserService.swift */,
 				CE6C3C8526BF862E006904C6 /* CurrentUserService.swift */,
+				CE6C3C8926C4014C006904C6 /* TestUserService.swift */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				CE61D67E26687C22001C600D /* PostVK.swift in Sources */,
+				CE6C3C8A26C4014D006904C6 /* TestUserService.swift in Sources */,
 				CE61D6EC26720FA2001C600D /* ProfileTableHeaderVIew.swift in Sources */,
 				CE6C3C8026BF81D6006904C6 /* User.swift in Sources */,
 				CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */,
