@@ -36,6 +36,10 @@
 		CE6C3C8326BF8430006904C6 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8226BF8430006904C6 /* UserService.swift */; };
 		CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8526BF862E006904C6 /* CurrentUserService.swift */; };
 		CE6C3C8A26C4014D006904C6 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8926C4014C006904C6 /* TestUserService.swift */; };
+		CE7D95CB26D34F6D00736DBA /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D95CA26D34F6D00736DBA /* LoginInspector.swift */; };
+		CE7D95CE26D4C3E000736DBA /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D95CD26D4C3E000736DBA /* LoginFactory.swift */; };
+		CEBF670C26CE09D800E74042 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF670B26CE09D800E74042 /* Checker.swift */; };
+		CEBF671126CE597600E74042 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF671026CE597600E74042 /* LoginViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +99,10 @@
 		CE6C3C8226BF8430006904C6 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		CE6C3C8526BF862E006904C6 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 		CE6C3C8926C4014C006904C6 /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
+		CE7D95CA26D34F6D00736DBA /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
+		CE7D95CD26D4C3E000736DBA /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
+		CEBF670B26CE09D800E74042 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
+		CEBF671026CE597600E74042 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,7 @@
 		060782B0250CE27700A87020 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CEBF670F26CE593C00E74042 /* Veryfication and LogIn */,
 				CE6C3C7E26BF81BA006904C6 /* UserData */,
 				CE61D6D0266F6DB0001C600D /* Storage */,
 				CE61D63D2659E186001C600D /* Profile */,
@@ -174,7 +183,6 @@
 				CE61D63E2659E198001C600D /* ProfileViewController.swift */,
 				CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */,
 				CE61D6EB26720FA2001C600D /* ProfileTableHeaderVIew.swift */,
-				CE61D66D266628F2001C600D /* LogInViewController.swift */,
 				CE61D6BE266F14CA001C600D /* PhotosTableViewCell.swift */,
 				CE61D687266898F4001C600D /* PostTableViewCell.swift */,
 			);
@@ -226,6 +234,18 @@
 				CE6C3C8926C4014C006904C6 /* TestUserService.swift */,
 			);
 			path = UserData;
+			sourceTree = "<group>";
+		};
+		CEBF670F26CE593C00E74042 /* Veryfication and LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				CE61D66D266628F2001C600D /* LogInViewController.swift */,
+				CEBF670B26CE09D800E74042 /* Checker.swift */,
+				CEBF671026CE597600E74042 /* LoginViewControllerDelegate.swift */,
+				CE7D95CA26D34F6D00736DBA /* LoginInspector.swift */,
+				CE7D95CD26D4C3E000736DBA /* LoginFactory.swift */,
+			);
+			path = "Veryfication and LogIn";
 			sourceTree = "<group>";
 		};
 		F59097AF81477DB4F2FC6ECC /* Frameworks */ = {
@@ -408,16 +428,20 @@
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				CE61D67E26687C22001C600D /* PostVK.swift in Sources */,
 				CE6C3C8A26C4014D006904C6 /* TestUserService.swift in Sources */,
+				CEBF671126CE597600E74042 /* LoginViewControllerDelegate.swift in Sources */,
 				CE61D6EC26720FA2001C600D /* ProfileTableHeaderVIew.swift in Sources */,
 				CE6C3C8026BF81D6006904C6 /* User.swift in Sources */,
 				CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,
+				CE7D95CE26D4C3E000736DBA /* LoginFactory.swift in Sources */,
 				CE61D6CC266F4B61001C600D /* PhotoStorage.swift in Sources */,
 				CE61D6BF266F14CA001C600D /* PhotosTableViewCell.swift in Sources */,
 				CE61D688266898F4001C600D /* PostTableViewCell.swift in Sources */,
 				CE61D6C5266F1E46001C600D /* PhotosCollectionViewCell.swift in Sources */,
+				CE7D95CB26D34F6D00736DBA /* LoginInspector.swift in Sources */,
 				CE61D6C2266F1971001C600D /* PhotosViewController.swift in Sources */,
 				060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */,
+				CEBF670C26CE09D800E74042 /* Checker.swift in Sources */,
 				CE61D6432659E1A8001C600D /* ProfileHeaderVIew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

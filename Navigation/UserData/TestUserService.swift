@@ -9,13 +9,14 @@
 import Foundation
 import UIKit
 
+
 class TestUserService: UserService {
-    
+
     let testUser = User(userName: "Test", userPicture: #imageLiteral(resourceName: "test"), userStatus: "testing the test")
-    
-    
+
+
     func returnUser(userName: String) -> User? {
-        
+
        if userName == testUser.userName {
             return testUser
         }
