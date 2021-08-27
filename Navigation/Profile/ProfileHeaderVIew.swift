@@ -11,8 +11,8 @@ import SnapKit
 
 class ProfileHeaderView: UIView {
     
-    var userPicture: UIImageView =  {
-        var image = UIImageView(image: #imageLiteral(resourceName: "mysterious-cat"))
+    let userPicture: UIImageView =  {
+        let image = UIImageView(image: #imageLiteral(resourceName: "mysterious-cat"))
         image.layer.borderWidth = 3.0
         image.layer.borderColor = UIColor.white.cgColor
         image.layer.cornerRadius = 55
@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
         return image
     }()
     
-     var userName: UILabel = {
+    private let userName: UILabel = {
         let label = UILabel()
         label.text = "Mysterious Cat"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -31,7 +31,7 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
-     var userStatus: UILabel = {
+    private let userStatus: UILabel = {
         let label = UILabel()
         label.text = "Learning how to code..."
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -88,6 +88,9 @@ class ProfileHeaderView: UIView {
      override init(frame: CGRect) {
          super.init(frame: frame)
         
+      
+        
+        
         self.addSubviews(userPicture, userName, userStatus, setStatus, statusButton)
         self.addSubview(profileAnimationView)
         
@@ -138,6 +141,12 @@ class ProfileHeaderView: UIView {
     
     @objc func buttonIsPressed() {
         userStatus.text = statusText
+    }
+    
+    func configureUser(user: User) {
+                userName.text = user.userName
+                userPicture.image = user.userPicture
+                userStatus.text = user.userStatus
     }
 }
 

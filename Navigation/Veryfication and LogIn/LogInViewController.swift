@@ -103,8 +103,7 @@ class LogInViewController: UIViewController {
     
     private func showAlert() {
         let alertController = UIAlertController(title: "ERROR", message: "User name or password is invalid", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Chancel", style: .default) { _ in
-        }
+        let cancelAction = UIAlertAction(title: "Chancel", style: .default, handler: nil)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
         print("invalid name")
