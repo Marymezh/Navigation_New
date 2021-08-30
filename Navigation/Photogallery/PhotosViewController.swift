@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import iOSIntPackage
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        photoCollectionView.reloadData()
+    }
     
+    private let facade = ImagePublisherFacade()
     private let layout = UICollectionViewFlowLayout()
     private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private let collectionCellID = "collectionCellID"
@@ -25,10 +30,15 @@ class PhotosViewController: UIViewController {
         
         setupCollectionView()
         photoCollectionView.backgroundColor = .white
+        
+        facade.subscribe(self)
+        facade.addImagesWithTimer(time: 0.5, repeat: 21, userImages: arrayOfPhotos)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        facade.removeSubscription(for: self)
+        
     }
     
     private func setupCollectionView(){
