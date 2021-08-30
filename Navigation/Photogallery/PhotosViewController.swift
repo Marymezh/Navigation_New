@@ -11,6 +11,7 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController, ImageLibrarySubscriber {
     func receive(images: [UIImage]) {
+        arrayofPublishedPhotos = images
         photoCollectionView.reloadData()
     }
     
@@ -19,6 +20,7 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
     private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private let collectionCellID = "collectionCellID"
     private let arrayOfPhotos = PhotoStorage.photoArray
+    private var arrayofPublishedPhotos: [UIImage] = []
     
     
     override func viewDidLoad() {
@@ -62,13 +64,13 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
 // указываем кол-во картинок - берем его из массива фотографий
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfPhotos.count
+        return arrayofPublishedPhotos.count
     }
 // пишем, какую именно ячейку мы будем вставлять в нашу коллекцию, а также пишем, что эта ячейка будет переиспользована
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PhotosCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellID", for: indexPath) as! PhotosCollectionViewCell
         
-        cell.photo = arrayOfPhotos[indexPath.item]
+        cell.photo = arrayofPublishedPhotos[indexPath.item]
         return cell
     }
 }
