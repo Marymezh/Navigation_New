@@ -11,6 +11,7 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController, ImageLibrarySubscriber {
     func receive(images: [UIImage]) {
+        arrayOfPublishedPhotos = images
         photoCollectionView.reloadData()
     }
     
@@ -19,7 +20,7 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
     private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private let collectionCellID = "collectionCellID"
     private let arrayOfPhotos = PhotoStorage.photoArray
-    
+    private var arrayOfPublishedPhotos: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
         photoCollectionView.backgroundColor = .white
         
         facade.subscribe(self)
-        facade.addImagesWithTimer(time: 0.5, repeat: 21, userImages: arrayOfPhotos)
+        facade.addImagesWithTimer(time: 0.2, repeat: 21, userImages: arrayOfPhotos)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,18 +58,20 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
         
         NSLayoutConstraint.activate(constraints)
     }
-
+    
 }
 // указываем кол-во картинок - берем его из массива фотографий
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfPhotos.count
+        
+        return arrayOfPublishedPhotos.count
     }
-// пишем, какую именно ячейку мы будем вставлять в нашу коллекцию, а также пишем, что эта ячейка будет переиспользована
+    // пишем, какую именно ячейку мы будем вставлять в нашу коллекцию, а также пишем, что эта ячейка будет переиспользована
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell: PhotosCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellID", for: indexPath) as! PhotosCollectionViewCell
         
-        cell.photo = arrayOfPhotos[indexPath.item]
+        cell.photo = arrayOfPublishedPhotos[indexPath.item]
         return cell
     }
 }
@@ -77,7 +80,6 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (photoCollectionView.frame.width - baseInset * 4) / 3, height: (photoCollectionView.frame.width - baseInset * 4) / 3)
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return baseInset
