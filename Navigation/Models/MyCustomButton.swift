@@ -20,7 +20,6 @@ class MyCustomButton: UIButton {
         self.setTitleColor(titleColor, for: .normal)
         self.backgroundColor = backgroundColor
         self.setBackgroundImage(backgroundImage, for: .normal)
-        self.clipsToBounds = true
         self.toAutoLayout()
         
         self.addTarget(self, action: #selector(buttonIsTapped), for: .touchUpInside)

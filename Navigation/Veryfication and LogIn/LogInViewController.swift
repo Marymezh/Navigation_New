@@ -98,6 +98,7 @@ class LogInViewController: UIViewController {
         }
         
         button.layer.cornerRadius = 10
+        button.clipsToBounds = true
         return button
     }()
     
