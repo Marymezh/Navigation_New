@@ -9,18 +9,14 @@
 import UIKit
 import iOSIntPackage
 
-class PhotosViewController: UIViewController, ImageLibrarySubscriber {
-    func receive(images: [UIImage]) {
-        arrayofPublishedPhotos = images
-        photoCollectionView.reloadData()
-    }
+class PhotosViewController: UIViewController {
     
     private let facade = ImagePublisherFacade()
     private let layout = UICollectionViewFlowLayout()
     private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private let collectionCellID = "collectionCellID"
     private let arrayOfPhotos = PhotoStorage.photoArray
-    private var arrayofPublishedPhotos: [UIImage] = []
+    private var arrayOfPublishedPhotos: [UIImage] = []
     
     
     override func viewDidLoad() {
@@ -33,11 +29,18 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
         setupCollectionView()
         photoCollectionView.backgroundColor = .white
         
-        facade.subscribe(self)
         facade.addImagesWithTimer(time: 0.5, repeat: 21, userImages: arrayOfPhotos)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        facade.subscribe(self)
+        
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         navigationController?.navigationBar.isHidden = true
         facade.removeSubscription(for: self)
         
@@ -60,17 +63,18 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
         NSLayoutConstraint.activate(constraints)
     }
 
+private var baseInset: CGFloat { return 8 }
 }
 // указываем кол-во картинок - берем его из массива фотографий
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayofPublishedPhotos.count
+        return arrayOfPublishedPhotos.count
     }
 // пишем, какую именно ячейку мы будем вставлять в нашу коллекцию, а также пишем, что эта ячейка будет переиспользована
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PhotosCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellID", for: indexPath) as! PhotosCollectionViewCell
         
-        cell.photo = arrayofPublishedPhotos[indexPath.item]
+        cell.photo = arrayOfPublishedPhotos[indexPath.item]
         return cell
     }
 }
@@ -79,7 +83,6 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (photoCollectionView.frame.width - baseInset * 4) / 3, height: (photoCollectionView.frame.width - baseInset * 4) / 3)
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return baseInset
@@ -92,7 +95,11 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: baseInset, left: baseInset, bottom: .zero, right: baseInset)
     }
-    
-    private var baseInset: CGFloat { return 8 }
 }
 
+extension PhotosViewController: ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        arrayOfPublishedPhotos = images
+        photoCollectionView.reloadData()
+    }
+}
