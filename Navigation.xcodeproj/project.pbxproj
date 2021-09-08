@@ -38,6 +38,7 @@
 		CE6C3C8A26C4014D006904C6 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C3C8926C4014C006904C6 /* TestUserService.swift */; };
 		CE7D95CB26D34F6D00736DBA /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D95CA26D34F6D00736DBA /* LoginInspector.swift */; };
 		CE7D95CE26D4C3E000736DBA /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D95CD26D4C3E000736DBA /* LoginFactory.swift */; };
+		CEAD816926E481F800213B2E /* MyCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAD816826E481F800213B2E /* MyCustomButton.swift */; };
 		CEBF670C26CE09D800E74042 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF670B26CE09D800E74042 /* Checker.swift */; };
 		CEBF671126CE597600E74042 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF671026CE597600E74042 /* LoginViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		CE6C3C8926C4014C006904C6 /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
 		CE7D95CA26D34F6D00736DBA /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
 		CE7D95CD26D4C3E000736DBA /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
+		CEAD816826E481F800213B2E /* MyCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomButton.swift; sourceTree = "<group>"; };
 		CEBF670B26CE09D800E74042 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		CEBF671026CE597600E74042 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				CE61D67D26687C22001C600D /* PostVK.swift */,
+				CEAD816826E481F800213B2E /* MyCustomButton.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				CE6C3C8326BF8430006904C6 /* UserService.swift in Sources */,
+				CEAD816926E481F800213B2E /* MyCustomButton.swift in Sources */,
 				CE61D68426687C92001C600D /* PostStorage.swift in Sources */,
 				CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */,
 				CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */,

@@ -79,25 +79,25 @@ class LogInViewController: UIViewController {
     }()
     
     private lazy var logInButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Log in", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel"), for: .normal)
-        
-        if button.isSelected {
-            button.alpha = 0.8
-        } else if button.isHighlighted {
-            button.alpha = 0.8
-        } else if button.isEnabled == false {
-            button.alpha = 0.8
-        } else {
-            button.alpha = 1
+        let button = MyCustomButton(title: "Log in", titleColor: .white, backgroundColor: nil, backgroundImage: #imageLiteral(resourceName: "blue_pixel")) { [self] in
+            
+            #if DEBUG
+            let userService = TestUserService()
+            #else
+            let userService = CurrentUserService()
+            #endif
+            
+            if let username = self.usernameTextField.text,
+               let inspector = self.loginFactory?.produceLoginInspector,
+               inspector().checkTextFields(enteredLogin: username, enteredPassword: self.passwordTextField.text ?? "") == true {
+                let profileVC = ProfileViewController(userService: userService, userName: username )
+                self.navigationController?.pushViewController(profileVC, animated: true)
+            } else {
+                self.showAlert()
+            }
         }
         
         button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(tapLogInButton), for: .touchUpInside)
-        button.toAutoLayout()
         return button
     }()
     
@@ -107,41 +107,6 @@ class LogInViewController: UIViewController {
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
         print("invalid name")
-    }
-    
-    @objc private func tapLogInButton() {
-        // ДЗ 3
-        // изменяем способ показа экрана ProfileVC, теперь чтобы туда попасть надо ввести имя пользователя, который хранится в экземпляре UserService
-        // если имя введено неверно, появляется ошибка
-        // разные юзеры для Дебаг и Релиз схем
-        
-        #if DEBUG
-        let userService = TestUserService()
-        #else
-        let userService = CurrentUserService()
-        #endif
-        
-//        ДЗ 4.1 - проверяем логин и пароль через делегата
-        
-//        if  let username = usernameTextField.text,
-//            delegate?.checkTextFields(enteredLogin: username, enteredPassword: passwordTextField.text ?? "") == true {
-//            let profileVC = ProfileViewController(userService: userService, userName: username )
-//            navigationController?.pushViewController(profileVC, animated: true)
-//        } else {
-//            showAlert()
-//        }
-        
-        
-       // ДЗ 4.2 - создаем испектора через фабричный метод и проверяем логин и пароль
-      
-        if let username = usernameTextField.text,
-        let inspector = loginFactory?.produceLoginInspector,
-        inspector().checkTextFields(enteredLogin: username, enteredPassword: passwordTextField.text ?? "") == true {
-            let profileVC = ProfileViewController(userService: userService, userName: username )
-            navigationController?.pushViewController(profileVC, animated: true)
-        } else {
-            showAlert()
-        }
     }
     
     override func viewDidLoad() {
