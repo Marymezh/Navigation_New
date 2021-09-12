@@ -8,15 +8,82 @@
 
 import UIKit
 import StorageService
+import SnapKit
+
 
 final class FeedViewController: UIViewController {
     
-   let post: Post = Post(title: "Пост")
+    let checker = CheckTextField(correctWord: "пароль")
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        print(type(of: self), #function)
-    }
+    private lazy var showNormallyButton: UIButton = {
+        let button =
+            MyCustomButton(
+                title: "Show Post Normally",
+                titleColor: .white,
+                backgroundColor: .systemGray,
+                backgroundImage: nil) {
+                let vc = PostViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        button.layer.cornerRadius = 6
+        button.clipsToBounds = true
+        return button
+    }()
+    
+    private lazy var showModallyButton: UIButton = {
+        let button = MyCustomButton(
+            title: "Show Post Modally",
+            titleColor: .white,
+            backgroundColor: .systemGray,
+            backgroundImage: nil) {
+            let vc = PostViewController()
+            self.navigationController?.present(vc, animated: true, completion: nil)
+        }
+        button.layer.cornerRadius = 6
+        button.clipsToBounds = true
+        return button
+    }()
+    
+    private let checkTextField: UITextField = {
+        let textField = MyCustomTextField(
+            font: UIFont.systemFont(ofSize: 16),
+            textColor: .black,
+            backgroundColor: .white,
+            placeholder: "Enter the word")
+        
+        return textField
+    }()
+    
+    private lazy var checkButton: UIButton = {
+        let button = MyCustomButton(
+            title: "Check the word",
+            titleColor: .white,
+            backgroundColor: .systemGray,
+            backgroundImage: nil) {
+            let enteredWord = self.checkTextField.text
+            self.checker.check(word: enteredWord ?? "")
+        }
+        button.layer.cornerRadius = 6
+        button.clipsToBounds = true
+        return button
+    }()
+    
+    private let colorLabel: UILabel = {
+        let label = UILabel()
+        label.alpha = 0
+        label.toAutoLayout()
+        return label
+    }()
+    
+    private let feedStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.spacing = 35
+        stackView.alignment = .fill
+        stackView.toAutoLayout()
+        return stackView
+    }()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -25,46 +92,53 @@ final class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(type(of: self), #function)
+        view.backgroundColor = .cyan
+        checkTextField.delegate = self
+        setupViews()
+        setupNotifications()
+
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(type(of: self), #function)
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(changeLabelColorGreen), name: NSNotification.Name(rawValue: "Green label"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeLabelColorRed), name: NSNotification.Name(rawValue: "Red label"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeLabelTransparent), name: NSNotification.Name(rawValue: "Transparent label"), object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print(type(of: self), #function)
+    @objc func changeLabelColorGreen() {
+        self.colorLabel.backgroundColor = .green
+        self.colorLabel.alpha = 1
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print(type(of: self), #function)
+    @objc func changeLabelColorRed() {
+        self.colorLabel.backgroundColor = .red
+        self.colorLabel.alpha = 1
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print(type(of: self), #function)
+    @objc func changeLabelTransparent() {
+        self.colorLabel.alpha = 0
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        print(type(of: self), #function)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(type(of: self), #function)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "post" else {
-            return
+    private func setupViews() {
+        
+        view.addSubview(feedStackView)
+        
+        feedStackView.addArrangedSubview(showNormallyButton)
+        feedStackView.addArrangedSubview(showModallyButton)
+        feedStackView.addArrangedSubview(checkTextField)
+        feedStackView.addArrangedSubview(checkButton)
+        feedStackView.addArrangedSubview(colorLabel)
+        
+        feedStackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(50)
+            make.top.equalToSuperview().inset(150)
         }
-        guard let postViewController = segue.destination as? PostViewController else {
-            return
-        }
-        postViewController.post = post
+    }
+}
+
+extension FeedViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

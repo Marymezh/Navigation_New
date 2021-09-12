@@ -16,6 +16,8 @@
 		060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C5250CEB0A00A87020 /* InfoViewController.swift */; };
 		060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C7250CEE5D00A87020 /* PostViewController.swift */; };
 		A28B72ED4C075CFB7B00E180 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E1E6FF3398466E17BB9C2E /* Pods_Navigation.framework */; };
+		CE349EAE26EB695E001319F5 /* MyCustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EAD26EB695E001319F5 /* MyCustomTextfield.swift */; };
+		CE349EB126EC771B001319F5 /* CheckTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EB026EC771B001319F5 /* CheckTextField.swift */; };
 		CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D63E2659E198001C600D /* ProfileViewController.swift */; };
 		CE61D6432659E1A8001C600D /* ProfileHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */; };
 		CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D66D266628F2001C600D /* LogInViewController.swift */; };
@@ -82,6 +84,8 @@
 		20E1E6FF3398466E17BB9C2E /* Pods_Navigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2368FFBD724AA02CB3211D65 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		BBE58E8498048C6FF40ECC0A /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
+		CE349EAD26EB695E001319F5 /* MyCustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomTextfield.swift; sourceTree = "<group>"; };
+		CE349EB026EC771B001319F5 /* CheckTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTextField.swift; sourceTree = "<group>"; };
 		CE61D63E2659E198001C600D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderVIew.swift; sourceTree = "<group>"; };
 		CE61D66D266628F2001C600D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 			children = (
 				CE61D67D26687C22001C600D /* PostVK.swift */,
 				CEAD816826E481F800213B2E /* MyCustomButton.swift */,
+				CE349EAD26EB695E001319F5 /* MyCustomTextfield.swift */,
+				CE349EB026EC771B001319F5 /* CheckTextField.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -430,6 +436,8 @@
 				CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */,
 				CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
+				CE349EB126EC771B001319F5 /* CheckTextField.swift in Sources */,
+				CE349EAE26EB695E001319F5 /* MyCustomTextfield.swift in Sources */,
 				CE61D67E26687C22001C600D /* PostVK.swift in Sources */,
 				CE6C3C8A26C4014D006904C6 /* TestUserService.swift in Sources */,
 				CEBF671126CE597600E74042 /* LoginViewControllerDelegate.swift in Sources */,
