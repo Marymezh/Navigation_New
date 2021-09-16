@@ -18,7 +18,6 @@ class MyCustomTextField: UITextField {
         self.textColor = textColor
         self.backgroundColor = backgroundColor
         self.placeholder = placeholder
-        self.becomeFirstResponder()
         self.autocapitalizationType = .none
         self.returnKeyType = UIReturnKeyType.done
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))

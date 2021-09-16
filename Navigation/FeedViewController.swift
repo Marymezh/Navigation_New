@@ -13,8 +13,6 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     
-    private let checker = CheckTextField()
-    
 //    private var completion: ((String)-> Bool)?
     
     private lazy var showNormallyButton: UIButton = {
@@ -87,13 +85,20 @@ final class FeedViewController: UIViewController {
         return stackView
     }()
     
+    private let checker: CheckTextField
+    
+    init(checker: CheckTextField) {
+        self.checker = checker
+        super .init(nibName: nil, bundle: nil)
+    }
+    
     required init?(coder: NSCoder) {
-        print("init with coder")
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Feed"
         view.backgroundColor = .cyan
         checkTextField.delegate = self
         setupViews()

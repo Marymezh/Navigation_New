@@ -9,14 +9,11 @@
 import Foundation
 import UIKit
 
+
 class CheckTextField {
     
     private let correctWord = "пароль"
     
-//    init(correctWord: String) {
-//        self.correctWord = correctWord
-//    }
-//    
     func check(word: String) {
         
         if word != "" {
