@@ -13,7 +13,9 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     
-    let checker = CheckTextField(correctWord: "пароль")
+    private let checker = CheckTextField()
+    
+//    private var completion: ((String)-> Bool)?
     
     private lazy var showNormallyButton: UIButton = {
         let button =
@@ -86,38 +88,48 @@ final class FeedViewController: UIViewController {
     }()
     
     required init?(coder: NSCoder) {
+        print("init with coder")
         super.init(coder: coder)
-        print(type(of: self), #function)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         checkTextField.delegate = self
         setupViews()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupNotifications()
-
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeNotifications()
     }
     
     func setupNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(changeLabelColorGreen), name: NSNotification.Name(rawValue: "Green label"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(changeLabelColorRed), name: NSNotification.Name(rawValue: "Red label"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(changeLabelTransparent), name: NSNotification.Name(rawValue: "Transparent label"), object: nil)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Green label"), object: nil, queue: .main) { (notification) in
+            self.colorLabel.backgroundColor = .green
+            self.colorLabel.alpha = 1
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Red label"), object: nil, queue: .main) { (notification) in
+            self.colorLabel.backgroundColor = .red
+            self.colorLabel.alpha = 1
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Transparent label"), object: nil, queue: .main) { (notification) in
+            self.colorLabel.alpha = 0
+        }
     }
     
-    @objc func changeLabelColorGreen() {
-        self.colorLabel.backgroundColor = .green
-        self.colorLabel.alpha = 1
+    func removeNotifications() {
+        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Green label"))
+        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Red label"))
+        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Transparent label"))
     }
-    
-    @objc func changeLabelColorRed() {
-        self.colorLabel.backgroundColor = .red
-        self.colorLabel.alpha = 1
-    }
-    
-    @objc func changeLabelTransparent() {
-        self.colorLabel.alpha = 0
-    }
+
     
     private func setupViews() {
         

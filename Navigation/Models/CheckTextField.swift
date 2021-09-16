@@ -11,21 +11,22 @@ import UIKit
 
 class CheckTextField {
     
+    private let correctWord = "пароль"
     
-    private let correctWord: String
-    
-    init(correctWord: String) {
-        self.correctWord = correctWord
-    }
-    
+//    init(correctWord: String) {
+//        self.correctWord = correctWord
+//    }
+//    
     func check(word: String) {
         
-        if word  == correctWord {
-            NotificationCenter.default.post(name: NSNotification.Name("Green label"), object: nil)
-        } else  if word == "" {
-            NotificationCenter.default.post(name: NSNotification.Name("Transparent label"), object: nil)
+        if word != "" {
+            if word == correctWord {
+                NotificationCenter.default.post(name: NSNotification.Name("Green label"), object: nil)
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name("Red label"), object: nil)
+            }
         } else {
-            NotificationCenter.default.post(name: NSNotification.Name("Red label"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("Transparent label"), object: nil)
         }
-}
+    }
 }
