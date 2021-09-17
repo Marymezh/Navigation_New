@@ -62,8 +62,6 @@ class PhotosViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraints)
     }
-
-private var baseInset: CGFloat { return 8 }
 }
 // указываем кол-во картинок - берем его из массива фотографий
 extension PhotosViewController: UICollectionViewDataSource {
@@ -80,6 +78,9 @@ extension PhotosViewController: UICollectionViewDataSource {
 }
 // выставляем кол-во картинок в ряду и отступы
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+    
+    private var baseInset: CGFloat { return 8 }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (photoCollectionView.frame.width - baseInset * 4) / 3, height: (photoCollectionView.frame.width - baseInset * 4) / 3)
     }
@@ -100,6 +101,9 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
 extension PhotosViewController: ImageLibrarySubscriber {
     func receive(images: [UIImage]) {
         arrayOfPublishedPhotos = images
-        photoCollectionView.reloadData()
+ //       photoCollectionView.reloadData()
+        
+        let indexPath = IndexPath(item: images.count - 1, section: 0)
+        photoCollectionView.insertItems(at: [indexPath])
     }
 }
