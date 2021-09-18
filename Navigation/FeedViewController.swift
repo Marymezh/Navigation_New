@@ -13,7 +13,7 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     
-//    private var completion: ((String)-> Bool)?
+//    var onButtonTap: ((String)-> Void)?
     
     private lazy var showNormallyButton: UIButton = {
         let button =
@@ -110,7 +110,7 @@ final class FeedViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        removeNotifications()
+        removeObservers()
     }
     
     func setupNotifications() {
@@ -129,7 +129,7 @@ final class FeedViewController: UIViewController {
         }
     }
     
-    func removeNotifications() {
+    func removeObservers() {
         NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Green label"))
         NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Red label"))
         NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Transparent label"))
