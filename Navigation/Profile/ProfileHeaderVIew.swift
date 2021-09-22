@@ -40,7 +40,7 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
-    private lazy var statusButton: UIButton = {
+    private lazy var statusButton: MyCustomButton = {
         let button = MyCustomButton(title: "Set status", titleColor: .white, backgroundColor: .systemBlue, backgroundImage: nil) { [self] in
             self.userStatus.text = self.statusText}
         button.layer.cornerRadius = 14

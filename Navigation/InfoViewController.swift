@@ -10,7 +10,7 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    private lazy var removeButton: UIButton = {
+    private lazy var removeButton: MyCustomButton = {
         let button = MyCustomButton(title: "Remove Post", titleColor: .white, backgroundColor: .black, backgroundImage: nil) {
             self.showAlert()
         }

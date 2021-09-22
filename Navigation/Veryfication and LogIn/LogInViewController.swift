@@ -78,7 +78,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    private lazy var logInButton: UIButton = {
+    private lazy var logInButton: MyCustomButton = {
         let button = MyCustomButton(title: "Log in", titleColor: .white, backgroundColor: nil, backgroundImage: #imageLiteral(resourceName: "blue_pixel")) { [self] in
             
             #if DEBUG

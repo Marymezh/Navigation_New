@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
         return view
     }()
     
-    private lazy var clearButton: UIButton = {
+    private lazy var clearButton: MyCustomButton = {
         let button = MyCustomButton(title: nil, titleColor: nil, backgroundColor: .white, backgroundImage: UIImage (systemName: "clear")) {
             self.reversedAnimation()}
         button.alpha = 0

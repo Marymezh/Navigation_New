@@ -13,9 +13,7 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     
-//    var onButtonTap: ((String)-> Void)?
-    
-    private lazy var showNormallyButton: UIButton = {
+    private lazy var showNormallyButton: MyCustomButton = {
         let button =
             MyCustomButton(
                 title: "Show Post Normally",
@@ -30,7 +28,7 @@ final class FeedViewController: UIViewController {
         return button
     }()
     
-    private lazy var showModallyButton: UIButton = {
+    private lazy var showModallyButton: MyCustomButton = {
         let button = MyCustomButton(
             title: "Show Post Modally",
             titleColor: .white,
@@ -54,7 +52,7 @@ final class FeedViewController: UIViewController {
         return textField
     }()
     
-    private lazy var checkButton: UIButton = {
+    private lazy var checkButton: MyCustomButton = {
         let button = MyCustomButton(
             title: "Check the word",
             titleColor: .white,
