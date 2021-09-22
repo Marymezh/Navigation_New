@@ -40,17 +40,13 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
-    private let statusButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Set status", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
+    private lazy var statusButton: MyCustomButton = {
+        let button = MyCustomButton(title: "Set status", titleColor: .white, backgroundColor: .systemBlue, backgroundImage: nil) { [self] in
+            self.userStatus.text = self.statusText}
         button.layer.cornerRadius = 14
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowOpacity = 0.7
-        button.toAutoLayout()
-        button.addTarget(self, action: #selector(buttonIsPressed), for: .touchUpInside)
         return button
     }()
     
@@ -87,9 +83,6 @@ class ProfileHeaderView: UIView {
 
      override init(frame: CGRect) {
          super.init(frame: frame)
-        
-      
-        
         
         self.addSubviews(userPicture, userName, userStatus, setStatus, statusButton)
         self.addSubview(profileAnimationView)
@@ -139,9 +132,9 @@ class ProfileHeaderView: UIView {
         statusText = setStatus.text ?? "No status"
     }
     
-    @objc func buttonIsPressed() {
-        userStatus.text = statusText
-    }
+//    @objc func buttonIsPressed() {
+//        userStatus.text = statusText
+//    }
     
     func configureUser(user: User) {
                 userName.text = user.userName

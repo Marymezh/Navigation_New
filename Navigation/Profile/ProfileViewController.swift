@@ -34,13 +34,11 @@ class ProfileViewController: UIViewController {
         return view
     }()
     
-    private let clearButton: UIButton = {
-        let button = UIButton()
-        button.toAutoLayout()
-        button.setBackgroundImage(UIImage (systemName: "clear"), for: .normal)
-        button.backgroundColor = .white
+    private lazy var clearButton: MyCustomButton = {
+        let button = MyCustomButton(title: nil, titleColor: nil, backgroundColor: .white, backgroundImage: UIImage (systemName: "clear")) {
+            self.reversedAnimation()}
         button.alpha = 0
-        button.addTarget(self, action: #selector(tapClearButton), for: .touchUpInside)
+        button.clipsToBounds = false
         return button
     }()
     
@@ -82,11 +80,6 @@ class ProfileViewController: UIViewController {
                 self.clearButton.alpha = 1
             })
         })
-    }
-    
-    @objc private func tapClearButton() {
-        reversedAnimation()
-        
     }
     
     func reversedAnimation() {

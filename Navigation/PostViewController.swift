@@ -10,11 +10,16 @@ import UIKit
 import StorageService
 
 class PostViewController: UIViewController {
-    
-    var post: Post?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = post?.title
+        navigationItem.title = "Post"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Info", style: .plain, target: self, action:  #selector(tapInfoButton))
+        view.backgroundColor = .systemPink
+    }
+    
+    @objc func tapInfoButton () {
+        let vc = InfoViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
