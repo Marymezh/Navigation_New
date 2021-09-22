@@ -57,10 +57,10 @@ final class FeedViewController: UIViewController {
             title: "Check the word",
             titleColor: .white,
             backgroundColor: .systemGray,
-            backgroundImage: nil) {
-            let enteredWord = self.checkTextField.text
-            self.checker.check(word: enteredWord ?? "")
+            backgroundImage: nil) { [weak self] in
+            self?.onCompletion()
         }
+        
         button.layer.cornerRadius = 6
         button.clipsToBounds = true
         return button
@@ -101,38 +101,60 @@ final class FeedViewController: UIViewController {
         checkTextField.delegate = self
         setupViews()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupNotifications()
-    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeObservers()
-    }
+    // method 1 - passing data via notifications
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        setupNotifications()
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        removeObservers()
+//    }
+//
+//    func setupNotifications() {
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Green label"), object: nil, queue: .main) { (notification) in
+//            self.colorLabel.backgroundColor = .green
+//            self.colorLabel.alpha = 1
+//        }
+//
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Red label"), object: nil, queue: .main) { (notification) in
+//            self.colorLabel.backgroundColor = .red
+//            self.colorLabel.alpha = 1
+//        }
+//
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Transparent label"), object: nil, queue: .main) { (notification) in
+//            self.colorLabel.alpha = 0
+//        }
+//    }
+//
+//    func removeObservers() {
+//        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Green label"))
+//        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Red label"))
+//        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Transparent label"))
+//    }
+//
+//
     
-    func setupNotifications() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Green label"), object: nil, queue: .main) { (notification) in
-            self.colorLabel.backgroundColor = .green
-            self.colorLabel.alpha = 1
-        }
+    // method 2 - passing data via closure
+    
+    private func onCompletion() {
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Red label"), object: nil, queue: .main) { (notification) in
-            self.colorLabel.backgroundColor = .red
-            self.colorLabel.alpha = 1
-        }
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Transparent label"), object: nil, queue: .main) { (notification) in
-            self.colorLabel.alpha = 0
+        let enteredWord = checkTextField.text
+        checker.check(word: enteredWord ?? "") { [weak self] result in
+            switch  result {
+            case .correct:
+                self?.colorLabel.backgroundColor = .green
+                self?.colorLabel.alpha = 1
+            case .incorrect:
+                self?.colorLabel.backgroundColor = .red
+                self?.colorLabel.alpha = 1
+            default: self?.colorLabel.alpha = 0
+                
+            }
         }
     }
-    
-    func removeObservers() {
-        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Green label"))
-        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Red label"))
-        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Transparent label"))
-    }
-
     
     private func setupViews() {
         
