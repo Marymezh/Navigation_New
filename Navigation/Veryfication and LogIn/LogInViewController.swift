@@ -17,6 +17,9 @@ class LogInViewController: UIViewController {
     // ДЗ 4.2
     var loginFactory: MyLoginFactory?
     
+    //ДЗ 7
+    weak var coordinator: SecondViewCoordinator?
+    
     private let scrollView = UIScrollView()
     
     private let logInView: UIView = {

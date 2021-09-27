@@ -17,6 +17,9 @@
 		CE349EAE26EB695E001319F5 /* MyCustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EAD26EB695E001319F5 /* MyCustomTextfield.swift */; };
 		CE349EB126EC771B001319F5 /* CheckTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EB026EC771B001319F5 /* CheckTextField.swift */; };
 		CE349EB626F32485001319F5 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EB526F32485001319F5 /* InitialViewController.swift */; };
+		CE3665AB2701A28D00F881D2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3665AA2701A28D00F881D2 /* AppCoordinator.swift */; };
+		CE3665AE2701A2B800F881D2 /* FirstViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3665AD2701A2B800F881D2 /* FirstViewCoordinator.swift */; };
+		CE3665B12701A2CD00F881D2 /* SecondViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3665B02701A2CD00F881D2 /* SecondViewCoordinator.swift */; };
 		CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D63E2659E198001C600D /* ProfileViewController.swift */; };
 		CE61D6432659E1A8001C600D /* ProfileHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */; };
 		CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D66D266628F2001C600D /* LogInViewController.swift */; };
@@ -84,6 +87,9 @@
 		CE349EAD26EB695E001319F5 /* MyCustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomTextfield.swift; sourceTree = "<group>"; };
 		CE349EB026EC771B001319F5 /* CheckTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTextField.swift; sourceTree = "<group>"; };
 		CE349EB526F32485001319F5 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		CE3665AA2701A28D00F881D2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CE3665AD2701A2B800F881D2 /* FirstViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewCoordinator.swift; sourceTree = "<group>"; };
+		CE3665B02701A2CD00F881D2 /* SecondViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewCoordinator.swift; sourceTree = "<group>"; };
 		CE61D63E2659E198001C600D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderVIew.swift; sourceTree = "<group>"; };
 		CE61D66D266628F2001C600D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 		060782B0250CE27700A87020 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CE3665A92701A27700F881D2 /* Coordinatiors */,
 				CE3665A72701A20B00F881D2 /* Feed */,
 				CEBF670F26CE593C00E74042 /* Veryfication and LogIn */,
 				CE61D63D2659E186001C600D /* Profile */,
@@ -185,6 +192,16 @@
 				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		CE3665A92701A27700F881D2 /* Coordinatiors */ = {
+			isa = PBXGroup;
+			children = (
+				CE3665AA2701A28D00F881D2 /* AppCoordinator.swift */,
+				CE3665AD2701A2B800F881D2 /* FirstViewCoordinator.swift */,
+				CE3665B02701A2CD00F881D2 /* SecondViewCoordinator.swift */,
+			);
+			path = Coordinatiors;
 			sourceTree = "<group>";
 		};
 		CE61D63D2659E186001C600D /* Profile */ = {
@@ -436,14 +453,17 @@
 				CE349EB626F32485001319F5 /* InitialViewController.swift in Sources */,
 				CE6C3C8326BF8430006904C6 /* UserService.swift in Sources */,
 				CEAD816926E481F800213B2E /* MyCustomButton.swift in Sources */,
+				CE3665B12701A2CD00F881D2 /* SecondViewCoordinator.swift in Sources */,
 				CE61D68426687C92001C600D /* PostStorage.swift in Sources */,
 				CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */,
 				CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */,
+				CE3665AB2701A28D00F881D2 /* AppCoordinator.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				CE349EB126EC771B001319F5 /* CheckTextField.swift in Sources */,
 				CE349EAE26EB695E001319F5 /* MyCustomTextfield.swift in Sources */,
 				CE61D67E26687C22001C600D /* PostVK.swift in Sources */,
 				CE6C3C8A26C4014D006904C6 /* TestUserService.swift in Sources */,
+				CE3665AE2701A2B800F881D2 /* FirstViewCoordinator.swift in Sources */,
 				CEBF671126CE597600E74042 /* LoginViewControllerDelegate.swift in Sources */,
 				CE61D6EC26720FA2001C600D /* ProfileTableHeaderVIew.swift in Sources */,
 				CE6C3C8026BF81D6006904C6 /* User.swift in Sources */,

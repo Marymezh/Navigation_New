@@ -13,6 +13,8 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     
+    weak var coordinator: FirstViewCoordinator?
+    
     private lazy var showNormallyButton: MyCustomButton = {
         let button =
             MyCustomButton(
