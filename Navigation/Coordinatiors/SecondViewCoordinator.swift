@@ -11,7 +11,7 @@ import UIKit
 
 class SecondViewCoordinator: Coordinator {
     
-    weak var parentCoordinator: Coordinator?
+    weak var parentCoordinator: AppCoordinator?
     var childCoordinator: [Coordinator] = []
     var navigationController: UINavigationController
     

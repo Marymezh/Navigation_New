@@ -11,7 +11,7 @@ import UIKit
 
 class FirstViewCoordinator: Coordinator {
     
-    weak var parentCoordinator: Coordinator?
+    weak var parentCoordinator: AppCoordinator?
     var childCoordinator: [Coordinator] = []
     var navigationController: UINavigationController
     let checker = CheckTextField()
@@ -25,9 +25,41 @@ class FirstViewCoordinator: Coordinator {
 
     func startPush() -> UINavigationController {
         let firstViewController = FeedViewController(checker: checker)
-        firstViewController.coordinator = self
+     
+   
+     //   firstViewController.coordinator = self
         navigationController.setViewControllers([firstViewController], animated: false)
 
+        firstViewController.showPost = { [weak self] in
+            self?.showPostNormally()
+        }
+        
+        firstViewController.presentPost = { [weak self] in
+            self?.showPostModally()
+        }
+        
+//        postViewController.showInfo = {[weak self] in
+//            self?.showInfoVC()
+//        }
+        
         return navigationController
     }
 }
+
+extension FirstViewCoordinator {
+    func showPostNormally() {
+        let vc = PostViewController()
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showPostModally() {
+        let vc = PostViewController()
+        self.navigationController.present(vc, animated: true, completion: nil)
+    }
+    
+//    func showInfoVC() {
+//        let vc = InfoViewController()
+//        self.navigationController.pushViewController(vc, animated: true)
+//    }
+}
+

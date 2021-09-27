@@ -13,7 +13,10 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     
-    weak var coordinator: FirstViewCoordinator?
+ //   weak var coordinator: FirstViewCoordinator?
+    
+    var showPost: (()-> Void)?
+    var presentPost: (() -> Void)?
     
     private lazy var showNormallyButton: MyCustomButton = {
         let button =
@@ -22,8 +25,9 @@ final class FeedViewController: UIViewController {
                 titleColor: .white,
                 backgroundColor: .systemGray,
                 backgroundImage: nil) {
-                let vc = PostViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                
+    //            self.coordinator?.showPostNormally()
+                self.showPost?()
             }
         button.layer.cornerRadius = 6
         button.clipsToBounds = true
@@ -36,8 +40,9 @@ final class FeedViewController: UIViewController {
             titleColor: .white,
             backgroundColor: .systemGray,
             backgroundImage: nil) {
-            let vc = PostViewController()
-            self.navigationController?.present(vc, animated: true, completion: nil)
+  //          self.coordinator?.showPostModally()
+            
+            self.presentPost?()
         }
         button.layer.cornerRadius = 6
         button.clipsToBounds = true
@@ -104,7 +109,7 @@ final class FeedViewController: UIViewController {
         setupViews()
     }
     
-    // method 1 - passing data via notifications
+    // ДЗ 6 - method 1 - passing data via notifications
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        setupNotifications()
@@ -139,7 +144,7 @@ final class FeedViewController: UIViewController {
 //
 //
     
-    // method 2 - passing data via closure
+    // ДЗ 6 - method 2 - passing data via closure
     
     private func onCompletion() {
         

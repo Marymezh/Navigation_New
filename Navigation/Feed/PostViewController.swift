@@ -10,6 +10,10 @@ import UIKit
 import StorageService
 
 class PostViewController: UIViewController {
+    
+    weak var coordinator: FirstViewCoordinator?
+    
+//    var showInfo: (()-> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +23,9 @@ class PostViewController: UIViewController {
     }
     
     @objc func tapInfoButton () {
+//        coordinator?.showInfoVC()
+//        self.showInfo?()
+        
         let vc = InfoViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
