@@ -153,17 +153,14 @@
 		060782B0250CE27700A87020 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CE3665A72701A20B00F881D2 /* Feed */,
 				CEBF670F26CE593C00E74042 /* Veryfication and LogIn */,
+				CE61D63D2659E186001C600D /* Profile */,
 				CE6C3C7E26BF81BA006904C6 /* UserData */,
 				CE61D6D0266F6DB0001C600D /* Storage */,
-				CE61D63D2659E186001C600D /* Profile */,
-				CE61D6BD266F1485001C600D /* Photogallery */,
 				CE61D6CF266F6D6A001C600D /* Models */,
 				060782BA250CE27A00A87020 /* Assets.xcassets */,
 				060782BF250CE27A00A87020 /* Info.plist */,
-				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
-				060782B5250CE27700A87020 /* FeedViewController.swift */,
-				060782C7250CEE5D00A87020 /* PostViewController.swift */,
 				060782B3250CE27700A87020 /* SceneDelegate.swift */,
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 				CE349EB526F32485001319F5 /* InitialViewController.swift */,
@@ -180,6 +177,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CE3665A72701A20B00F881D2 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				060782B5250CE27700A87020 /* FeedViewController.swift */,
+				060782C7250CEE5D00A87020 /* PostViewController.swift */,
+				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		CE61D63D2659E186001C600D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +195,7 @@
 				CE61D6EB26720FA2001C600D /* ProfileTableHeaderVIew.swift */,
 				CE61D6BE266F14CA001C600D /* PhotosTableViewCell.swift */,
 				CE61D687266898F4001C600D /* PostTableViewCell.swift */,
+				CE61D6BD266F1485001C600D /* Photogallery */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
