@@ -14,6 +14,7 @@ class SecondViewCoordinator: Coordinator {
     weak var parentCoordinator: AppCoordinator?
     var childCoordinator: [Coordinator] = []
     var navigationController: UINavigationController
+    var inspectorFactory = MyLoginFactory()
     
     init() {
         self.navigationController = .init()
@@ -25,7 +26,9 @@ class SecondViewCoordinator: Coordinator {
     
     func startPush() -> UINavigationController {
         let secondViewController = LogInViewController()
+        
         secondViewController.coordinator = self
+        secondViewController.loginFactory = inspectorFactory
         navigationController.setViewControllers([secondViewController], animated: false)
         
         return navigationController

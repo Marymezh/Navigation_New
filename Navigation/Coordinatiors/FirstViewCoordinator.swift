@@ -25,9 +25,7 @@ class FirstViewCoordinator: Coordinator {
 
     func startPush() -> UINavigationController {
         let firstViewController = FeedViewController(checker: checker)
-     
-   
-     //   firstViewController.coordinator = self
+        firstViewController.coordinator = self
         navigationController.setViewControllers([firstViewController], animated: false)
 
         firstViewController.showPost = { [weak self] in
