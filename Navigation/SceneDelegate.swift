@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     // ДЗ 4.2 - инициализируем фабрику
     
-    var inspectorFactory = MyLoginFactory()
+//    var inspectorFactory = MyLoginFactory()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -43,9 +43,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         // ДЗ 4.2
-        if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {
-            loginController.loginFactory = inspectorFactory
-        }
+//        if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {
+//            loginController.loginFactory = inspectorFactory
+//        }
     }
 }
 
