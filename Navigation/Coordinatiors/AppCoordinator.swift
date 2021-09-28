@@ -9,20 +9,12 @@
 import Foundation
 import UIKit
 
-// MARK: - Coordinator Protocol
-protocol Coordinator: AnyObject {
-    var childCoordinator: [Coordinator] { get set }
-//    var navigationController: UINavigationController { get set }
-
-    func start()
-}
-
 class AppCoordinator: Coordinator {
     var childCoordinator: [Coordinator] = []
     let window: UIWindow?
 
-    private var firstViewController: UIViewController!
-    private var secondViewController: UIViewController!
+    private var feedVC: UIViewController!
+    private var profileVC: UIViewController!
 
     init(_ window: UIWindow?) {
         self.window = window
@@ -41,19 +33,19 @@ class AppCoordinator: Coordinator {
         let secondItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 1)
 
 
-        let firstViewCoordinator = FirstViewCoordinator()
-        firstViewCoordinator.parentCoordinator = self
-        childCoordinator.append(firstViewCoordinator)
-        let firstViewController = firstViewCoordinator.startPush()
-        firstViewController.tabBarItem = firstItem
+        let feedCoordinator = FeedCoordinator()
+        feedCoordinator.parentCoordinator = self
+        childCoordinator.append(feedCoordinator)
+        let feedVC = feedCoordinator.startPush()
+        feedVC.tabBarItem = firstItem
 
-        let secondViewCoordinator = SecondViewCoordinator()
-        secondViewCoordinator.parentCoordinator = self
-        childCoordinator.append(secondViewCoordinator)
-        let secondViewController = secondViewCoordinator.startPush()
-        secondViewController.tabBarItem = secondItem
+        let profileCoordinator = ProfileCoordinator()
+        profileCoordinator.parentCoordinator = self
+        childCoordinator.append(profileCoordinator)
+        let profileVC = profileCoordinator.startPush()
+        profileVC.tabBarItem = secondItem
 
-        tabBarController.viewControllers = [firstViewController, secondViewController]
+        tabBarController.viewControllers = [feedVC, profileVC]
 
         return tabBarController
     }

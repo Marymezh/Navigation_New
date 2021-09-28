@@ -13,7 +13,7 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     
- //   weak var coordinator: FirstViewCoordinator?
+ //   weak var coordinator: FeedCoordinator?
     
     var showPost: (()-> Void)?
     var presentPost: (() -> Void)?

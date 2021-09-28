@@ -17,8 +17,10 @@ class LogInViewController: UIViewController {
     // ДЗ 4.2
     var loginFactory: MyLoginFactory?
     
+    var pushProfile: (() -> Void)?
+    
     //ДЗ 7
-    weak var coordinator: SecondViewCoordinator?
+    weak var coordinator: ProfileCoordinator?
     
     private let scrollView = UIScrollView()
     
@@ -95,6 +97,7 @@ class LogInViewController: UIViewController {
                inspector().checkTextFields(enteredLogin: username, enteredPassword: self.passwordTextField.text ?? "") == true {
                 let profileVC = ProfileViewController(userService: userService, userName: username )
                 self.navigationController?.pushViewController(profileVC, animated: true)
+     //           coordinator?.showProfileVC(userName: username, userService: userService)
             } else {
                 self.showAlert()
             }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SecondViewCoordinator: Coordinator {
+class ProfileCoordinator: Coordinator {
     
     weak var parentCoordinator: AppCoordinator?
     var childCoordinator: [Coordinator] = []
@@ -25,13 +25,19 @@ class SecondViewCoordinator: Coordinator {
     }
     
     func startPush() -> UINavigationController {
-        let secondViewController = LogInViewController()
+        let loginVC = LogInViewController()
         
-        secondViewController.coordinator = self
-        secondViewController.loginFactory = inspectorFactory
-        navigationController.setViewControllers([secondViewController], animated: false)
+        loginVC.coordinator = self
+        loginVC.loginFactory = inspectorFactory
+        navigationController.setViewControllers([loginVC], animated: false)
         
         return navigationController
     }
     
+}
+
+extension ProfileCoordinator {
+    func showProfileVC()  {
+        
+    }
 }
