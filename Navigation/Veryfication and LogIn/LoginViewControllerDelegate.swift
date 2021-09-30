@@ -9,5 +9,5 @@
 import Foundation
 
 protocol LoginViewControllerDelegate: AnyObject {
-    func checkTextFields(enteredLogin: String, enteredPassword: String) -> Bool
+    func checkTextFields(login: String, password: String) -> Bool
 }

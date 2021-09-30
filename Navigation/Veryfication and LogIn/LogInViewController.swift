@@ -17,7 +17,7 @@ class LogInViewController: UIViewController {
     // ДЗ 4.2
     var loginFactory: MyLoginFactory?
     
-    var pushProfile: (() -> Void)?
+//    var pushProfile: (() -> Void)?
     
     //ДЗ 7
     weak var coordinator: ProfileCoordinator?
@@ -93,11 +93,12 @@ class LogInViewController: UIViewController {
             #endif
             
             if let username = self.usernameTextField.text,
+               let password = self.passwordTextField.text,
                let inspector = self.loginFactory?.produceLoginInspector,
-               inspector().checkTextFields(enteredLogin: username, enteredPassword: self.passwordTextField.text ?? "") == true {
+               inspector().checkTextFields(login: username, password: password) == true {
                 let profileVC = ProfileViewController(userService: userService, userName: username )
                 self.navigationController?.pushViewController(profileVC, animated: true)
-     //           coordinator?.showProfileVC(userName: username, userService: userService)
+//                self.coordinator?.showProfileVC
             } else {
                 self.showAlert()
             }

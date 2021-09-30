@@ -13,8 +13,6 @@ class AppCoordinator: Coordinator {
     var childCoordinator: [Coordinator] = []
     let window: UIWindow?
 
-    private var feedVC: UIViewController!
-    private var profileVC: UIViewController!
 
     init(_ window: UIWindow?) {
         self.window = window

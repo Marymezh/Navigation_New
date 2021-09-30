@@ -13,12 +13,8 @@ class ProfileCoordinator: Coordinator {
     
     weak var parentCoordinator: AppCoordinator?
     var childCoordinator: [Coordinator] = []
-    var navigationController: UINavigationController
+    var navigationController = UINavigationController()
     var inspectorFactory = MyLoginFactory()
-    
-    init() {
-        self.navigationController = .init()
-    }
     
     func start() {
         
@@ -38,6 +34,6 @@ class ProfileCoordinator: Coordinator {
 
 extension ProfileCoordinator {
     func showProfileVC()  {
-        
+       
     }
 }

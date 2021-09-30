@@ -13,19 +13,15 @@ class FeedCoordinator: Coordinator {
     
     weak var parentCoordinator: AppCoordinator?
     var childCoordinator: [Coordinator] = []
-    var navigationController: UINavigationController
+    var navigationController = UINavigationController()
     let checker = CheckTextField()
-
-    init() {
-        self.navigationController = .init()
-    }
 
     func start() {
     }
 
     func startPush() -> UINavigationController {
         let feedVC = FeedViewController(checker: checker)
-    //    firstViewController.coordinator = self
+    //    feedVC.coordinator = self
         navigationController.setViewControllers([feedVC], animated: false)
 
         feedVC.showPost = { [weak self] in
