@@ -21,6 +21,7 @@ class FeedCoordinator: Coordinator {
 
     func startPush() -> UINavigationController {
         let feedVC = FeedViewController(checker: checker)
+        
     //    feedVC.coordinator = self
         navigationController.setViewControllers([feedVC], animated: false)
 
@@ -38,15 +39,22 @@ class FeedCoordinator: Coordinator {
 
 extension FeedCoordinator {
     func showPostNormally()  {
-        self.navigationController.pushViewController(PostViewController(coordinator: self), animated: true)
+        let postVC = PostViewController(coordinator: self)
+        navigationController.pushViewController(postVC, animated: true)
+        
+        postVC.showInfo = { [weak self] in
+            self?.showInfoVC()
+        }
     }
     
     func showPostModally()  {
-        self.navigationController.present(PostViewController(coordinator: self), animated: true, completion: nil)
+        let postVC = PostViewController(coordinator: self)
+        navigationController.present(postVC, animated: true, completion: nil)
     }
     
     func showInfoVC() {
-       navigationController.pushViewController(InfoViewController(coordinator: self), animated: true)
+        let infoVC = InfoViewController(coordinator: self)
+        navigationController.pushViewController(infoVC, animated: true)
     }
 }
 

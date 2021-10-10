@@ -13,7 +13,7 @@ class PostViewController: UIViewController {
     
     weak var coordinator: FeedCoordinator?
     
- //   var showInfo: (()-> Void)?
+    var showInfo: (()-> Void)?
     
     init(coordinator: FeedCoordinator) {
         super.init(nibName: nil, bundle: nil)
@@ -32,8 +32,8 @@ class PostViewController: UIViewController {
     }
     
     @objc func tapInfoButton () {
-        coordinator?.showInfoVC()
-   //     self.showInfo?()
+//        coordinator?.showInfoVC()
+        self.showInfo?()
 
     }
 }

@@ -23,8 +23,13 @@ class ProfileCoordinator: Coordinator {
     func startPush() -> UINavigationController {
         let loginVC = LogInViewController()
         
-        loginVC.coordinator = self
+//        loginVC.coordinator = self
         loginVC.loginFactory = inspectorFactory
+        
+        loginVC.pushProfile = { [weak self] userService, username in
+            self?.showProfileVC(userService: userService, username: username)
+        }
+        
         navigationController.setViewControllers([loginVC], animated: false)
         
         return navigationController
@@ -33,7 +38,17 @@ class ProfileCoordinator: Coordinator {
 }
 
 extension ProfileCoordinator {
-    func showProfileVC()  {
+    func showProfileVC(userService: UserService, username: String) {
+        let profileVC = ProfileViewController(userService: userService, userName: username, coordinator: self)
+        navigationController.pushViewController(profileVC, animated: true)
        
+        profileVC.pushPhotos = { [weak self] in
+            self?.showPhotosVC()
+        }
+    }
+    
+    func showPhotosVC() {
+        let photosVC = PhotosViewController(coordinator: self)
+        navigationController.pushViewController(photosVC, animated: true)
     }
 }

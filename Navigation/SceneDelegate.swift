@@ -38,7 +38,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        }
         
         // ДЗ 4.1
-//        if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {
+//        if let tabController = window?.rootViewController as? UITabBarController,
+//        let loginNavigation = tabController.viewControllers?.last as? UINavigationController,
+//        let loginController = loginNavigation.viewControllers.first as? LogInViewController {
 //            loginController.delegate = inspector
         
         

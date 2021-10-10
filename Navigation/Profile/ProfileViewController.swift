@@ -10,17 +10,23 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    weak var coordinator: ProfileCoordinator?
+    
+    var pushPhotos: (() -> Void)?
+    
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let arrayOfPosts = PostStorage.postArray
     private let profileHeaderView = ProfileHeaderView()
     private let userService: UserService
     private let userName: String
     
-    init(userService: UserService, userName: String) {
+    init(userService: UserService, userName: String, coordinator: ProfileCoordinator) {
         self.userService = userService
         self.userName = userName
+        self.coordinator = coordinator
         super .init(nibName: nil, bundle: nil)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -208,8 +214,9 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            let photosVC = PhotosViewController()
-            navigationController?.pushViewController(photosVC, animated: true)
+            self.pushPhotos?()
+            
+//            coordinator?.showPhotosVC()
         } else {
             return tableView.deselectRow(at: indexPath, animated: true)
             

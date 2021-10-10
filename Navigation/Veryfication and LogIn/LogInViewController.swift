@@ -13,14 +13,12 @@ class LogInViewController: UIViewController {
     // ДЗ 4.1 
 //    weak var delegate: LoginViewControllerDelegate?
     
-    
     // ДЗ 4.2
     var loginFactory: MyLoginFactory?
     
-//    var pushProfile: (() -> Void)?
-    
-    //ДЗ 7
+    // ДЗ 7
     weak var coordinator: ProfileCoordinator?
+    var pushProfile: ((_ userService: UserService, _ username: String) -> Void)?
     
     private let scrollView = UIScrollView()
     
@@ -93,12 +91,11 @@ class LogInViewController: UIViewController {
             #endif
             
             if let username = self.usernameTextField.text,
-               let password = self.passwordTextField.text,
+               let pswd = self.passwordTextField.text,
                let inspector = self.loginFactory?.produceLoginInspector,
-               inspector().checkTextFields(login: username, password: password) == true {
-                let profileVC = ProfileViewController(userService: userService, userName: username )
-                self.navigationController?.pushViewController(profileVC, animated: true)
-//                self.coordinator?.showProfileVC
+               inspector().checkTextFields(login: username, password: pswd) == true {
+//                self.coordinator?.showProfileVC(userService: userService, username: username)
+                self.pushProfile?(userService, username)
             } else {
                 self.showAlert()
             }
