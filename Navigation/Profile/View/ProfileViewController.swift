@@ -11,12 +11,11 @@ import UIKit
 class ProfileViewController: UIViewController {
     
 //    weak var coordinator: ProfileCoordinator?
-    
-    var pushPhotos: (() -> Void)?
+//    var pushPhotos: (() -> Void)?
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let factory = ProfileModuleFactory()
-    lazy var viewModel: ProfileViewModel = {
+    lazy var viewModel = {
         factory.produceProfileViewModel()
     }()
     private let profileHeaderView = ProfileHeaderView()
@@ -56,8 +55,6 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         setUpTableView()
         setUpAnimationViews()
-        
-   //     profileViewModel = ViewModel()
         
         if let user = userService.returnUser(userName: userName) {
         profileHeaderView.configureUser(user: user)
@@ -219,7 +216,8 @@ extension ProfileViewController: UITableViewDelegate {
         
         if indexPath.section == 0 {
             
-            self.pushPhotos?()
+//            self.pushPhotos?()
+            viewModel.pushPhotos?()
             
 //            coordinator?.showPhotosVC()
         } else {

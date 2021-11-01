@@ -48,9 +48,10 @@ extension ProfileCoordinator {
   //      profileVC.coordinator = self
         navigationController.pushViewController(profileVC, animated: true)
        
-        profileVC.pushPhotos = { [weak self] in
+        profileVC.viewModel.pushPhotos = { [weak self] in
             self?.showPhotosVC()
         }
+        
     }
     
     func showPhotosVC() {

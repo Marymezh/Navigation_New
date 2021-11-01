@@ -23,4 +23,8 @@ class ProfileViewModel: TableViewModelType {
         return postArray.count
     }
     
+//        weak var coordinator: ProfileCoordinator?
+        
+    var pushPhotos: (() -> Void)?
+    
 }
