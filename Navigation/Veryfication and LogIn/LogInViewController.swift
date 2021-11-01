@@ -17,7 +17,7 @@ class LogInViewController: UIViewController {
     var loginFactory: MyLoginFactory?
     
     // ДЗ 7
-    weak var coordinator: ProfileCoordinator?
+//    weak var coordinator: ProfileCoordinator?
     var pushProfile: ((_ userService: UserService, _ username: String) -> Void)?
     
     private let scrollView = UIScrollView()

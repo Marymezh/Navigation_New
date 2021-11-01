@@ -39,7 +39,8 @@ class FeedCoordinator: Coordinator {
 
 extension FeedCoordinator {
     func showPostNormally()  {
-        let postVC = PostViewController(coordinator: self)
+        let postVC = PostViewController()
+ //       postVC.coordinator = self
         navigationController.pushViewController(postVC, animated: true)
         
         postVC.showInfo = { [weak self] in
@@ -48,12 +49,14 @@ extension FeedCoordinator {
     }
     
     func showPostModally()  {
-        let postVC = PostViewController(coordinator: self)
+        let postVC = PostViewController()
+        //       postVC.coordinator = self
         navigationController.present(postVC, animated: true, completion: nil)
     }
     
     func showInfoVC() {
-        let infoVC = InfoViewController(coordinator: self)
+        let infoVC = InfoViewController()
+//        infoVC.coordinator = self
         navigationController.pushViewController(infoVC, animated: true)
     }
 }

@@ -10,20 +10,22 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    weak var coordinator: ProfileCoordinator?
+//    weak var coordinator: ProfileCoordinator?
     
     var pushPhotos: (() -> Void)?
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
-    private let arrayOfPosts = PostStorage.postArray
+    private let factory = ProfileModuleFactory()
+    lazy var viewModel: ProfileViewModel = {
+        factory.produceProfileViewModel()
+    }()
     private let profileHeaderView = ProfileHeaderView()
     private let userService: UserService
     private let userName: String
     
-    init(userService: UserService, userName: String, coordinator: ProfileCoordinator) {
+    init(userService: UserService, userName: String) {
         self.userService = userService
         self.userName = userName
-        self.coordinator = coordinator
         super .init(nibName: nil, bundle: nil)
     }
     
@@ -54,6 +56,8 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         setUpTableView()
         setUpAnimationViews()
+        
+   //     profileViewModel = ViewModel()
         
         if let user = userService.returnUser(userName: userName) {
         profileHeaderView.configureUser(user: user)
@@ -162,7 +166,7 @@ extension ProfileViewController: UITableViewDataSource {
         case 0:
             return 1
         default:
-            return arrayOfPosts.count
+            return viewModel.numberOfRows
         }
     }
     
@@ -176,7 +180,7 @@ extension ProfileViewController: UITableViewDataSource {
         default:
             let cell: PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
             
-            cell.post = arrayOfPosts[indexPath.row]
+            cell.post = viewModel.postArray[indexPath.row]
             
             return cell
         }
@@ -214,6 +218,7 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
+            
             self.pushPhotos?()
             
 //            coordinator?.showPhotosVC()

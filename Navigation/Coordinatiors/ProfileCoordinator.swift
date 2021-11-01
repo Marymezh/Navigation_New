@@ -15,6 +15,8 @@ class ProfileCoordinator: Coordinator {
     var childCoordinator: [Coordinator] = []
     var navigationController = UINavigationController()
     var inspectorFactory = MyLoginFactory()
+    var moduleFactory = ProfileModuleFactory()
+
     
     func start() {
         
@@ -39,7 +41,11 @@ class ProfileCoordinator: Coordinator {
 
 extension ProfileCoordinator {
     func showProfileVC(userService: UserService, username: String) {
-        let profileVC = ProfileViewController(userService: userService, userName: username, coordinator: self)
+        
+        
+        
+        let profileVC = moduleFactory.produceProfileVC(userService: userService, userName: username)
+  //      profileVC.coordinator = self
         navigationController.pushViewController(profileVC, animated: true)
        
         profileVC.pushPhotos = { [weak self] in
@@ -48,7 +54,8 @@ extension ProfileCoordinator {
     }
     
     func showPhotosVC() {
-        let photosVC = PhotosViewController(coordinator: self)
+        let photosVC = PhotosViewController()
+//        photosVC.coordinator = self
         navigationController.pushViewController(photosVC, animated: true)
     }
 }

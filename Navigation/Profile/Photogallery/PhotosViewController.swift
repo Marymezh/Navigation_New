@@ -11,17 +11,17 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController {
     
-    weak var coordinator: ProfileCoordinator?
-    
-    init(coordinator: ProfileCoordinator) {
-        super.init(nibName: nil, bundle: nil)
-        self.coordinator = coordinator
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+//    weak var coordinator: ProfileCoordinator?
+//    
+//    init(coordinator: ProfileCoordinator) {
+//        super.init(nibName: nil, bundle: nil)
+//        self.coordinator = coordinator
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
     private let facade = ImagePublisherFacade()
     private let layout = UICollectionViewFlowLayout()
     private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
