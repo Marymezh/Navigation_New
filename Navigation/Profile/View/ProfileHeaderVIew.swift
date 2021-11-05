@@ -131,10 +131,7 @@ class ProfileHeaderView: UIView {
     @objc func statusTextChanged(_ textField: UITextField)  {
         statusText = setStatus.text ?? "No status"
     }
-    
-//    @objc func buttonIsPressed() {
-//        userStatus.text = statusText
-//    }
+
     
     func configureUser(user: User) {
                 userName.text = user.userName

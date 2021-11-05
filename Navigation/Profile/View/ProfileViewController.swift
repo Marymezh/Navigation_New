@@ -10,15 +10,13 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-//    weak var coordinator: ProfileCoordinator?
-//    var pushPhotos: (() -> Void)?
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let factory = ProfileModuleFactory()
     lazy var viewModel = {
         factory.produceProfileViewModel()
     }()
-    private let profileHeaderView = ProfileHeaderView()
+    
     private let userService: UserService
     private let userName: String
     
@@ -57,13 +55,13 @@ class ProfileViewController: UIViewController {
         setUpAnimationViews()
         
         if let user = userService.returnUser(userName: userName) {
-        profileHeaderView.configureUser(user: user)
+            viewModel.profileHeaderView.configureUser(user: user)
         }
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(tap))
         
-        profileHeaderView.userPicture.isUserInteractionEnabled = true
-        profileHeaderView.userPicture.addGestureRecognizer(imageTap)
+        viewModel.profileHeaderView.userPicture.isUserInteractionEnabled = true
+        viewModel.profileHeaderView.userPicture.addGestureRecognizer(imageTap)
     }
     
     @objc func tap() {
@@ -73,13 +71,13 @@ class ProfileViewController: UIViewController {
     func animation() {
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.profileHeaderView.userPicture.center = self.view.center
-            self.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 0.99 , y: 0.99 )
-            self.profileHeaderView.userPicture.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.width)
+            self.viewModel.profileHeaderView.userPicture.center = self.view.center
+            self.viewModel.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 0.99 , y: 0.99 )
+            self.viewModel.profileHeaderView.userPicture.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.width)
             
-            self.profileHeaderView.userPicture.layer.cornerRadius = 0
+            self.viewModel.profileHeaderView.userPicture.layer.cornerRadius = 0
             self.animationView.alpha = 0.7
-            self.profileHeaderView.profileAnimationView.alpha = 0.7
+            self.viewModel.profileHeaderView.profileAnimationView.alpha = 0.7
             
         }, completion: {_ in
             
@@ -95,11 +93,11 @@ class ProfileViewController: UIViewController {
             
         }, completion: {_ in
             UIView.animate(withDuration: 0.5, animations: {
-                self.profileHeaderView.userPicture.frame = CGRect(x: 16, y: 16, width: 110, height: 110)
-                self.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 1, y: 1)
-                self.profileHeaderView.userPicture.layer.cornerRadius = 55
+                self.viewModel.profileHeaderView.userPicture.frame = CGRect(x: 16, y: 16, width: 110, height: 110)
+                self.viewModel.profileHeaderView.userPicture.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                self.viewModel.profileHeaderView.userPicture.layer.cornerRadius = 55
                 self.animationView.alpha = 0
-                self.profileHeaderView.profileAnimationView.alpha = 0
+                self.viewModel.profileHeaderView.profileAnimationView.alpha = 0
                 
             })
         })
@@ -195,7 +193,7 @@ extension ProfileViewController: UITableViewDelegate {
         
         switch section {
         case 0:
-            let headerView = profileHeaderView
+            let headerView = viewModel.profileHeaderView
             return headerView
         default:
             return nil

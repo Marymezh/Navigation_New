@@ -223,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				CE61D63E2659E198001C600D /* ProfileViewController.swift */,
+				CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */,
+				CE61D6EB26720FA2001C600D /* ProfileTableHeaderVIew.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,8 +243,6 @@
 			children = (
 				CE3665E4271BDF4B00F881D2 /* View */,
 				CE3665E3271BDF3F00F881D2 /* ViewModel */,
-				CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */,
-				CE61D6EB26720FA2001C600D /* ProfileTableHeaderVIew.swift */,
 				CE61D6BE266F14CA001C600D /* PhotosTableViewCell.swift */,
 				CE61D687266898F4001C600D /* PostTableViewCell.swift */,
 				CE3665FB272FB7C800F881D2 /* ProfileModuleFactory.swift */,
