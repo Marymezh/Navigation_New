@@ -27,6 +27,4 @@ class ProfileViewModel: TableViewModelType {
         
     var pushPhotos: (() -> Void)?
     
-    let profileHeaderView = ProfileHeaderView()
-    
 }
