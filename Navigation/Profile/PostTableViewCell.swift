@@ -15,7 +15,6 @@ private let processor = ImageProcessor()
     var post: PostVK? {
         didSet {
             authorLabel.text = post?.author
-            postImageView.image = UIImage(named: post?.image ?? "No Image")
             descriptionLabel.text = post?.description
             likesLabel.text = "Likes: \(post?.likes ?? 0)"
             viewsLabel.text = "Views: \(post?.views ?? 0)"

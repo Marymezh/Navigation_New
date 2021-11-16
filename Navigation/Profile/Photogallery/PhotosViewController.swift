@@ -12,23 +12,22 @@ import iOSIntPackage
 class PhotosViewController: UIViewController {
     
 //    weak var coordinator: ProfileCoordinator?
-//    
-//    init(coordinator: ProfileCoordinator) {
-//        super.init(nibName: nil, bundle: nil)
-//        self.coordinator = coordinator
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
+
     private let facade = ImagePublisherFacade()
     private let layout = UICollectionViewFlowLayout()
     private lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private let collectionCellID = "collectionCellID"
     private let arrayOfPhotos = PhotoStorage.photoArray
-    private var arrayOfPublishedPhotos: [UIImage] = []
+    private var arrayOfPublishedPhotos = [UIImage]()
+    private let processor = ImageProcessor()
+    private var processedPhotos = [UIImage]()
     
+    private let indicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.isHidden = true
+        view.color = .red
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +39,17 @@ class PhotosViewController: UIViewController {
         setupCollectionView()
         photoCollectionView.backgroundColor = .white
         
+        
+        
         facade.addImagesWithTimer(time: 0.5, repeat: 21, userImages: arrayOfPhotos)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         facade.subscribe(self)
+        
+        indicator.isHidden = false
+        indicator.startAnimating()
         
     }
     
@@ -55,10 +59,16 @@ class PhotosViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         facade.removeSubscription(for: self)
         
+        
+        indicator.stopAnimating()
+        indicator.isHidden = true
     }
     
     private func setupCollectionView(){
         view.addSubview(photoCollectionView)
+        view.addSubview(indicator)
+        view.bringSubviewToFront(indicator)
+        indicator.toAutoLayout()
         photoCollectionView.toAutoLayout()
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
@@ -68,7 +78,10 @@ class PhotosViewController: UIViewController {
             photoCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
             photoCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             photoCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            photoCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            photoCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -83,8 +96,29 @@ extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PhotosCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellID", for: indexPath) as! PhotosCollectionViewCell
         
-        cell.photo = arrayOfPublishedPhotos[indexPath.item]
+//        cell.photo = arrayOfPublishedPhotos[indexPath.item]
+        
+
+        processor.processImagesOnThread(sourceImages: arrayOfPublishedPhotos, filter: .noir, qos: .userInteractive) { processedPhotos in
+            print("filtration")
+//            let queue = DispatchQueue.global(qos: .utility)
+//            queue.async {
+                for (index, photo) in processedPhotos.enumerated() {
+                    if let image = photo {
+                        self.arrayOfPublishedPhotos[index] = UIImage(cgImage: image)
+                    }
+//                }
+                
+                DispatchQueue.main.sync {
+
+                    cell.photo = self.arrayOfPublishedPhotos[indexPath.item]
+                    
+                }
+            }
+        }
+        
         return cell
+        
     }
 }
 // выставляем кол-во картинок в ряду и отступы
