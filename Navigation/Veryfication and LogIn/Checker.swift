@@ -16,11 +16,11 @@ class Checker {
     #if DEBUG
     private let login = "Test"
     #else
-    private let login = "Anonimus"
+    private let login = "Anonim"
     #endif
     
     
-    private let password = "StrongPassword"
+    private let password = "pass"
     
     private init() {}
     
