@@ -18,6 +18,8 @@ final class FeedViewController: UIViewController {
     var showPost: (()-> Void)?
     var presentPost: (() -> Void)?
     
+    var timeLeft = 5
+    
     private lazy var showNormallyButton: MyCustomButton = {
         let button =
             MyCustomButton(
@@ -66,8 +68,24 @@ final class FeedViewController: UIViewController {
             title: "Check the word",
             titleColor: .white,
             backgroundColor: .systemGray,
-            backgroundImage: nil) { [weak self] in
-            self?.onCompletion()
+            backgroundImage: nil) { [self] in
+            
+            var myTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                
+            self.colorLabel.alpha = 0
+            self.timeLeft -= 1
+            self.checkStatusLabel.alpha = 1
+            self.checkStatusLabel.text = "\(self.timeLeft) seconds left to check"
+
+            if self.timeLeft <= 0 {
+                self.checkStatusLabel.alpha = 0
+                timer.invalidate()
+                self.timeLeft = 5
+                self.onCompletion()
+                }
+            }
+            
+            RunLoop.current.add(myTimer, forMode: .common)
         }
         
         button.layer.cornerRadius = 6
@@ -78,6 +96,21 @@ final class FeedViewController: UIViewController {
     private let colorLabel: UILabel = {
         let label = UILabel()
         label.alpha = 0
+        label.layer.cornerRadius = 6
+        label.clipsToBounds = true
+        label.toAutoLayout()
+        return label
+    }()
+    
+    private let checkStatusLabel: UILabel = {
+        let label = UILabel()
+        label.alpha = 0
+        label.backgroundColor = .systemGray
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = .white
+        label.layer.cornerRadius = 6
+        label.clipsToBounds = true
         label.toAutoLayout()
         return label
     }()
@@ -155,9 +188,17 @@ final class FeedViewController: UIViewController {
             switch  result {
             case .correct:
                 self?.colorLabel.backgroundColor = .green
+                self?.colorLabel.text = "Correct!"
+                self?.colorLabel.textAlignment = .center
+                self?.colorLabel.textColor = .white
+                self?.colorLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
                 self?.colorLabel.alpha = 1
             case .incorrect:
                 self?.colorLabel.backgroundColor = .red
+                self?.colorLabel.text = "Incorrect!"
+                self?.colorLabel.textAlignment = .center
+                self?.colorLabel.textColor = .white
+                self?.colorLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
                 self?.colorLabel.alpha = 1
             default: self?.colorLabel.alpha = 0
                 
@@ -174,6 +215,7 @@ final class FeedViewController: UIViewController {
         feedStackView.addArrangedSubview(checkTextField)
         feedStackView.addArrangedSubview(checkButton)
         feedStackView.addArrangedSubview(colorLabel)
+        feedStackView.addArrangedSubview(checkStatusLabel)
         
         feedStackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(50)
