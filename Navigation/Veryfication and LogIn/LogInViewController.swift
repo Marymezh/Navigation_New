@@ -94,6 +94,7 @@ class LogInViewController: UIViewController {
                let pswd = self.passwordTextField.text,
                let inspector = self.loginFactory?.produceLoginInspector,
                inspector().checkTextFields(login: username, password: pswd) == true {
+// navigate to another screen using weak link to coordinator
 //                self.coordinator?.showProfileVC(userService: userService, username: username)
                 self.pushProfile?(userService, username)
             } else {

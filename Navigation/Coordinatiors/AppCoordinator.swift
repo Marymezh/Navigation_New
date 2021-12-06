@@ -13,7 +13,6 @@ class AppCoordinator: Coordinator {
     var childCoordinator: [Coordinator] = []
     let window: UIWindow?
 
-
     init(_ window: UIWindow?) {
         self.window = window
         window?.makeKeyAndVisible()
@@ -29,7 +28,6 @@ class AppCoordinator: Coordinator {
 
         let firstItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"), tag: 0)
         let secondItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 1)
-
 
         let feedCoordinator = FeedCoordinator()
         feedCoordinator.parentCoordinator = self

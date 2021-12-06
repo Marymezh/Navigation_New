@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController {
         super .init(nibName: nil, bundle: nil)
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -213,7 +212,7 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            
+// navigate to another screen using weak link to coordinator
 //            self.pushPhotos?()
             viewModel.pushPhotos?()
             

@@ -23,6 +23,7 @@ class PostViewController: UIViewController {
     }
     
     @objc func tapInfoButton () {
+// navigate to another screen using weak link to coordinator
 //        coordinator?.showInfoVC()
         self.showInfo?()
 

@@ -90,9 +90,9 @@ class PhotosViewController: UIViewController {
     private func processImages() {
         
         var processedImages = [UIImage]()
+        let start = CFAbsoluteTimeGetCurrent()
         
         processor.processImagesOnThread(sourceImages: arrayOfPhotos, filter: .noir, qos: .userInteractive) { [self] processedPhotos in
-            print("filtration")
             
             for photo in processedPhotos {
                 if let image = photo {
@@ -103,8 +103,19 @@ class PhotosViewController: UIViewController {
             DispatchQueue.main.async { [self] in
                 
                 facade.addImagesWithTimer(time: 0.5, repeat: processedImages.count, userImages: processedImages)
+            
                 indicator.stopAnimating()
                 indicator.isHidden = true
+                
+                let diff = CFAbsoluteTimeGetCurrent() - start
+                print("Images are processed with filter in \(diff) seconds")
+                
+                // ДЗ 8
+                // фильтр noir, qos - userInteractive - 6,36 секунд
+                // фильтр bloom, qos - userInitiated - 7,91 секунд
+                // фильтр motionBlur, qos - utility - 7,13 секунд
+                // фильтр sepia, qos - background - 10,16 секунд
+                // фильтр sepia, qos - userInteractive  - 6,22 секунд
             }
         }
     }

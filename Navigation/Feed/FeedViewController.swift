@@ -26,6 +26,7 @@ final class FeedViewController: UIViewController {
                 backgroundColor: .systemGray,
                 backgroundImage: nil) {
                 
+    // navigate to another screen using weak link to coordinator
     //            self.coordinator?.showPostNormally()
                 self.showPost?()
             }
@@ -40,6 +41,7 @@ final class FeedViewController: UIViewController {
             titleColor: .white,
             backgroundColor: .systemGray,
             backgroundImage: nil) {
+  // navigate to another screen using weak link to coordinator
   //          self.coordinator?.showPostModally()
             
             self.presentPost?()
