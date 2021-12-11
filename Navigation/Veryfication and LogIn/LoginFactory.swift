@@ -12,7 +12,6 @@ import UIKit
 // ДЗ 4.2 - создаем протокол и фабрику для производства логин инспектора
 
 protocol LoginFactory {
-    
     func produceLoginInspector() -> LoginInspector
 }
 
@@ -20,6 +19,4 @@ class MyLoginFactory: LoginFactory {
     func produceLoginInspector() -> LoginInspector {
         return LoginInspector()
     }
-    
-    
 }

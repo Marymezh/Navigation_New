@@ -30,22 +30,6 @@ class ProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let animationView: UIView = {
-        let view = UIView()
-        view.toAutoLayout()
-        view.backgroundColor = .white
-        view.alpha = 0
-        return view
-    }()
-    
-    private lazy var clearButton: MyCustomButton = {
-        let button = MyCustomButton(title: nil, titleColor: nil, backgroundColor: .white, backgroundImage: UIImage (systemName: "clear")) {
-            self.reversedAnimation()}
-        button.alpha = 0
-        button.clipsToBounds = false
-        return button
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +46,50 @@ class ProfileViewController: UIViewController {
         viewModel.profileHeaderView.userPicture.isUserInteractionEnabled = true
         viewModel.profileHeaderView.userPicture.addGestureRecognizer(imageTap)
     }
+    
+    
+    private func setUpTableView() {
+        view.addSubview(tableView)
+        
+        #if DEBUG
+        tableView.backgroundColor = .systemYellow
+        #else
+        tableView.backgroundColor = .systemGray6
+        #endif
+        
+        tableView.toAutoLayout()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
+        
+        let constraints = [
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+// MARK: ANIMATION
+    
+    private let animationView: UIView = {
+        let view = UIView()
+        view.toAutoLayout()
+        view.backgroundColor = .white
+        view.alpha = 0
+        return view
+    }()
+    
+    private lazy var clearButton: MyCustomButton = {
+        let button = MyCustomButton(title: nil, titleColor: nil, backgroundColor: .white, backgroundImage: UIImage (systemName: "clear")) {
+            self.reversedAnimation()}
+        button.alpha = 0
+        button.clipsToBounds = false
+        return button
+    }()
     
     @objc func tap() {
         animation()
@@ -121,32 +149,8 @@ class ProfileViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraints)
     }
-    
-    private func setUpTableView() {
-        view.addSubview(tableView)
-        
-        #if DEBUG
-        tableView.backgroundColor = .systemYellow
-        #else
-        tableView.backgroundColor = .systemGray6
-        #endif
-        
-        tableView.toAutoLayout()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
-        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
-        
-        let constraints = [
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-    }
 }
+
 // MARK: UITableViewDataSource
 
 extension ProfileViewController: UITableViewDataSource {
