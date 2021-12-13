@@ -133,7 +133,7 @@ class ProfileHeaderView: UIView {
     }
 
     
-    func configureUser(user: User)  {
+    func configureUser(user: User) {
                 userName.text = user.userName
                 userPicture.image = user.userPicture
                 userStatus.text = user.userStatus

@@ -15,11 +15,11 @@ class TestUserService: UserService {
     let testUser = User(userName: "Test", userPicture: #imageLiteral(resourceName: "test"), userStatus: "testing the test")
 
 
-    func returnUser(userName: String) -> User? {
+    func returnUser(userName: String) throws -> User {
 
        if userName == testUser.userName {
             return testUser
         }
-            return nil
+        throw AuthorizationError.incorrect
     }
 }

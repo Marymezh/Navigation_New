@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
         setUpTableView()
         setUpAnimationViews()
         
-        if let user = userService.returnUser(userName: userName) {
+        if let user = try? userService.returnUser(userName: userName) {
             viewModel.profileHeaderView.configureUser(user: user)
         }
         
