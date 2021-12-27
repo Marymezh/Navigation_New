@@ -10,8 +10,6 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-//    weak var coordinator: FeedCoordinator?
-    
     private lazy var removeButton: MyCustomButton = {
         let button = MyCustomButton(title: "Remove Post", titleColor: .white, backgroundColor: .black, backgroundImage: nil) {
             self.showAlert()

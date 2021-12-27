@@ -13,15 +13,10 @@ import Foundation
 class ProfileViewModel: TableViewModelType {
     
     let postArray = PostStorage.postArray
-    
     var numberOfRows: Int {
         return postArray.count
     }
-    
-//        weak var coordinator: ProfileCoordinator?
-        
     var pushPhotos: (() -> Void)?
-    
     let profileHeaderView = ProfileHeaderView()
     
 }

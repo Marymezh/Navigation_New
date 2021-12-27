@@ -19,7 +19,6 @@ private let processor = ImageProcessor()
             likesLabel.text = "Likes: \(post?.likes ?? 0)"
             viewsLabel.text = "Views: \(post?.views ?? 0)"
             
-            // применяем фильтры к картинкам в постах
             if let image =  UIImage(named: post?.image ?? "No Image") {
                 processor.processImage(sourceImage: image, filter: post?.filter ?? .chrome) {
                     (image) in

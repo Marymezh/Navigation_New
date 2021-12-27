@@ -212,11 +212,7 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-// navigate to another screen using weak link to coordinator
-//            self.pushPhotos?()
             viewModel.pushPhotos?()
-            
-//            coordinator?.showPhotosVC()
         } else {
             return tableView.deselectRow(at: indexPath, animated: true)
             

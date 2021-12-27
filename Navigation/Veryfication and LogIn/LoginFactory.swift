@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-// ДЗ 4.2 - создаем протокол и фабрику для производства логин инспектора
-
 protocol LoginFactory {
     
     func produceLoginInspector() -> LoginInspector

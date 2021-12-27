@@ -10,8 +10,6 @@ import UIKit
 import iOSIntPackage
 
 class PhotosViewController: UIViewController {
-    
-//    weak var coordinator: ProfileCoordinator?
 
     private let facade = ImagePublisherFacade()
     private let layout = UICollectionViewFlowLayout()
@@ -120,12 +118,11 @@ class PhotosViewController: UIViewController {
         }
     }
 }
-// указываем кол-во картинок - берем его из массива фотографий
+
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfPublishedPhotos.count
     }
-// пишем, какую именно ячейку мы будем вставлять в нашу коллекцию, а также пишем, что эта ячейка будет переиспользована
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PhotosCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellID", for: indexPath) as! PhotosCollectionViewCell
         
@@ -133,7 +130,7 @@ extension PhotosViewController: UICollectionViewDataSource {
         return cell
     }
 }
-// выставляем кол-во картинок в ряду и отступы
+
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     private var baseInset: CGFloat { return 8 }
@@ -149,7 +146,7 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return .zero
     }
-    // отступы для секции (сверху, снизу и по бокам)
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: baseInset, left: baseInset, bottom: .zero, right: baseInset)
     }

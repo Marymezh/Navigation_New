@@ -11,8 +11,6 @@ import StorageService
 
 class PostViewController: UIViewController {
     
-//    weak var coordinator: FeedCoordinator?
-    
     var showInfo: (()-> Void)?
 
     override func viewDidLoad() {
@@ -23,8 +21,7 @@ class PostViewController: UIViewController {
     }
     
     @objc func tapInfoButton () {
-// navigate to another screen using weak link to coordinator
-//        coordinator?.showInfoVC()
+
         self.showInfo?()
 
     }

@@ -13,11 +13,10 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     
- //   weak var coordinator: FeedCoordinator?
-    
     var showPost: (()-> Void)?
     var presentPost: (() -> Void)?
     
+    var myTimer: Timer?
     var timeLeft = 5
     
     private lazy var showNormallyButton: MyCustomButton = {
@@ -28,8 +27,6 @@ final class FeedViewController: UIViewController {
                 backgroundColor: .systemGray,
                 backgroundImage: nil) {
                 
-    // navigate to another screen using weak link to coordinator
-    //            self.coordinator?.showPostNormally()
                 self.showPost?()
             }
         button.layer.cornerRadius = 6
@@ -43,8 +40,6 @@ final class FeedViewController: UIViewController {
             titleColor: .white,
             backgroundColor: .systemGray,
             backgroundImage: nil) {
-  // navigate to another screen using weak link to coordinator
-  //          self.coordinator?.showPostModally()
             
             self.presentPost?()
         }
@@ -70,22 +65,26 @@ final class FeedViewController: UIViewController {
             backgroundColor: .systemGray,
             backgroundImage: nil) { [self] in
             
-            var myTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.myTimer?.invalidate()
+            self.timeLeft = 5
+            self.myTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                 
-            self.colorLabel.alpha = 0
-            self.timeLeft -= 1
-            self.checkStatusLabel.alpha = 1
-            self.checkStatusLabel.text = "\(self.timeLeft) seconds left to check"
 
-            if self.timeLeft <= 0 {
-                self.checkStatusLabel.alpha = 0
-                timer.invalidate()
-                self.timeLeft = 5
-                self.onCompletion()
+                self.colorLabel.alpha = 0
+                self.timeLeft -= 1
+                self.checkStatusLabel.alpha = 1
+                self.checkStatusLabel.text = "\(self.timeLeft) seconds left to check"
+                
+                if self.timeLeft <= 0 {
+                    self.checkStatusLabel.alpha = 0
+                    timer.invalidate()
+                    self.timeLeft = 5
+                    self.onCompletion()
                 }
             }
             
-            RunLoop.current.add(myTimer, forMode: .common)
+            guard let timer = self.myTimer else { return }
+            RunLoop.current.add(timer, forMode: .common)
         }
         
         button.layer.cornerRadius = 6
@@ -143,43 +142,6 @@ final class FeedViewController: UIViewController {
         checkTextField.delegate = self
         setupViews()
     }
-    
-    // ДЗ 6 - method 1 - passing data via notifications
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        setupNotifications()
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        removeObservers()
-//    }
-//
-//    func setupNotifications() {
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Green label"), object: nil, queue: .main) { (notification) in
-//            self.colorLabel.backgroundColor = .green
-//            self.colorLabel.alpha = 1
-//        }
-//
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Red label"), object: nil, queue: .main) { (notification) in
-//            self.colorLabel.backgroundColor = .red
-//            self.colorLabel.alpha = 1
-//        }
-//
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Transparent label"), object: nil, queue: .main) { (notification) in
-//            self.colorLabel.alpha = 0
-//        }
-//    }
-//
-//    func removeObservers() {
-//        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Green label"))
-//        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Red label"))
-//        NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "Transparent label"))
-//    }
-//
-//
-    
-    // ДЗ 6 - method 2 - passing data via closure
     
     private func onCompletion() {
         

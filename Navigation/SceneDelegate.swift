@@ -28,26 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.appCoordinator = AppCoordinator(window)
 
         appCoordinator?.start()
-        
-//        guard let _ = (scene as? UIWindowScene) else { return }
-//        let mainVC = InitialViewController()
-//        if let windowScene = scene as? UIWindowScene {
-//            self.window = UIWindow(windowScene: windowScene)
-//            self.window?.rootViewController = mainVC
-//            self.window?.makeKeyAndVisible()
-//        }
-        
-        // ДЗ 4.1
-//        if let tabController = window?.rootViewController as? UITabBarController,
-//        let loginNavigation = tabController.viewControllers?.last as? UINavigationController,
-//        let loginController = loginNavigation.viewControllers.first as? LogInViewController {
-//            loginController.delegate = inspector
-        
-        
-        // ДЗ 4.2
-//        if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {
-//            loginController.loginFactory = inspectorFactory
-//        }
+
     }
 }
 
