@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-class ProfileModuleFactory: ProfileModuleFactoryProtocol {
+class ProfileModuleFactory{
     func produceProfileVC(userService: UserService, userName: String) -> ProfileViewController {
         return ProfileViewController(userService: userService, userName: userName)
     }

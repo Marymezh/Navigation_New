@@ -10,7 +10,7 @@ import Foundation
 
 
 
-class ProfileViewModel: TableViewModelType {
+class ProfileViewModel {
     
     let postArray = PostStorage.postArray
     var numberOfRows: Int {

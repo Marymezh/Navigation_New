@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol LoginFactory {
-    
     func produceLoginInspector() -> LoginInspector
 }
 
@@ -18,6 +17,4 @@ class MyLoginFactory: LoginFactory {
     func produceLoginInspector() -> LoginInspector {
         return LoginInspector()
     }
-    
-    
 }

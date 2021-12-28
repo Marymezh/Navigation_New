@@ -38,6 +38,7 @@ class ProfileCoordinator: Coordinator {
 
 extension ProfileCoordinator {
     func showProfileVC(userService: UserService, username: String) {
+
         let profileVC = moduleFactory.produceProfileVC(userService: userService, userName: username)
         navigationController.pushViewController(profileVC, animated: true)
        
