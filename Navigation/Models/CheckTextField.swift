@@ -9,8 +9,7 @@
 
 import UIKit
 
-enum CheckResult {
-    case correct
+enum CheckerError: Error {
     case incorrect
     case empty
 }
@@ -19,13 +18,14 @@ class CheckTextField {
     
     private let correctWord = "пароль"
     
-    func check(word: String, completion: (CheckResult) -> Void ) {
-        if word == "" {
-            completion(.empty)
-        } else if word == correctWord {
-            completion(.correct)
+    func check(word: String, completion:  @escaping (Result<String, CheckerError>) -> Void  ) {
+        if word == correctWord {
+            completion(.success("Correct!"))
+        } else if word == "" {
+            completion(.failure(.empty))
         } else {
-            completion(.incorrect)
+            completion(.failure(.incorrect))
         }
     }
 }
+

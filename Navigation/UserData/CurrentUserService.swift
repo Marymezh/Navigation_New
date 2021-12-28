@@ -11,14 +11,16 @@ import UIKit
 
 class CurrentUserService: UserService {
     
+    
     let someUser = User(userName: "Anonimus", userPicture: #imageLiteral(resourceName: "Anonim"), userStatus: "searching for the meaning")
     
     
-    func returnUser(userName: String) -> User? {
+    func returnUser(userName: String) throws -> User {
         
        if userName == someUser.userName {
             return someUser
         }
-            return nil
+        
+        throw AuthorizationError.incorrect
     }
 }
