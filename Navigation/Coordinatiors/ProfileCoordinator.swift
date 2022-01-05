@@ -45,10 +45,19 @@ extension ProfileCoordinator {
         profileVC.viewModel.pushPhotos = { [weak self] in
             self?.showPhotosVC()
         }
+        
+        profileVC.viewModel.presentAudioPlayer = { [weak self] in
+            self?.presentAudioPlayerVC()
+        }
     }
     
     func showPhotosVC() {
         let photosVC = PhotosViewController()
         navigationController.pushViewController(photosVC, animated: true)
+    }
+    
+    func presentAudioPlayerVC() {
+        let audioPlayerVC = AudioPlayerViewController()
+        navigationController.present(audioPlayerVC, animated: true, completion: nil)
     }
 }

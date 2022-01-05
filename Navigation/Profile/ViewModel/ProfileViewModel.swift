@@ -17,6 +17,7 @@ class ProfileViewModel {
         return postArray.count
     }
     var pushPhotos: (() -> Void)?
+    var presentAudioPlayer: (() -> Void)?
     let profileHeaderView = ProfileHeaderView()
     
 }

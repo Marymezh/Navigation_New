@@ -14,6 +14,15 @@
 		060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C5250CEB0A00A87020 /* InfoViewController.swift */; };
 		060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C7250CEE5D00A87020 /* PostViewController.swift */; };
 		A28B72ED4C075CFB7B00E180 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E1E6FF3398466E17BB9C2E /* Pods_Navigation.framework */; };
+		CE0781F82785981B006458C9 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */; };
+		CE0781FD2785AA4C006458C9 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781FC2785AA4C006458C9 /* Track.swift */; };
+		CE0782002785AAAD006458C9 /* TrackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781FF2785AAAD006458C9 /* TrackList.swift */; };
+		CE0782092785C788006458C9 /* pink-floyd-hey-you.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE0782042785C777006458C9 /* pink-floyd-hey-you.mp3 */; };
+		CE07820A2785C788006458C9 /* the-doors-riders-on-the-storm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE0782052785C77A006458C9 /* the-doors-riders-on-the-storm.mp3 */; };
+		CE07820B2785C788006458C9 /* depeche-mode-behind-the-wheel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE0782062785C77D006458C9 /* depeche-mode-behind-the-wheel.mp3 */; };
+		CE07820C2785C788006458C9 /* archive-bullets.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE0782072785C77E006458C9 /* archive-bullets.mp3 */; };
+		CE07820D2785C788006458C9 /* radiohead-creep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE0782082785C788006458C9 /* radiohead-creep.mp3 */; };
+		CE0782132785F892006458C9 /* PlayerControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0782122785F892006458C9 /* PlayerControlButton.swift */; };
 		CE349EAE26EB695E001319F5 /* MyCustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EAD26EB695E001319F5 /* MyCustomTextfield.swift */; };
 		CE349EB126EC771B001319F5 /* CheckTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EB026EC771B001319F5 /* CheckTextField.swift */; };
 		CE3665AB2701A28D00F881D2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3665AA2701A28D00F881D2 /* AppCoordinator.swift */; };
@@ -87,6 +96,15 @@
 		20E1E6FF3398466E17BB9C2E /* Pods_Navigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2368FFBD724AA02CB3211D65 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		BBE58E8498048C6FF40ECC0A /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
+		CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
+		CE0781FC2785AA4C006458C9 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		CE0781FF2785AAAD006458C9 /* TrackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackList.swift; sourceTree = "<group>"; };
+		CE0782042785C777006458C9 /* pink-floyd-hey-you.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pink-floyd-hey-you.mp3"; sourceTree = "<group>"; };
+		CE0782052785C77A006458C9 /* the-doors-riders-on-the-storm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-doors-riders-on-the-storm.mp3"; sourceTree = "<group>"; };
+		CE0782062785C77D006458C9 /* depeche-mode-behind-the-wheel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "depeche-mode-behind-the-wheel.mp3"; sourceTree = "<group>"; };
+		CE0782072785C77E006458C9 /* archive-bullets.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "archive-bullets.mp3"; sourceTree = "<group>"; };
+		CE0782082785C788006458C9 /* radiohead-creep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radiohead-creep.mp3"; sourceTree = "<group>"; };
+		CE0782122785F892006458C9 /* PlayerControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlButton.swift; sourceTree = "<group>"; };
 		CE349EAD26EB695E001319F5 /* MyCustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomTextfield.swift; sourceTree = "<group>"; };
 		CE349EB026EC771B001319F5 /* CheckTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTextField.swift; sourceTree = "<group>"; };
 		CE3665AA2701A28D00F881D2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -170,6 +188,7 @@
 				CE3665A72701A20B00F881D2 /* Feed */,
 				CEBF670F26CE593C00E74042 /* Veryfication and LogIn */,
 				CE61D63D2659E186001C600D /* Profile */,
+				CE0781F6278597BB006458C9 /* Multimedia */,
 				CE6C3C7E26BF81BA006904C6 /* UserData */,
 				CE61D6D0266F6DB0001C600D /* Storage */,
 				CE61D6CF266F6D6A001C600D /* Models */,
@@ -188,6 +207,45 @@
 				2368FFBD724AA02CB3211D65 /* Pods-Navigation.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE0781F6278597BB006458C9 /* Multimedia */ = {
+			isa = PBXGroup;
+			children = (
+				CE0782022785AC9C006458C9 /* AudioPlayer */,
+			);
+			path = Multimedia;
+			sourceTree = "<group>";
+		};
+		CE0781FB2785AA2B006458C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE0781FC2785AA4C006458C9 /* Track.swift */,
+				CE0781FF2785AAAD006458C9 /* TrackList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE0782022785AC9C006458C9 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				CE0782032785ACB8006458C9 /* Tracks */,
+				CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */,
+				CE0781FB2785AA2B006458C9 /* Model */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		CE0782032785ACB8006458C9 /* Tracks */ = {
+			isa = PBXGroup;
+			children = (
+				CE0782072785C77E006458C9 /* archive-bullets.mp3 */,
+				CE0782062785C77D006458C9 /* depeche-mode-behind-the-wheel.mp3 */,
+				CE0782042785C777006458C9 /* pink-floyd-hey-you.mp3 */,
+				CE0782082785C788006458C9 /* radiohead-creep.mp3 */,
+				CE0782052785C77A006458C9 /* the-doors-riders-on-the-storm.mp3 */,
+			);
+			path = Tracks;
 			sourceTree = "<group>";
 		};
 		CE3665A72701A20B00F881D2 /* Feed */ = {
@@ -272,6 +330,7 @@
 			children = (
 				CE61D67D26687C22001C600D /* PostVK.swift */,
 				CEAD816826E481F800213B2E /* MyCustomButton.swift */,
+				CE0782122785F892006458C9 /* PlayerControlButton.swift */,
 				CE349EAD26EB695E001319F5 /* MyCustomTextfield.swift */,
 				CE349EB026EC771B001319F5 /* CheckTextField.swift */,
 			);
@@ -429,7 +488,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE07820D2785C788006458C9 /* radiohead-creep.mp3 in Resources */,
+				CE0782092785C788006458C9 /* pink-floyd-hey-you.mp3 in Resources */,
+				CE07820C2785C788006458C9 /* archive-bullets.mp3 in Resources */,
 				060782BB250CE27A00A87020 /* Assets.xcassets in Resources */,
+				CE07820B2785C788006458C9 /* depeche-mode-behind-the-wheel.mp3 in Resources */,
+				CE07820A2785C788006458C9 /* the-doors-riders-on-the-storm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0782132785F892006458C9 /* PlayerControlButton.swift in Sources */,
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				CE6C3C8326BF8430006904C6 /* UserService.swift in Sources */,
@@ -496,9 +561,11 @@
 				CE3665ED272D47D000F881D2 /* ProfileViewModel.swift in Sources */,
 				CE3665B12701A2CD00F881D2 /* ProfileCoordinator.swift in Sources */,
 				CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */,
+				CE0781F82785981B006458C9 /* AudioPlayerViewController.swift in Sources */,
 				CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */,
 				CE3665AB2701A28D00F881D2 /* AppCoordinator.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
+				CE0782002785AAAD006458C9 /* TrackList.swift in Sources */,
 				CE349EB126EC771B001319F5 /* CheckTextField.swift in Sources */,
 				CE3DCB5F275DD52400233706 /* PostStorage.swift in Sources */,
 				CE349EAE26EB695E001319F5 /* MyCustomTextfield.swift in Sources */,
@@ -511,6 +578,7 @@
 				CE61D6EC26720FA2001C600D /* ProfileTableHeaderVIew.swift in Sources */,
 				CE6C3C8026BF81D6006904C6 /* User.swift in Sources */,
 				CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */,
+				CE0781FD2785AA4C006458C9 /* Track.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,
 				CE7D95CE26D4C3E000736DBA /* LoginFactory.swift in Sources */,
 				CE61D6CC266F4B61001C600D /* PhotoStorage.swift in Sources */,
