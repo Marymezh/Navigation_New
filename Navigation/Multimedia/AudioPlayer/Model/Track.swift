@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 struct Track {
-    var artist: String
-    var title: String
-    var picture: UIImage
-    var filename: String
+    var artistName: String
+    var trackName: String
+    var image: UIImage
+    var fileName: String
 }

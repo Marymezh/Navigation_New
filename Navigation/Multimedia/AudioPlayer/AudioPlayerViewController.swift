@@ -11,6 +11,10 @@ import AVFoundation
 
 class AudioPlayerViewController: UIViewController {
     
+    private var player = AVAudioPlayer()
+    public var position: Int = 0
+    public var tracklist = TrackList.tracks
+
     private lazy var playbackButton: PlayerControlButton = {
         let button = PlayerControlButton(image: "play.fill"){
             self.playPressed()
@@ -37,7 +41,7 @@ class AudioPlayerViewController: UIViewController {
     
     private lazy var previousButton: PlayerControlButton = {
         let button = PlayerControlButton(image: "backward.fill"){
-            print("to be done")
+            self.previousPressed()
         }
         
         return button
@@ -45,7 +49,7 @@ class AudioPlayerViewController: UIViewController {
     
     private lazy var nextButton: PlayerControlButton = {
         let button = PlayerControlButton(image: "forward.fill"){
-            print("to be done")
+            self.nextPressed()
         }
         
         return button
@@ -63,7 +67,6 @@ class AudioPlayerViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 27, weight: .bold)
         label.textAlignment = .center
-        label.text = "Creep"
         label.textColor = .black
         label.toAutoLayout()
         return label
@@ -73,14 +76,14 @@ class AudioPlayerViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 22, weight: .bold)
         label.textAlignment = .center
-        label.text = "Radiohead"
         label.textColor = .black
         label.toAutoLayout()
         return label
     }()
     
     private let trackPicture: UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "radiohead"))
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
         image.layer.borderWidth = 1
         image.layer.borderColor = UIColor.black.cgColor
         image.layer.cornerRadius = 6
@@ -89,14 +92,12 @@ class AudioPlayerViewController: UIViewController {
         return image
     }()
     
-    
-    var player = AVAudioPlayer()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         prepareForPlaying()
         setupUI()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,6 +108,7 @@ class AudioPlayerViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemGray2
+        
         view.addSubviews(artistNameLabel, trackNameLabel, trackPicture, playerControllsStack)
         playerControllsStack.addArrangedSubview(previousButton)
         playerControllsStack.addArrangedSubview(playbackButton)
@@ -143,17 +145,27 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func prepareForPlaying() {
+        
+        let track = tracklist[position]
+        
+        trackPicture.image = track.image
+        trackNameLabel.text = track.trackName
+        artistNameLabel.text = track.artistName
+        
+        let url = Bundle.main.url(forResource: track.fileName, withExtension: "mp3")!
         do {
-            player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "radiohead-creep", ofType: "mp3")!))
+            player = try AVAudioPlayer(contentsOf: url)
+            
             player.prepareToPlay()
-        } catch {
-            print(error)
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
     private func playPressed() {
         if player.isPlaying {
-            print("Already stopped!")
+            print("Already playing!")
         } else {
             player.play()
         }
@@ -168,8 +180,22 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func stopPressed() {
-            player.stop()
-            player.currentTime = 0.0
+        player.stop()
+        player.currentTime = 0.0
     }
-
+    
+    private func nextPressed() {
+        if position + 1 < tracklist.count {
+            position += 1
+            prepareForPlaying()
+        }
+    }
+    
+    private func previousPressed() {
+        if position != 0 {
+            position -= 1
+            player.stop()
+            prepareForPlaying()
+        }
+    }
 }

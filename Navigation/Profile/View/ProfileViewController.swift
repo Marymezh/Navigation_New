@@ -186,8 +186,6 @@ extension ProfileViewController: UITableViewDataSource {
             cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.backgroundColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)
             cell.accessoryView = UIImageView(image: UIImage (systemName: "arrow.forward"))
-//            cell.accessoryView?.contentMode = .scaleAspectFit
-//            cell.accessoryView?.clipsToBounds = true
             cell.accessoryView?.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             
             return cell
