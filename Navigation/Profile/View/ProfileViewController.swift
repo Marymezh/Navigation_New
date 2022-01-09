@@ -19,7 +19,6 @@ class ProfileViewController: UIViewController {
     
     private let userService: UserService
     private let userName: String
-    private let cellID = "CellID"
     
     init(userService: UserService, userName: String) {
         self.userService = userService
@@ -63,7 +62,8 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellID")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellID2")
         
         let constraints = [
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -158,7 +158,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -166,6 +166,8 @@ extension ProfileViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1:
+            return 1
+        case 2:
             return 1
         default:
             return viewModel.numberOfRows
@@ -179,12 +181,23 @@ extension ProfileViewController: UITableViewDataSource {
             
             return cell
             
-        case 1: let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        case 1: let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
             
             cell.textLabel?.text = "Audio Player"
             cell.textLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
             cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.backgroundColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)
+            cell.accessoryView = UIImageView(image: UIImage (systemName: "arrow.forward"))
+            cell.accessoryView?.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            
+            return cell
+            
+        case 2: let cell = tableView.dequeueReusableCell(withIdentifier: "cellID2", for: indexPath)
+            
+            cell.textLabel?.text = "Video Player"
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+            cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             cell.accessoryView = UIImageView(image: UIImage (systemName: "arrow.forward"))
             cell.accessoryView?.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             
@@ -235,6 +248,9 @@ extension ProfileViewController: UITableViewDelegate {
             tableView.deselectRow(at: indexPath, animated: true)
         case 1:
             viewModel.presentAudioPlayer?()
+            tableView.deselectRow(at: indexPath, animated: true)
+        case 2:
+            viewModel.pushVideoPlayer?()
             tableView.deselectRow(at: indexPath, animated: true)
         default:
             return tableView.deselectRow(at: indexPath, animated: true)

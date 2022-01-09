@@ -18,6 +18,8 @@ class ProfileViewModel {
     }
     var pushPhotos: (() -> Void)?
     var presentAudioPlayer: (() -> Void)?
+    var pushVideoPlayer: (() -> Void)?
+    
     let profileHeaderView = ProfileHeaderView()
     
 }

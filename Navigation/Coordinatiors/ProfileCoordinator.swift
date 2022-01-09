@@ -16,7 +16,7 @@ class ProfileCoordinator: Coordinator {
     var navigationController = UINavigationController()
     var inspectorFactory = MyLoginFactory()
     var moduleFactory = ProfileModuleFactory()
-
+    
     
     func start() {
         
@@ -38,10 +38,10 @@ class ProfileCoordinator: Coordinator {
 
 extension ProfileCoordinator {
     func showProfileVC(userService: UserService, username: String) {
-
+        
         let profileVC = moduleFactory.produceProfileVC(userService: userService, userName: username)
         navigationController.pushViewController(profileVC, animated: true)
-       
+        
         profileVC.viewModel.pushPhotos = { [weak self] in
             self?.showPhotosVC()
         }
@@ -49,6 +49,11 @@ extension ProfileCoordinator {
         profileVC.viewModel.presentAudioPlayer = { [weak self] in
             self?.presentAudioPlayerVC()
         }
+        
+        profileVC.viewModel.pushVideoPlayer = { [weak self] in
+            self?.showVideoPlayerVC()
+        }
+        
     }
     
     func showPhotosVC() {
@@ -60,5 +65,10 @@ extension ProfileCoordinator {
         let audioPlayerVC = AudioPlayerViewController()
         navigationController.present(audioPlayerVC, animated: true, completion: nil)
         
+    }
+    
+    func showVideoPlayerVC() {
+        let videoPlayerVC = VideoViewController()
+        navigationController.present(videoPlayerVC, animated: true, completion: nil)
     }
 }
