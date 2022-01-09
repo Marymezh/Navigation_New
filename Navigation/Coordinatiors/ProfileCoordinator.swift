@@ -69,6 +69,6 @@ extension ProfileCoordinator {
     
     func showVideoPlayerVC() {
         let videoPlayerVC = VideoViewController()
-        navigationController.present(videoPlayerVC, animated: true, completion: nil)
+        navigationController.pushViewController(videoPlayerVC, animated: true)
     }
 }

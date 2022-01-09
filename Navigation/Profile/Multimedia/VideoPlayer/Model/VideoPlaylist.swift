@@ -12,14 +12,14 @@ struct VideoPlaylist{
     
     static let playlist = [
         Video(title: "Radiohead - Creep",
-                          url: "https://www.youtube.com/watch?v=XFkzRNyygfk"),
+                          id: "XFkzRNyygfk"),
         Video(title: "Metallica. The Unforgiven ( I, II, III)",
-                          url: "https://www.youtube.com/watch?v=8mFG41PPj9Q"),
+                          id: "8mFG41PPj9Q"),
         Video(title: "Thirty Seconds To Mars - A Beautiful Lie",
-                          url: "https://www.youtube.com/watch?v=4Kvd-uquuhI"),
+                          id: "4Kvd-uquuhI"),
         Video(title: "Gorillaz - Feel Good Inc. (Official Video)",
-                          url: "https://www.youtube.com/watch?v=HyHNuVaZJ-k"),
+                          id: "HyHNuVaZJ-k"),
         Video(title: "Queen - Bohemian Rhapsody",
-                          url: "https://youtu.be/fJ9rUzIMcZQ")
+                          id: "fJ9rUzIMcZQ")
     ]
 }

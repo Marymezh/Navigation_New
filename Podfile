@@ -8,7 +8,7 @@ target 'Navigation' do
   # Pods for Navigation
   pod 'SnapKit', '~> 5.0.0'
 
-pod 'YouTube-ios-player-helper'
+pod 'YoutubeKit' 
 
 end
 

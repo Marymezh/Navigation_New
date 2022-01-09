@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import AVKit
-import AVFoundation
+import YoutubeKit
 
 
 class VideoViewController: UIViewController {
@@ -16,6 +15,8 @@ class VideoViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     private let videoPlaylist = VideoPlaylist.playlist
+    
+    private var player: YTSwiftyPlayer!
     
     
     override func viewDidLoad() {
@@ -26,6 +27,14 @@ class VideoViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = "Back"
 
         setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
+        navigationItem.title = "Video Player"
+        navigationController?.navigationBar.topItem?.title = "Back"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,7 +58,6 @@ class VideoViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraints)
     }
-
 }
 
 extension VideoViewController: UITableViewDataSource {
@@ -59,15 +67,12 @@ extension VideoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "CellID")
-
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "CellID")
         let track = videoPlaylist[indexPath.row]
 
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = track.title
     
-        
-        
         return cell
     }
     
@@ -80,16 +85,9 @@ extension VideoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let track = videoPlaylist[indexPath.row]
+        let videoID = track.id
+        let playerVC = YouTubePlayerViewController(videoID: videoID)
         
-        let streamURL = URL(string: track.url)!
-        let player = AVPlayer(url: streamURL)
-        
-        let controller = AVPlayerViewController()
-              controller.player = player
-        
-        present(controller, animated: true) {
-                   player.play()
-               }
-
+        navigationController?.present(playerVC, animated: true, completion: nil)
     }
 }

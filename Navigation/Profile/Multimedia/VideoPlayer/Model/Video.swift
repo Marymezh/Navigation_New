@@ -10,5 +10,5 @@ import Foundation
 
 struct Video {
     var title: String
-    var url: String
+    var id: String
 }

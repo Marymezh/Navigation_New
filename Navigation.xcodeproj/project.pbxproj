@@ -37,6 +37,7 @@
 		CE57D63C2789D2D2005FADE6 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57D63B2789D2D2005FADE6 /* Video.swift */; };
 		CE57D6402789D2FE005FADE6 /* VideoPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57D63F2789D2FE005FADE6 /* VideoPlaylist.swift */; };
 		CE57D644278AAE93005FADE6 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57D643278AAE93005FADE6 /* VideoViewController.swift */; };
+		CE57D662278AD5F9005FADE6 /* YouTubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57D661278AD5F9005FADE6 /* YouTubePlayerViewController.swift */; };
 		CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D63E2659E198001C600D /* ProfileViewController.swift */; };
 		CE61D6432659E1A8001C600D /* ProfileHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */; };
 		CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61D66D266628F2001C600D /* LogInViewController.swift */; };
@@ -123,6 +124,7 @@
 		CE57D63B2789D2D2005FADE6 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		CE57D63F2789D2FE005FADE6 /* VideoPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlaylist.swift; sourceTree = "<group>"; };
 		CE57D643278AAE93005FADE6 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		CE57D661278AD5F9005FADE6 /* YouTubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerViewController.swift; sourceTree = "<group>"; };
 		CE61D63E2659E198001C600D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CE61D6422659E1A8001C600D /* ProfileHeaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderVIew.swift; sourceTree = "<group>"; };
 		CE61D66D266628F2001C600D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				CE57D643278AAE93005FADE6 /* VideoViewController.swift */,
+				CE57D661278AD5F9005FADE6 /* YouTubePlayerViewController.swift */,
 				CE57D63A2789D296005FADE6 /* Model */,
 			);
 			path = VideoPlayer;
@@ -584,6 +587,7 @@
 				CE0782132785F892006458C9 /* PlayerControlButton.swift in Sources */,
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
+				CE57D662278AD5F9005FADE6 /* YouTubePlayerViewController.swift in Sources */,
 				CE6C3C8326BF8430006904C6 /* UserService.swift in Sources */,
 				CEAD816926E481F800213B2E /* MyCustomButton.swift in Sources */,
 				CE016E1827883B2700BEA6B5 /* TrackListViewController.swift in Sources */,
