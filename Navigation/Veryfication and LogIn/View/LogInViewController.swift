@@ -80,16 +80,16 @@ class LogInViewController: UIViewController {
     }()
     
     private lazy var logInButton: MyCustomButton = {
-        let button = MyCustomButton(title: "Log in", titleColor: .white, backgroundColor: nil, backgroundImage: #imageLiteral(resourceName: "blue_pixel")) { [self] in
+        let button = MyCustomButton(title: "Log in", titleColor: .white, backgroundColor: nil, backgroundImage: #imageLiteral(resourceName: "blue_pixel")) { [weak self] in
             
             do {
-                try self.performLogin()
+                try self?.performLogin()
             } catch AuthorizationError.empty {
-                self.showAlert(message: "Do not live blank fields!")
+                self?.showAlert(message: "Do not live blank fields!")
             } catch AuthorizationError.incorrect {
-                self.showAlert(message: "User name or password is invalid")
+                self?.showAlert(message: "User name or password is invalid")
             } catch {
-                self.showAlert(message: "Unexpected error")
+                self?.showAlert(message: "Unexpected error")
             }
         }
         
