@@ -12,15 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
-//    var appConfiguration: AppConfiguration?
-    
-    // ДЗ 4.1 - инициализируем инспектора
-    
-//    var inspector = LoginInspector()
-    
-    // ДЗ 4.2 - инициализируем фабрику
-    
-//    var inspectorFactory = MyLoginFactory()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -29,8 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.appCoordinator = AppCoordinator(window)
 
         appCoordinator?.start()
-        
-//        appConfiguration = AppConfiguration.allCases.randomElement()
 
     }
     
