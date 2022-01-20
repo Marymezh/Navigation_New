@@ -11,8 +11,15 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var appConfiguration: AppConfiguration?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+        appConfiguration = AppConfiguration.allCases.randomElement()
+        let urlString = String(appConfiguration?.rawValue ?? "")
         
+        NetworkService.performRequest(with: urlString)
+        print("Downloading data from: \(urlString)")
         return true
     }
 

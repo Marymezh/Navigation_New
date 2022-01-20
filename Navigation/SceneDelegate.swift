@@ -12,6 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
+//    var appConfiguration: AppConfiguration?
     
     // ДЗ 4.1 - инициализируем инспектора
     
@@ -28,7 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.appCoordinator = AppCoordinator(window)
 
         appCoordinator?.start()
+        
+//        appConfiguration = AppConfiguration.allCases.randomElement()
 
     }
+    
+    
+    
+    
+    
 }
 

@@ -62,6 +62,8 @@
 		CED6AA512796E63C000C7AFB /* radiohead-creep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CED6AA4C2796E63A000C7AFB /* radiohead-creep.mp3 */; };
 		CED6AA522796E63C000C7AFB /* archive-bullets.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CED6AA4D2796E63C000C7AFB /* archive-bullets.mp3 */; };
 		CED6AA5B279922CD000C7AFB /* the-doors-riders-on-the-storm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CED6AA5A279922CD000C7AFB /* the-doors-riders-on-the-storm.mp3 */; };
+		CED6AA6227995117000C7AFB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AA6127995117000C7AFB /* NetworkService.swift */; };
+		CED6AA6A2799529E000C7AFB /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AA692799529E000C7AFB /* AppConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,8 @@
 		CED6AA4C2796E63A000C7AFB /* radiohead-creep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radiohead-creep.mp3"; sourceTree = "<group>"; };
 		CED6AA4D2796E63C000C7AFB /* archive-bullets.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "archive-bullets.mp3"; sourceTree = "<group>"; };
 		CED6AA5A279922CD000C7AFB /* the-doors-riders-on-the-storm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "the-doors-riders-on-the-storm.mp3"; path = "Navigation/Multimedia/AudioPlayer/Tracks/the-doors-riders-on-the-storm.mp3"; sourceTree = SOURCE_ROOT; };
+		CED6AA6127995117000C7AFB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CED6AA692799529E000C7AFB /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 		060782B0250CE27700A87020 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CED6AA60279950D7000C7AFB /* Network Service */,
 				CE3665A92701A27700F881D2 /* Coordinatiors */,
 				CE3665A72701A20B00F881D2 /* Feed */,
 				CEBF670F26CE593C00E74042 /* Veryfication and LogIn */,
@@ -410,6 +415,15 @@
 			path = "Veryfication and LogIn";
 			sourceTree = "<group>";
 		};
+		CED6AA60279950D7000C7AFB /* Network Service */ = {
+			isa = PBXGroup;
+			children = (
+				CED6AA6127995117000C7AFB /* NetworkService.swift */,
+				CED6AA692799529E000C7AFB /* AppConfiguration.swift */,
+			);
+			path = "Network Service";
+			sourceTree = "<group>";
+		};
 		F59097AF81477DB4F2FC6ECC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +620,7 @@
 				CE57D63C2789D2D2005FADE6 /* Video.swift in Sources */,
 				CE349EAE26EB695E001319F5 /* MyCustomTextfield.swift in Sources */,
 				CE61D67E26687C22001C600D /* PostVK.swift in Sources */,
+				CED6AA6227995117000C7AFB /* NetworkService.swift in Sources */,
 				CE6C3C8A26C4014D006904C6 /* TestUserService.swift in Sources */,
 				CE3665AE2701A2B800F881D2 /* FeedCoordinator.swift in Sources */,
 				CE3665B62701D03A00F881D2 /* Coordinator.swift in Sources */,
@@ -619,6 +634,7 @@
 				CE7D95CE26D4C3E000736DBA /* LoginFactory.swift in Sources */,
 				CE61D6CC266F4B61001C600D /* PhotoStorage.swift in Sources */,
 				CE61D6BF266F14CA001C600D /* PhotosTableViewCell.swift in Sources */,
+				CED6AA6A2799529E000C7AFB /* AppConfiguration.swift in Sources */,
 				CE61D688266898F4001C600D /* PostTableViewCell.swift in Sources */,
 				CE61D6C5266F1E46001C600D /* PhotosCollectionViewCell.swift in Sources */,
 				CE3DCB6B2764D12300233706 /* ExtensionsUIView.swift in Sources */,
