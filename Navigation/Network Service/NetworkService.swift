@@ -8,8 +8,16 @@
 
 import Foundation
 
+protocol  NetworkServiceDelegate {
+    func didUpdateTitleText(_ service: NetworkService, title: String)
+    
+    func didFailWithError(error: Error)
+}
+
 
 struct NetworkService {
+    
+    var delegate: NetworkServiceDelegate?
     
     static func performRequest (with urlString: String) {
         
@@ -51,7 +59,7 @@ struct NetworkService {
 
                 guard let list = serializeJSON(data: safeData) else { return }
                 let random = list.randomElement()
-                print (random?.title ?? "")
+                self.delegate?.didUpdateTitleText(self, title: random?.title ?? "")
 
             } else {
                 print("Error with fetching data")

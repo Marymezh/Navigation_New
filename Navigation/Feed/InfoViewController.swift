@@ -10,8 +10,9 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-   private let urlString = "https://jsonplaceholder.typicode.com/todos/"
-private let networkService = NetworkService()
+    private let urlString = "https://jsonplaceholder.typicode.com/todos/"
+    
+    private var networkService = NetworkService()
     
     private lazy var removeButton: MyCustomButton = {
         let button = MyCustomButton(title: "Remove Post", titleColor: .white, backgroundColor: .black, backgroundImage: nil) {
@@ -33,6 +34,8 @@ private let networkService = NetworkService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        networkService.delegate = self
         setupUI()
         networkService.performNewRequest(with: urlString)
         
@@ -67,30 +70,17 @@ private let networkService = NetworkService()
         self.present(alertController, animated: true, completion: nil)
     }
     
-//    private func fetchData() {
-//        let urlString = "https://jsonplaceholder.typicode.com/todos/"
-//        guard let url = URL(string: urlString) else  { return }
-//        let dataTask = NetworkService.performNewRequest1(with: url) { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .failure(let error):
-//                print("NetworkService failure: \(error.localizedDescription)")
-//            case .success(let (_, data)):
-//                do {
-//                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-//                        let todolist = TodosModel(id: json["id"], userId: json["userID"], title: json["title"], completed: json["completed"]) {
-//                            DispatchQueue.main.async {
-//                                self.titleLabel.text = todolist.title
-//                            }
-//                        }
-//                    } else {
-//                        print("JSON data has unknown format")
-//                    }
-//                } catch {
-//                    print("Data parsing failed")
-//                }
-//            }
-//        }
-//        dataTask.resume()
-//    }
+}
+
+extension InfoViewController: NetworkServiceDelegate {
+    func didUpdateTitleText(_ service: NetworkService, title: String) {
+        DispatchQueue.main.async {
+            self.titleLabel.text = title
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+ 
 }
