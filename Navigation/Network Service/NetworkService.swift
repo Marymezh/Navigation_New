@@ -21,8 +21,8 @@ struct NetworkService {
             if let error = error {
                 print (error.localizedDescription)
                 
-// In case of wifi connection switched off, message in debug console is:
-// Error Domain=NSURLErrorDomain Code=-1009 "The Internet connection appears to be offline."
+                // In case of wifi connection switched off, message in debug console is:
+                // Error Domain=NSURLErrorDomain Code=-1009 "The Internet connection appears to be offline."
                 return
             }
             if let safeData = data, let urlResponse = response as? HTTPURLResponse {
@@ -35,4 +35,54 @@ struct NetworkService {
         
         task.resume()
     }
+    
+     func performNewRequest (with urlString: String) {
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        let session = URLSession(configuration: .default)
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print (error.localizedDescription)
+                return
+            }
+            if let safeData = data {
+
+                guard let list = serializeJSON(data: safeData) else { return }
+                let random = list.randomElement()
+                print (random?.title ?? "")
+
+            } else {
+                print("Error with fetching data")
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
+    func serializeJSON (data: Data) -> [TodoListModel]? {
+        
+        var dictionary: [[String: Any]]
+        do {
+            guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else {
+                print ("Downcasting error")
+                return nil
+            }
+            dictionary = dict
+        } catch {
+            print ("JSON Parsing error")
+            return nil
+        }
+        
+        var returnArray: [TodoListModel] = []
+        for list in dictionary {
+            returnArray.append(TodoListModel(from: list))
+        }
+        
+        return returnArray
+        
+    }
+    
 }

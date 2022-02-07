@@ -10,6 +10,9 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+   private let urlString = "https://jsonplaceholder.typicode.com/todos/"
+private let networkService = NetworkService()
+    
     private lazy var removeButton: MyCustomButton = {
         let button = MyCustomButton(title: "Remove Post", titleColor: .white, backgroundColor: .black, backgroundImage: nil) {
             self.showAlert()
@@ -17,14 +20,37 @@ class InfoViewController: UIViewController {
         return button
     }()
     
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .systemGray
+        label.toAutoLayout()
+        
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        networkService.performNewRequest(with: urlString)
+        
+        print("decoding from: \(urlString)")
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .yellow
-        view.addSubview(removeButton)
+        view.addSubviews(removeButton, titleLabel)
         
         removeButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(100)
             make.center.equalToSuperview()
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(100)
+            make.top.equalToSuperview().inset(100)
         }
     }
     
@@ -40,4 +66,31 @@ class InfoViewController: UIViewController {
         alertController.addAction(deleteAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+//    private func fetchData() {
+//        let urlString = "https://jsonplaceholder.typicode.com/todos/"
+//        guard let url = URL(string: urlString) else  { return }
+//        let dataTask = NetworkService.performNewRequest1(with: url) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .failure(let error):
+//                print("NetworkService failure: \(error.localizedDescription)")
+//            case .success(let (_, data)):
+//                do {
+//                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+//                        let todolist = TodosModel(id: json["id"], userId: json["userID"], title: json["title"], completed: json["completed"]) {
+//                            DispatchQueue.main.async {
+//                                self.titleLabel.text = todolist.title
+//                            }
+//                        }
+//                    } else {
+//                        print("JSON data has unknown format")
+//                    }
+//                } catch {
+//                    print("Data parsing failed")
+//                }
+//            }
+//        }
+//        dataTask.resume()
+//    }
 }

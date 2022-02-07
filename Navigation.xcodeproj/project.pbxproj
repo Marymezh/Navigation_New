@@ -15,6 +15,7 @@
 		060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C7250CEE5D00A87020 /* PostViewController.swift */; };
 		A28B72ED4C075CFB7B00E180 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E1E6FF3398466E17BB9C2E /* Pods_Navigation.framework */; };
 		CE016E1827883B2700BEA6B5 /* TrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE016E1727883B2700BEA6B5 /* TrackListViewController.swift */; };
+		CE029E4527A92578007BC2B5 /* TodoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE029E4427A92578007BC2B5 /* TodoListModel.swift */; };
 		CE0781F82785981B006458C9 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */; };
 		CE0781FD2785AA4C006458C9 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781FC2785AA4C006458C9 /* Track.swift */; };
 		CE0782002785AAAD006458C9 /* TrackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781FF2785AAAD006458C9 /* TrackList.swift */; };
@@ -104,6 +105,7 @@
 		2368FFBD724AA02CB3211D65 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		BBE58E8498048C6FF40ECC0A /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		CE016E1727883B2700BEA6B5 /* TrackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewController.swift; sourceTree = "<group>"; };
+		CE029E4427A92578007BC2B5 /* TodoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListModel.swift; sourceTree = "<group>"; };
 		CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 		CE0781FC2785AA4C006458C9 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		CE0781FF2785AAAD006458C9 /* TrackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackList.swift; sourceTree = "<group>"; };
@@ -198,8 +200,8 @@
 		060782B0250CE27700A87020 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CE3665A92701A27700F881D2 /* Coordinators */,
 				CED6AA60279950D7000C7AFB /* Network Service */,
-				CE3665A92701A27700F881D2 /* Coordinatiors */,
 				CE3665A72701A20B00F881D2 /* Feed */,
 				CEBF670F26CE593C00E74042 /* Veryfication and LogIn */,
 				CE61D63D2659E186001C600D /* Profile */,
@@ -221,6 +223,13 @@
 				2368FFBD724AA02CB3211D65 /* Pods-Navigation.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE029E4327A9254F007BC2B5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CE0781F6278597BB006458C9 /* Multimedia */ = {
@@ -267,6 +276,7 @@
 		CE3665A72701A20B00F881D2 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				CE029E4327A9254F007BC2B5 /* Models */,
 				060782B5250CE27700A87020 /* FeedViewController.swift */,
 				060782C7250CEE5D00A87020 /* PostViewController.swift */,
 				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
@@ -274,7 +284,7 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		CE3665A92701A27700F881D2 /* Coordinatiors */ = {
+		CE3665A92701A27700F881D2 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				CE3665AA2701A28D00F881D2 /* AppCoordinator.swift */,
@@ -282,7 +292,7 @@
 				CE3665B02701A2CD00F881D2 /* ProfileCoordinator.swift */,
 				CE3665B52701D03A00F881D2 /* Coordinator.swift */,
 			);
-			path = Coordinatiors;
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		CE3665E3271BDF3F00F881D2 /* ViewModel */ = {
@@ -418,8 +428,9 @@
 		CED6AA60279950D7000C7AFB /* Network Service */ = {
 			isa = PBXGroup;
 			children = (
-				CED6AA6127995117000C7AFB /* NetworkService.swift */,
 				CED6AA692799529E000C7AFB /* AppConfiguration.swift */,
+				CED6AA6127995117000C7AFB /* NetworkService.swift */,
+				CE029E4427A92578007BC2B5 /* TodoListModel.swift */,
 			);
 			path = "Network Service";
 			sourceTree = "<group>";
@@ -611,6 +622,7 @@
 				CE6C3C8626BF862E006904C6 /* CurrentUserService.swift in Sources */,
 				CE0781F82785981B006458C9 /* AudioPlayerViewController.swift in Sources */,
 				CE61D66E266628F2001C600D /* LogInViewController.swift in Sources */,
+				CE029E4527A92578007BC2B5 /* TodoListModel.swift in Sources */,
 				CE3665AB2701A28D00F881D2 /* AppCoordinator.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				CE0782002785AAAD006458C9 /* TrackList.swift in Sources */,
