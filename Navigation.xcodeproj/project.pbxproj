@@ -16,6 +16,8 @@
 		A28B72ED4C075CFB7B00E180 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E1E6FF3398466E17BB9C2E /* Pods_Navigation.framework */; };
 		CE016E1827883B2700BEA6B5 /* TrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE016E1727883B2700BEA6B5 /* TrackListViewController.swift */; };
 		CE029E4527A92578007BC2B5 /* TodoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE029E4427A92578007BC2B5 /* TodoListModel.swift */; };
+		CE029E5427B29126007BC2B5 /* PlanetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE029E5327B29125007BC2B5 /* PlanetData.swift */; };
+		CE029E5827B29E82007BC2B5 /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE029E5727B29E82007BC2B5 /* PlanetModel.swift */; };
 		CE0781F82785981B006458C9 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */; };
 		CE0781FD2785AA4C006458C9 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781FC2785AA4C006458C9 /* Track.swift */; };
 		CE0782002785AAAD006458C9 /* TrackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781FF2785AAAD006458C9 /* TrackList.swift */; };
@@ -106,6 +108,8 @@
 		BBE58E8498048C6FF40ECC0A /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		CE016E1727883B2700BEA6B5 /* TrackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewController.swift; sourceTree = "<group>"; };
 		CE029E4427A92578007BC2B5 /* TodoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListModel.swift; sourceTree = "<group>"; };
+		CE029E5327B29125007BC2B5 /* PlanetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetData.swift; sourceTree = "<group>"; };
+		CE029E5727B29E82007BC2B5 /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
 		CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 		CE0781FC2785AA4C006458C9 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		CE0781FF2785AAAD006458C9 /* TrackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackList.swift; sourceTree = "<group>"; };
@@ -228,6 +232,9 @@
 		CE029E4327A9254F007BC2B5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE029E4427A92578007BC2B5 /* TodoListModel.swift */,
+				CE029E5327B29125007BC2B5 /* PlanetData.swift */,
+				CE029E5727B29E82007BC2B5 /* PlanetModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,7 +283,6 @@
 		CE3665A72701A20B00F881D2 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				CE029E4327A9254F007BC2B5 /* Models */,
 				060782B5250CE27700A87020 /* FeedViewController.swift */,
 				060782C7250CEE5D00A87020 /* PostViewController.swift */,
 				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
@@ -430,7 +436,7 @@
 			children = (
 				CED6AA692799529E000C7AFB /* AppConfiguration.swift */,
 				CED6AA6127995117000C7AFB /* NetworkService.swift */,
-				CE029E4427A92578007BC2B5 /* TodoListModel.swift */,
+				CE029E4327A9254F007BC2B5 /* Models */,
 			);
 			path = "Network Service";
 			sourceTree = "<group>";
@@ -626,6 +632,7 @@
 				CE3665AB2701A28D00F881D2 /* AppCoordinator.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				CE0782002785AAAD006458C9 /* TrackList.swift in Sources */,
+				CE029E5827B29E82007BC2B5 /* PlanetModel.swift in Sources */,
 				CE349EB126EC771B001319F5 /* CheckTextField.swift in Sources */,
 				CE3DCB5F275DD52400233706 /* PostStorage.swift in Sources */,
 				CE57D6402789D2FE005FADE6 /* VideoPlaylist.swift in Sources */,
@@ -640,6 +647,7 @@
 				CE3665FC272FB7C800F881D2 /* ProfileModuleFactory.swift in Sources */,
 				CE61D6EC26720FA2001C600D /* ProfileTableHeaderVIew.swift in Sources */,
 				CE6C3C8026BF81D6006904C6 /* User.swift in Sources */,
+				CE029E5427B29126007BC2B5 /* PlanetData.swift in Sources */,
 				CE61D63F2659E198001C600D /* ProfileViewController.swift in Sources */,
 				CE0781FD2785AA4C006458C9 /* Track.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,

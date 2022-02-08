@@ -10,10 +10,9 @@ import Foundation
 
 protocol  NetworkServiceDelegate {
     func didUpdateTitleText(_ service: NetworkService, title: String)
-    
+    func didUpdatePlanetInfo(_ service: NetworkService,_ info: PlanetModel)
     func didFailWithError(error: Error)
 }
-
 
 struct NetworkService {
     
@@ -22,9 +21,7 @@ struct NetworkService {
     static func performRequest (with urlString: String) {
         
         guard let url = URL(string: urlString) else { return }
-        
         let session = URLSession(configuration: .default)
-        
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print (error.localizedDescription)
@@ -44,23 +41,19 @@ struct NetworkService {
         task.resume()
     }
     
-     func performNewRequest (with urlString: String) {
+    func performToDoRequest (with urlString: String) {
         
         guard let url = URL(string: urlString) else { return }
-        
         let session = URLSession(configuration: .default)
-        
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                print (error.localizedDescription)
+                self.delegate?.didFailWithError(error: error)
                 return
             }
             if let safeData = data {
-
                 guard let list = serializeJSON(data: safeData) else { return }
                 let random = list.randomElement()
                 self.delegate?.didUpdateTitleText(self, title: random?.title ?? "")
-
             } else {
                 print("Error with fetching data")
             }
@@ -68,7 +61,6 @@ struct NetworkService {
         
         task.resume()
     }
-    
     
     func serializeJSON (data: Data) -> [TodoListModel]? {
         
@@ -80,17 +72,54 @@ struct NetworkService {
             }
             dictionary = dict
         } catch {
-            print ("JSON Parsing error")
+            delegate?.didFailWithError(error: error)
             return nil
         }
-        
         var returnArray: [TodoListModel] = []
         for list in dictionary {
             returnArray.append(TodoListModel(from: list))
         }
         
         return returnArray
-        
     }
     
+    func performPlanetInfoRequest(with urlString: String) {
+        
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                self.delegate?.didFailWithError(error: error)
+                return
+            }
+            if let safeData = data {
+                guard let info = parseJSON(safeData) else { return }
+                self.delegate?.didUpdatePlanetInfo(self, info)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func parseJSON(_ planetInfoData: Data) -> PlanetModel? {
+        do {
+            let decoder = JSONDecoder()
+            let decodedData = try decoder.decode(PlanetData.self, from: planetInfoData)
+            
+            let name = decodedData.name
+            let rotationP = decodedData.rotationPeriod
+            let orbitalP = decodedData.orbitalPeriod
+            let diameter = decodedData.diameter
+            let climate = decodedData.climate
+            let gravity = decodedData.gravity
+            let terrain = decodedData.terrain
+            
+            let planetInfo = PlanetModel(name: name, rotationPeriod: rotationP, orbitalPeriod: orbitalP, diameter: diameter, climate: climate, gravity: gravity, terrain: terrain)
+            return planetInfo
+            
+        } catch {
+            delegate?.didFailWithError(error: error)
+            return nil
+        }
+    }
 }

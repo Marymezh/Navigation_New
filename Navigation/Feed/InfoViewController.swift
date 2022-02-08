@@ -10,7 +10,8 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    private let urlString = "https://jsonplaceholder.typicode.com/todos/"
+    private let toDoUrlString = "https://jsonplaceholder.typicode.com/todos/"
+    private let planetUrlString = "https://swapi.dev/api/planets/1"
     
     private var networkService = NetworkService()
     
@@ -26,9 +27,28 @@ class InfoViewController: UIViewController {
         label.font = .systemFont(ofSize: 22, weight: .bold)
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.textColor = .systemGray
+        label.textColor = .black
         label.toAutoLayout()
-        
+        return label
+    }()
+    
+    private var planetNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .black
+        label.toAutoLayout()
+        return label
+    }()
+    
+    private var planetInfoLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .black
+        label.toAutoLayout()
         return label
     }()
     
@@ -37,14 +57,13 @@ class InfoViewController: UIViewController {
         
         networkService.delegate = self
         setupUI()
-        networkService.performNewRequest(with: urlString)
-        
-        print("decoding from: \(urlString)")
+        networkService.performToDoRequest(with: toDoUrlString)
+        networkService.performPlanetInfoRequest(with: planetUrlString)
     }
     
     private func setupUI() {
         view.backgroundColor = .yellow
-        view.addSubviews(removeButton, titleLabel)
+        view.addSubviews(removeButton, titleLabel, planetNameLabel, planetInfoLabel)
         
         removeButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(100)
@@ -52,8 +71,18 @@ class InfoViewController: UIViewController {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(100)
+            make.leading.trailing.equalToSuperview().inset(50)
             make.top.equalToSuperview().inset(100)
+        }
+        
+        planetNameLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(50)
+            make.top.equalTo(titleLabel).inset(100)
+        }
+        
+        planetInfoLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(50)
+            make.top.equalTo(planetNameLabel).inset(50)
         }
     }
     
@@ -79,8 +108,15 @@ extension InfoViewController: NetworkServiceDelegate {
         }
     }
     
+    func didUpdatePlanetInfo(_ service: NetworkService, _ info: PlanetModel) {
+        DispatchQueue.main.async {
+            self.planetNameLabel.text = "Planet name: \(info.name)"
+            self.planetInfoLabel.text = "The period of revolution of the planet \(info.name) around its star is \(info.orbitalPeriod) days"
+        }
+    }
+    
     func didFailWithError(error: Error) {
-        print(error)
+        print(error.localizedDescription)
     }
  
 }
