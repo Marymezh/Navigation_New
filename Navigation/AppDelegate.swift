@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NetworkService.performRequest(with: urlString)
         print("Downloading data from: \(urlString)")
+        
+        FirebaseApp.configure()
+        
         return true
     }
 

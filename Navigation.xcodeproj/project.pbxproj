@@ -18,6 +18,8 @@
 		CE029E4527A92578007BC2B5 /* TodoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE029E4427A92578007BC2B5 /* TodoListModel.swift */; };
 		CE029E5427B29126007BC2B5 /* PlanetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE029E5327B29125007BC2B5 /* PlanetData.swift */; };
 		CE029E5827B29E82007BC2B5 /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE029E5727B29E82007BC2B5 /* PlanetModel.swift */; };
+		CE029E8B27C37D35007BC2B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE029E8A27C37D35007BC2B5 /* GoogleService-Info.plist */; };
+		CE029E8F27C381CB007BC2B5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE029E8E27C381CB007BC2B5 /* FirebaseAuth */; };
 		CE0781F82785981B006458C9 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */; };
 		CE0781FD2785AA4C006458C9 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781FC2785AA4C006458C9 /* Track.swift */; };
 		CE0782002785AAAD006458C9 /* TrackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0781FF2785AAAD006458C9 /* TrackList.swift */; };
@@ -110,6 +112,7 @@
 		CE029E4427A92578007BC2B5 /* TodoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListModel.swift; sourceTree = "<group>"; };
 		CE029E5327B29125007BC2B5 /* PlanetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetData.swift; sourceTree = "<group>"; };
 		CE029E5727B29E82007BC2B5 /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
+		CE029E8A27C37D35007BC2B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE0781F72785981B006458C9 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 		CE0781FC2785AA4C006458C9 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		CE0781FF2785AAAD006458C9 /* TrackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackList.swift; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 				CE6C3C7726B8D967006904C6 /* iOSIntPackage in Frameworks */,
 				CE6C3C5C26B2DC10006904C6 /* StorageService.framework in Frameworks */,
 				A28B72ED4C075CFB7B00E180 /* Pods_Navigation.framework in Frameworks */,
+				CE029E8F27C381CB007BC2B5 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +218,7 @@
 				CE61D6CF266F6D6A001C600D /* Models */,
 				060782BA250CE27A00A87020 /* Assets.xcassets */,
 				060782BF250CE27A00A87020 /* Info.plist */,
+				CE029E8A27C37D35007BC2B5 /* GoogleService-Info.plist */,
 				060782B3250CE27700A87020 /* SceneDelegate.swift */,
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 			);
@@ -482,6 +487,7 @@
 			name = Navigation;
 			packageProductDependencies = (
 				CE6C3C7626B8D967006904C6 /* iOSIntPackage */,
+				CE029E8E27C381CB007BC2B5 /* FirebaseAuth */,
 			);
 			productName = Navigation;
 			productReference = 060782AE250CE27700A87020 /* Navigation.app */;
@@ -534,6 +540,7 @@
 			mainGroup = 060782A5250CE27700A87020;
 			packageReferences = (
 				CE6C3C7526B8D967006904C6 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				CE029E8D27C381CB007BC2B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 060782AF250CE27700A87020 /* Products */;
 			projectDirPath = "";
@@ -556,6 +563,7 @@
 				CED6AA5B279922CD000C7AFB /* the-doors-riders-on-the-storm.mp3 in Resources */,
 				CED6AA502796E63C000C7AFB /* pink-floyd-hey-you.mp3 in Resources */,
 				CED6AA522796E63C000C7AFB /* archive-bullets.mp3 in Resources */,
+				CE029E8B27C37D35007BC2B5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,7 +822,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.artemnovichkov.Navigation;
+				PRODUCT_BUNDLE_IDENTIFIER = marymezh.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -834,7 +842,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.artemnovichkov.Navigation;
+				PRODUCT_BUNDLE_IDENTIFIER = marymezh.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -928,6 +936,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE029E8D27C381CB007BC2B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.12.1;
+			};
+		};
 		CE6C3C7526B8D967006904C6 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
@@ -939,6 +955,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE029E8E27C381CB007BC2B5 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE029E8D27C381CB007BC2B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		CE6C3C7626B8D967006904C6 /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE6C3C7526B8D967006904C6 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
