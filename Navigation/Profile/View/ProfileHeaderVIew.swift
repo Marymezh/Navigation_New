@@ -11,6 +11,8 @@ import SnapKit
 
 class ProfileHeaderView: UIView {
     
+    var logoutHandler: (() -> Void)?
+    
     let userPicture: UIImageView =  {
         let image = UIImageView(image: #imageLiteral(resourceName: "mysterious-cat"))
         image.layer.borderWidth = 3.0
@@ -75,6 +77,17 @@ class ProfileHeaderView: UIView {
     }()
         
     private var statusText = String()
+    
+    private lazy var logoutButton: MyCustomButton = {
+        let button = MyCustomButton(title: "Log out", titleColor: .white, backgroundColor: .systemBlue, backgroundImage: nil) { [self] in
+            self.logoutHandler?()
+        }
+        #if DEBUG
+        button.isHidden = true
+        #endif
+        return button
+    }()
+
 
     @available(*, unavailable)
      required init?(coder: NSCoder) {
@@ -84,7 +97,7 @@ class ProfileHeaderView: UIView {
      override init(frame: CGRect) {
          super.init(frame: frame)
         
-        self.addSubviews(userPicture, userName, userStatus, setStatus, statusButton)
+        self.addSubviews(userPicture, userName, userStatus, setStatus, statusButton, logoutButton)
         self.addSubview(profileAnimationView)
         
         self.bringSubviewToFront(userPicture)
@@ -123,6 +136,13 @@ class ProfileHeaderView: UIView {
         
         profileAnimationView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        logoutButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(baseInset)
+            make.trailing.equalToSuperview().inset(baseInset)
+            make.height.equalTo(40)
+            make.width.equalTo(70)
         }
     }
     

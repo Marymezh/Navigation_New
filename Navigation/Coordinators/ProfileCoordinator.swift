@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class ProfileCoordinator: Coordinator {
     
@@ -82,6 +83,10 @@ extension ProfileCoordinator {
         profileVC.viewModel.pushVideoPlayer = { [weak self] in
             self?.showVideoPlayerVC()
         }
+        
+        profileVC.viewModel.profileHeaderView.logoutHandler = { [weak self] in
+            self?.logout()
+        }
     }
     #endif
     
@@ -100,5 +105,14 @@ extension ProfileCoordinator {
     func showVideoPlayerVC() {
         let videoPlayerVC = VideoViewController()
         navigationController.pushViewController(videoPlayerVC, animated: true)
+    }
+    
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            navigationController.popToRootViewController(animated: true)
+        } catch let signOutError as NSError {
+            print(signOutError.localizedDescription)
+        }
     }
 }
