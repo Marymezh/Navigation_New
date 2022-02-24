@@ -9,9 +9,16 @@
 import Foundation
 
 class ProfileModuleFactory{
+    #if DEBUG
     func produceProfileVC(userService: UserService, userName: String) -> ProfileViewController {
         return ProfileViewController(userService: userService, userName: userName)
     }
+    #else
+    func produceProfileVC() -> ProfileViewController {
+        return ProfileViewController()
+    }
+    #endif
+    
     
     func produceProfileViewModel() -> ProfileViewModel {
         return ProfileViewModel()

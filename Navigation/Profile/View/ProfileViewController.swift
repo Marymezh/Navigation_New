@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
         factory.produceProfileViewModel()
     }()
     
+    #if DEBUG
     private let userService: UserService
     private let userName: String
     
@@ -29,6 +30,7 @@ class ProfileViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    #endif
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +39,11 @@ class ProfileViewController: UIViewController {
         setUpTableView()
         setUpAnimationViews()
         
+        #if DEBUG
         if let user = try? userService.returnUser(userName: userName) {
             viewModel.profileHeaderView.configureUser(user: user)
         }
+        #endif
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(tap))
         

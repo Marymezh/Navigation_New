@@ -24,10 +24,17 @@ class ProfileCoordinator: Coordinator {
     
     func startPush() -> UINavigationController {
         let loginVC = LogInViewController()
+        
+        #if DEBUG
         loginVC.loginFactory = inspectorFactory
         loginVC.pushProfile = { [weak self] userService, username in
             self?.showProfileVC(userService: userService, username: username)
         }
+        #else
+        loginVC.pushProfile = { [weak self] in
+            self?.showProfileVC()
+        }
+        #endif
         
         navigationController.setViewControllers([loginVC], animated: false)
         
@@ -37,6 +44,9 @@ class ProfileCoordinator: Coordinator {
 }
 
 extension ProfileCoordinator {
+    
+    #if DEBUG
+   
     func showProfileVC(userService: UserService, username: String) {
         
         let profileVC = moduleFactory.produceProfileVC(userService: userService, userName: username)
@@ -53,8 +63,28 @@ extension ProfileCoordinator {
         profileVC.viewModel.pushVideoPlayer = { [weak self] in
             self?.showVideoPlayerVC()
         }
-        
     }
+    
+    #else
+    func showProfileVC() {
+        
+        let profileVC = moduleFactory.produceProfileVC()
+        navigationController.pushViewController(profileVC, animated: true)
+        
+        profileVC.viewModel.pushPhotos = { [weak self] in
+            self?.showPhotosVC()
+        }
+        
+        profileVC.viewModel.presentAudioPlayer = { [weak self] in
+            self?.presentAudioPlayerVC()
+        }
+        
+        profileVC.viewModel.pushVideoPlayer = { [weak self] in
+            self?.showVideoPlayerVC()
+        }
+    }
+    #endif
+    
     
     func showPhotosVC() {
         let photosVC = PhotosViewController()

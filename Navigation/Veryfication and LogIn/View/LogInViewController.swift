@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum AuthorizationError: Error {
     case empty
@@ -16,7 +17,12 @@ enum AuthorizationError: Error {
 class LogInViewController: UIViewController {
     
     var loginFactory: MyLoginFactory?
+    
+    #if DEBUG
     var pushProfile: ((_ userService: UserService, _ username: String) -> Void)?
+    #else
+    var pushProfile: (()-> Void)?
+    #endif
     
     private let scrollView = UIScrollView()
     
@@ -56,7 +62,11 @@ class LogInViewController: UIViewController {
         textField.autocapitalizationType = .none
         textField.backgroundColor = .systemGray6
         textField.clipsToBounds = true
+        #if DEBUG
         textField.placeholder = "User Name"
+        #else
+        textField.placeholder = "Email"
+        #endif
         textField.returnKeyType = UIReturnKeyType.done
         textField.toAutoLayout()
         return textField
@@ -81,15 +91,15 @@ class LogInViewController: UIViewController {
     
     private lazy var logInButton: MyCustomButton = {
         let button = MyCustomButton(title: "Log in", titleColor: .white, backgroundColor: nil, backgroundImage: #imageLiteral(resourceName: "blue_pixel")) { [weak self] in
-            
+            guard let self = self else { return }
             do {
-                try self?.performLogin()
+                try self.performLogin()
             } catch AuthorizationError.empty {
-                self?.showAlert(message: "Do not live blank fields!")
+                self.showAlert(message: "Do not live blank fields!")
             } catch AuthorizationError.incorrect {
-                self?.showAlert(message: "User name or password is invalid")
+                self.showAlert(message: "User name or password is invalid")
             } catch {
-                self?.showAlert(message: "Unexpected error")
+                self.showAlert(message: "Unexpected error")
             }
         }
         
@@ -102,10 +112,7 @@ class LogInViewController: UIViewController {
         
         #if DEBUG
         let userService = TestUserService()
-        #else
-        let userService = CurrentUserService()
-        #endif
-        
+ //       let userService = CurrentUserService()
         guard usernameTextField.text != "" || passwordTextField.text != "" else {
             throw AuthorizationError.empty
         }
@@ -116,12 +123,47 @@ class LogInViewController: UIViewController {
             throw AuthorizationError.incorrect
         }
         pushProfile?(userService, username)
+        
+        #else
+        guard usernameTextField.text != "" || passwordTextField.text != "" else {
+            throw AuthorizationError.empty
+        }
+        if let email = usernameTextField.text,
+           let password = passwordTextField.text {
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+                guard let self = self else { return }
+                if let error = error {
+                    self.showNewUserAlert(error: error, email: email, password: password)
+                } else {
+                    self.pushProfile?()
+                }
+            }
+        }
+        #endif
     }
     
     private func showAlert(message: String) {
         let alertController = UIAlertController(title: "ERROR", message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Chancel", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showNewUserAlert(error: Error, email: String, password: String) {
+        let alertController = UIAlertController(title: "WARNING", message: "The user does not exist! Want to try again or create a new user?", preferredStyle: .alert)
+        let retryAction = UIAlertAction(title: "RETRY", style: .destructive, handler: nil)
+        alertController.addAction(retryAction)
+        let createAction = UIAlertAction(title: "CREATE NEW USER", style: .default) { _ in
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+                guard let self = self else { return }
+                if let error = error {
+                    self.showAlert(message: "Failed to create new user \(error.localizedDescription)")
+                } else {
+                    self.pushProfile?()
+                }
+            }
+        }
+        alertController.addAction(createAction)
         self.present(alertController, animated: true, completion: nil)
     }
     
