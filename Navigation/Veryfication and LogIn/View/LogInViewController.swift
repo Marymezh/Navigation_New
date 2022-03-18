@@ -141,14 +141,15 @@ class LogInViewController: UIViewController {
         }
         #endif
     }
-    
+   
     private func showAlert(message: String) {
         let alertController = UIAlertController(title: "ERROR", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
+    #if DEBUG
+    #else
     private func showNewUserAlert(error: Error, email: String, password: String) {
         let alertController = UIAlertController(title: "WARNING", message: "The user does not exist! Want to try again or create a new user?", preferredStyle: .alert)
         let retryAction = UIAlertAction(title: "RETRY", style: .destructive, handler: nil)
@@ -157,7 +158,7 @@ class LogInViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
                 guard let self = self else { return }
                 if let error = error {
-                    self.showAlert(message: "Failed to create new user \(error.localizedDescription)")
+                    self.showAlert(message:"Failed to create new user \(error.localizedDescription)")
                 } else {
                     self.pushProfile?()
                 }
@@ -166,7 +167,7 @@ class LogInViewController: UIViewController {
         alertController.addAction(createAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
+    #endif
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
