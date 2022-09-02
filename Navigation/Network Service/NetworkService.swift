@@ -17,12 +17,11 @@ protocol  NetworkServiceDelegate {
 struct NetworkService {
     
     var delegate: NetworkServiceDelegate?
-    
+
     static func performRequest (with urlString: String) {
         
         guard let url = URL(string: urlString) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print (error.localizedDescription)
                 
@@ -44,8 +43,7 @@ struct NetworkService {
     func performToDoRequest (with urlString: String) {
         
         guard let url = URL(string: urlString) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 self.delegate?.didFailWithError(error: error)
                 return
