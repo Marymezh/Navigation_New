@@ -84,8 +84,7 @@ struct NetworkService {
     func performPlanetInfoRequest(with urlString: String) {
         
         guard let url = URL(string: urlString) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 self.delegate?.didFailWithError(error: error)
                 return
