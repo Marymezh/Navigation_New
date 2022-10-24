@@ -64,7 +64,7 @@ class ProfileHeaderView: UIView {
         textField.layer.cornerRadius = 12
         textField.placeholder = "Set your status"
         textField.toAutoLayout()
-        textField.addTarget(ProfileHeaderView.self, action: #selector(statusTextChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return textField
     }()
     

@@ -30,7 +30,7 @@ class VideoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
         navigationItem.title = "Video Player"

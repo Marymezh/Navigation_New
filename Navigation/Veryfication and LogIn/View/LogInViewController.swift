@@ -176,7 +176,7 @@ class LogInViewController: UIViewController {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
-    
+
     private func setupViews() {
         
         scrollView.toAutoLayout()
@@ -231,6 +231,10 @@ class LogInViewController: UIViewController {
     // MARK: Keyboard
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+        usernameTextField.becomeFirstResponder()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
